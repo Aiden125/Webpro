@@ -1,0 +1,28 @@
+3.10
+
+1. 자바 깔기(오라클 아이디 만들고)-JDK
+2. 경로 설정하기(JAVA_HOME) 어쩌고 저쩌고(+path)
+3. java 8 eclipse version 깔기 Eclipse 4.16 (2020-06)
+Eclipse IDE for Java Developers(windows)
+(이클립스 다운로드 주소)
+https://www.eclipse.org/downloads/packages/release/2020-06/r
+4. IDE에는 개발에 관련된 것만 몰아넣기(파일 정리 숙지)
+캡처 파일 참조
++이클립스 루트 설정(Webpro, Source, 01_java)
+5. 깃 만들기(Aiden125)
+6. 깃 SCM 받기(git-download 검색 후 첫 번째꺼 다운)
+7. 깃 ignore 설정(메모장 생성 및 작성)
++README.md 메모장 생성 및 작성
+8. Git Bash 환경설정
+윈도우창에서 git bash 검색 후 열어서
+git donfig 어쩌고 입력(사진 참조)
+9. 깃을 두대 이상의 컴퓨터에서 쓰는 경우
+무조건 최신 정보를 pull 코드를 써서 땡겨온다음
+수정하고 다시 푸시해야됨
+한번 파일을 만들어 놓은 다음 메뉴부터는 간단해지기에
+피피티 파일 참조해서 해볼 것. 집에서 깃 깔고 pull로 땡겨오고
+조금 수정한다음 다시 push 적용까지 해보기
+
+Download/
+IDE/
+Source/01_java/.metadata/

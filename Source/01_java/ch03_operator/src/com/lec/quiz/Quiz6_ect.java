@@ -19,4 +19,3 @@ public class Quiz6_ect {
 		scanner.close();
 	}
 }
-

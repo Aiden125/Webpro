@@ -24,10 +24,5 @@ public class Quiz05_dowhile {
 		}
 	}while(true);
 	System.out.println("안녕히 가세요");
-			
-			
-			
-			
-			
 }
 }

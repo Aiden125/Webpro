@@ -1,6 +1,6 @@
 package com.study.Var;
 
-public class Ex01 {
+public class Ex01_variable {
 	public static void main(String[] args) {
 		double Korean = 80.3;
 		double English = 90.6;

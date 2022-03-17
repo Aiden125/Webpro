@@ -2,7 +2,7 @@ package com.st.operator;
 
 import java.util.Scanner;
 
-public class Ex02 {
+public class Ex02_scanner2 {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("국어 점수를 입력하세요 : ");

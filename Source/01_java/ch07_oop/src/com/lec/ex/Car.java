@@ -25,7 +25,7 @@ public class Car {
 
 	// setter & getter(color, cc, speed)
 	// myPorsche.methodNam("red")
-	public void setColor(String Color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
 

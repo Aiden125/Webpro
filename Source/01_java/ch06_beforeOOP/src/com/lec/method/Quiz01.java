@@ -27,7 +27,7 @@ public class Quiz01 {
 			int result = 0;
 			for(int i=1;i<=9;i++) {
 				result = su*i;
-				System.out.println(su+"*"+i+"="+result+"ÀÔ´Ï´Ù");
+				System.out.println(su+"*"+i+"="+result);
 			}
 			
 		}

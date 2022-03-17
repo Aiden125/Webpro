@@ -29,4 +29,37 @@ public class Man {
 		this.phoneNum = phoneNum;
 		System.out.println("파라미터가 4개짜리 생성자 함수 호출");
 	}
+	public double calculateBMI() {
+		double result = weight / ((height/100.0) * (height/100.0));
+		return result;
+	}
+	// setter & getter(age, height, weight, phoneNum) m.getAge() m .setAge()
+	
+	// setter
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
+	
+	//getter
+	public int getAge() {
+		return age;
+	}
+	public int getHeight() {
+		return height;
+	}
+	public double getWeight() {
+		return weight;
+	}
+	public String getPhoneNum() {
+		return phoneNum;
+	}
 }

@@ -1,0 +1,12 @@
+22.03.18
+
+배열할 때는 확장for문 못 씀
+getter & setter 개념 숙지 다시
+
+접근제한자
+public = 모든 폴더에서 가능
+protected = 같은 패키지 or 상속
+default = 같은 패키지내에서까지만
+private = 오직 해당 파일에서만
+
+Math.round(숫자) -> 반올림

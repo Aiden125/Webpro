@@ -1,4 +1,4 @@
-package com.lec.ex1_student;
+package com.lec.ex8_student;
 
 public class Student {
 	private String name;
@@ -7,7 +7,9 @@ public class Student {
 	private int math;
 	private int total;
 	private double avg;
+	private int stNo;
 	
+	public static int count = 1;
 	public Student() {}
 
 	public Student(String name, int kor, int eng, int math) {
@@ -15,11 +17,20 @@ public class Student {
 		this.kor = kor;
 		this.eng = eng;
 		this.math = math;
+		stNo = count++;
 		total = kor+eng+math;
 		avg = total/3.0;
 	}
 	public void print() {
-		System.out.printf("%s\t%d\t%d\t%d\t%d\t%.1f\n", name, kor, eng, math, total, avg);
+		System.out.printf("%d\t%s\t%d\t%d\t%d\t%d\t%.1f\n", stNo, name, kor, eng, math, total, avg);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getKor() {
@@ -62,4 +73,20 @@ public class Student {
 		this.avg = avg;
 	}
 
+	public int getStNo() {
+		return stNo;
+	}
+
+	public void setStNo(int stNo) {
+		this.stNo = stNo;
+	}
+
+	public static int getCount() {
+		return count;
+	}
+
+	public static void setCount(int count) {
+		Student.count = count;
+	}
+	
 }

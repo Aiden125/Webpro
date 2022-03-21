@@ -5,7 +5,7 @@ public class TestMain {
 		Animal[] animals = {
 				new Dog(),
 				new Rabbit()};
-		for(Animal animal : animals) {
+		for(Animal animal : animals) {//타입이 Animal 이기에 Animal을 쓰고 임의 변수 하나 지정 및 배열 함수 지정
 			animal.running();
 			animal.running();
 			animal.stop();

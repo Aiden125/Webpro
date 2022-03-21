@@ -1,6 +1,8 @@
 3.21
 
-ch10_ex02의 proteced member부터 공부시작
+ch10_ex02의 proteced member부터 공부시작 ch10_ex11 final까지
+ex10, ex11 예제 확장 for문 적용
+
 -public 선언 안하면 default로 선언됨
 -데이터 - 생성자 - 메소드 - 오버라이드 메소드 - getter&setter 순서 지키기
 -상속

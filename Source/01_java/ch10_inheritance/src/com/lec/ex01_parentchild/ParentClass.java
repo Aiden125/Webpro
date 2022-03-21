@@ -1,7 +1,7 @@
-package com.lec.ex1_parentchild;
+package com.lec.ex01_parentchild;
 
 public class ParentClass {
-	String pStr = "부모클래스";
+	String pStr = "부모클래스"; // public 선언 안하면 default로 선언됨
 	public ParentClass() {
 		System.out.println("부모클래스 객체 부분 생성");
 	}

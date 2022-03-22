@@ -1,8 +1,13 @@
 3.10
 
 1. 자바 깔기(오라클 아이디 만들고)-JDK
-2. 경로 설정하기(JAVA_HOME) 어쩌고 저쩌고(+path)
+2. 경로 설정하기(JAVA_HOME) (+path)
+JAVA_HOME 환경변수생성
+JAVA_HOME="C:\Program Files\Java\jdk1.8.0_321"
+Path추가할 내용
+;%JAVA_HOME%\bin
 3. java 8 eclipse version 깔기 Eclipse 4.16 (2020-06)
+풍선 모양같은 것
 Eclipse IDE for Java Developers(windows)
 (이클립스 다운로드 주소)
 https://www.eclipse.org/downloads/packages/release/2020-06/r
@@ -20,8 +25,7 @@ git donfig 어쩌고 입력(사진 참조)
 무조건 최신 정보를 pull 코드를 써서 땡겨온다음
 수정하고 다시 푸시해야됨
 한번 파일을 만들어 놓은 다음 메뉴부터는 간단해지기에
-피피티 파일 참조해서 해볼 것. 집에서 깃 깔고 pull로 땡겨오고
-조금 수정한다음 다시 push 적용까지 해보기
+
 
 Download/
 IDE/

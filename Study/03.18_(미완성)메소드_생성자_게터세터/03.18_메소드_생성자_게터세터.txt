@@ -1,7 +1,6 @@
 22.03.18
 
-배열할 때는 확장for문 못 씀
-getter & setter 개념 숙지 다시
+getter & setter 개념 숙지 다시(사진 참조)
 
 접근제한자
 public = 모든 폴더에서 가능

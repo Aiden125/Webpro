@@ -1,14 +1,6 @@
-package com.lec.ex;
-
-/*--------------
- * Hello, World!
- * ~~~~~~~~~~~~~
- * Hello, Java!
- * !!!!!!!!!!!!!
- * Hello, Hello!
- * ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
- */
-public class Ex05_line {
+package st06_method;
+// 다양한 메소드를 이용한 프린트
+public class Ex2 {
 	public static void main(String[] args) {
 		printline();
 		System.out.println("Hello, World!");

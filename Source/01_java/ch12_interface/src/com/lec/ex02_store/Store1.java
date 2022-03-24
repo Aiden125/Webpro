@@ -1,9 +1,9 @@
 package com.lec.ex02_store;
 // 주택가에 매장1호점: 김치 4500 부대 5000 비빔 6000 순대 안팜  공기 1000원
-public class Store1 extends HeadQuarterStore {//추상 클래스 적용시 stroe1에 마우스 갖다대고 ctrl+1눌러서도 가능
-	
+public class Store1 implements HeadQuarterStore {//추상 클래스 적용시 stroe1에 마우스 갖다대고 ctrl+1눌러서도 가능
+	//본사
 	private String str;
-	
+	//매개변수 1개 있는 생성자
 	public Store1(String str) {
 		this.str = str;
 	}
@@ -30,8 +30,6 @@ public class Store1 extends HeadQuarterStore {//추상 클래스 적용시 stroe1에 마우
 	public String getStr() {
 		return str;
 	}
-	public void setStr(String str) {
-		this.str = str;
-	}
+
 	
 }

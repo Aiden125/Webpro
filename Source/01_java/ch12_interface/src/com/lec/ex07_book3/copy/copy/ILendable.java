@@ -1,4 +1,4 @@
-package com.lec.ex07_book1;
+package com.lec.ex07_book3.copy.copy;
 // Book 작업명세
 public interface ILendable {
 	public byte STATE_BORROWED = 1; //"대출 중"

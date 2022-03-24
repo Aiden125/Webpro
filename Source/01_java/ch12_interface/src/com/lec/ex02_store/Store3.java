@@ -1,6 +1,6 @@
 package com.lec.ex02_store;
 //증권가에 매장3호점: 김치찌개-6,000  부대찌개-7,000  비빔밥-7,000 순대국-6,000
-public class Store3 extends HeadQuarterStore {
+public class Store3 implements HeadQuarterStore {
 	
 	private String str;
 	

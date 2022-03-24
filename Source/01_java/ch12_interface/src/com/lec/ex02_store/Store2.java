@@ -1,7 +1,6 @@
 package com.lec.ex02_store;
 //대학가에 매장2호점: 김치 5 부대 5 비빔 5 순대 5 공기-무료
-public class Store2 extends HeadQuarterStore {
-	
+public class Store2 implements HeadQuarterStore {
 	private String str;
 	public Store2(String str) {
 		this.str = str;
@@ -28,9 +27,6 @@ public class Store2 extends HeadQuarterStore {
 	}
 	public String getStr() {
 		return str;
-	}
-	public void setStr(String str) {
-		this.str = str;
 	}
 	
 }

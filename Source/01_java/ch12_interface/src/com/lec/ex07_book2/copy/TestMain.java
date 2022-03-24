@@ -1,14 +1,14 @@
-package com.lec.ex07_book1;
+package com.lec.ex07_book2.copy;
 
 import java.util.Scanner;
 
 public class TestMain {
 	public static void main(String[] args) {
-		Book[] books = {new Book("901ㅁ-101-2ㄴ", "java", "김자바"),
-						new Book("331ㄴ-122-2ㄴ", "python", "박이선"),
-						new Book("661ㅇ-199-2ㄴ", "oracle", "김기리"),
-						new Book("231ㄹ-155-2ㄴ", "web", "닭다리"),
-						new Book("651ㄷ-166-2ㄴ", "mysql", "김휴먼")};
+		BookLib[] books = {new BookLib("901ㅁ-101-2ㄴ", "java", "김자바"),
+						new BookLib("331ㄴ-122-2ㄴ", "python", "박이선"),
+						new BookLib("661ㅇ-199-2ㄴ", "oracle", "김기리"),
+						new BookLib("231ㄹ-155-2ㄴ", "web", "닭다리"),
+						new BookLib("651ㄷ-166-2ㄴ", "mysql", "김휴먼")};
 		Scanner sc = new Scanner(System.in);
 		
 		//fn, idx등 여기서 선언한 이유가 for문 안에서 선언하면 for문이 끝나면 변수도 같이 종료되기 때문에
@@ -16,6 +16,10 @@ public class TestMain {
 		int idx; //대출하거나 반납하려고 할 때 조회된 책의 index
 		String bookTitle, borrower, checkOutDate; //사용자에게 받을 책이름, 대출인, 대출일
 		
+//		do {
+//		System.out.println("1:대출 , 2:반납 , 3:책list , 0:종료");
+//		fn = sc.nextInt();
+//	}while(fn!=0);
 		
 		while(true) {
 			System.out.println("1:대출 , 2:반납 , 3:책list , 0:종료");
@@ -36,7 +40,7 @@ public class TestMain {
 					System.out.println("현재 보유하지 않는 도서입니다.");
 				}else {//books[idx] 도서를 대출 처리
 					//3.책 상태확인
-					if(books[idx].getState() == Book.STATE_BORROWED) { //책 대출 불가
+					if(books[idx].getState() == BookLib.STATE_BORROWED) { //책 대출 불가
 						System.out.println("현재 대출중인 도서입니다.");
 					}else { // 대출 가능 상태
 						//4.대출인입력 5.대출일입력 6.대출메소드 호출
@@ -47,9 +51,8 @@ public class TestMain {
 						books[idx].checkOut(borrower, checkOutDate);
 					}
 				}
-				
-				
 				break;
+				
 			case 2: // 반납 : 1.책이름  2.책조회  3.반납
 				//1.책이름
 				System.out.print("반납할 책 이름은?");
@@ -69,18 +72,13 @@ public class TestMain {
 				break;
 			case 3:
 				System.out.println("책 list는 다음과 같습니다.");
-				for(Book book : books) {
+				for(BookLib book : books) {
 					book.printstate();
 				}
 				break;
 			case 0: break;
 			}
 		}System.out.println("BYE");
-		
-//		do {
-//			System.out.println("1:대출 , 2:반납 , 3:책list , 0:종료");
-//			fn = sc.nextInt();
-//		}while(fn!=0);
 		
 	}//main
 }//class

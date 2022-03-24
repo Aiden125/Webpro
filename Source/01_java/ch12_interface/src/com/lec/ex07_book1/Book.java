@@ -21,7 +21,7 @@ public class Book implements ILendable {
 	// state = STATE_NORMAL;
 	// b.checkOut("신길동", "03-23"); 대출 : 상태를 확인해서 대출 중이면 중단, 대출 가능이면 대출처리
 	@Override
-	public void checkOut(String borrowe, String checkoutDate) {
+	public void checkOut(String borrower, String checkoutDate) {
 		if(state == STATE_BORROWED) { //대출 중이면 메세지 뿌리고 끝
 			System.out.println(bookTitle + " 도서는 대출 중입니다.");
 			return; // return되면 중단

@@ -8,6 +8,7 @@ public class TestMain {
 			temp.volumeDown(20);
 			temp.volumeUp(10);
 			temp.volumeUp(45);
+			temp.setMute(true); //default 메소드.(쓸일 거의 없는 편)
 		}
 	}
 }

@@ -1,0 +1,12 @@
+03.24
+
+ch12_ex2
+str변수가 왜 필요한 지
+해결(본사에 대한 변수)
+
+인터페이스에서 일반메소드를 하고 싶다면?
+default를 해당 메소드에 넣으면 가능은 함.
+public default void 변수(매개변수) {~~
+
+singleton
+strategy

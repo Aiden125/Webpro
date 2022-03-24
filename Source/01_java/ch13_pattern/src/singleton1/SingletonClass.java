@@ -12,6 +12,10 @@ public class SingletonClass {//싱글턴이다하면 데이터, 게터세터, 생성자(프라이빗)
 		}
 		return INSTANCE;	
 		}
+	
+	
+	
+	
 	private SingletonClass() {}//singleton에서는 private로 매개변수 없는 생성자 생성
 
 	public int getI() {

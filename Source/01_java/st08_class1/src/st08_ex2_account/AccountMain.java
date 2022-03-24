@@ -1,6 +1,6 @@
-package com.lec.ex3_acoount;
+package st08_ex2_account;
 
-public class AccountTestMain {
+public class AccountMain {
 	public static void main(String[] args) {
 		Account hong = new Account("100-1","홍길동",200);
 		Account shin = new Account("101-1","신길동");

@@ -15,17 +15,17 @@ public class SuperRobot extends Robot {
 	
 	@Override
 	public void actionFly() {
-		fly.fly();
+		fly.fly(); //fly가 있는곳으로 가서 fly()를 실행해라
 	}
 
 	@Override
 	public void actionMissile() {
-		missile.missile();
+		missile.missile(); //missile이 있는곳으로 가서 missile()을 실행하라
 	}
 
 	@Override
 	public void actionKnife() {
-		knife.Knife();
+		knife.Knife(); // knife가 있는 곳으로 가서 knife()실행하라
 	}
 	public void setFly(IFly fly) {
 		this.fly = fly;

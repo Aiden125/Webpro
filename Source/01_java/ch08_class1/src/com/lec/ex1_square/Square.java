@@ -17,6 +17,7 @@ public class Square {
 		this.side = side;
 		System.out.println("매개 변수 있는 생성자 함수 호출. side 초기화");
 	}
+	
 	//메소드
 	public int area() {
 		return side*side;

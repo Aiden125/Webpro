@@ -1,4 +1,4 @@
-package com.lec.ex11_final;
+package ex4;
 
 public class Animal {
 	//data

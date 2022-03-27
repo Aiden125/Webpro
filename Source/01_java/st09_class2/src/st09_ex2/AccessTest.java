@@ -1,4 +1,4 @@
-package com.lec.ex3_access;
+package st09_ex2;
 
 public class AccessTest {
 	private int privateMember; //같은 클래스 내에서만
@@ -12,7 +12,7 @@ public class AccessTest {
 		System.out.println("default method");
 	}
 	protected void protectedMethod() {
-		System.out.println("ptrootected method");
+		System.out.println("protected method");
 	}
 	public void publicMethod() {
 		System.out.println("public method");

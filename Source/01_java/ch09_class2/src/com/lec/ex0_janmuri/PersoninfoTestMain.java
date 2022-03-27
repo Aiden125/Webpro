@@ -1,4 +1,5 @@
 package com.lec.ex0_janmuri;
+//한 클래스안에 클래스가 두 개 있는 경우
 class PersonInfo{
 	private String name;
 	private int age;

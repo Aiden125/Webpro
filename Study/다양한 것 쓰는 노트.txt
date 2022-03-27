@@ -1,3 +1,40 @@
+??
+ch09 예제5에서 맘파우치와 차일드 클래스를 왜 구분 했었는지?
++스태틱이 없는 버전으로 해보기
+
+??
+ch10 예제4번에서 결과창 하나씩 돌리는법?
+
+
+++
+챕터10 예제 14번 혼자 해보기
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+배열과 확장for문 일반for문이 같이 나온 경우.
+HeadQuarterStore[] store = {
+new Store1("= = = 1호점 = = ="),
+new Store2("= = = 2호점 = = ="),
+new Store3("= = = 3호점 = = =")};
+
+//일반 for문
+for(int idx=0 ; idx<store.length ; idx++) {
+System.out.println(store[idx].getStr());
+store[idx].kimchi();
+store[idx].bude();
+store[idx].bibib();
+store[idx].sunde();
+store[idx].gonggibab();
+}
+
+//확장 for문이 가독성이 더 높은 편. st는 임의 변수 지정
+for(HeadQuarterStore st : store) {
+System.out.println(st.getStr());
+st.kimchi();
+st.bude();
+st.bibib();
+st.sunde();
+st.gonggibab();
+}
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 배열의 두가지 방식과 for문 및 확장for문 기본형식
 
 1. 첫번째 배열식
@@ -29,6 +66,37 @@ System.out.printf("이름=%s, 나이=%d, 성별=%c\n", name, age, gender);
 }
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+상속에 대하여
+1. 자식이 자식에게 점프(자식 클래스 = new 자식 클래스)
+ChildClass child = new ChildClass();
+child.getMamiName();
+child.getPapaName();
+child.getChildName();
+System.out.println(child.pStr);
+System.out.println(child.cStr);
+부모 클래스의 모든것 + 자식클래스의 모든 것 이용가능
+
+2. 부모가 부모에게 점프(부모 클래스 = new 부모 클래스)
+ParentClass p = new ParentClass();
+부모의 것만 이용가능. 특이한 점 x
+
+3. 자식클래스가 부모 클래스에게 점프(부모 클래스 = new 자식 클래스)
+ParentClass a = new ChildClass();
+a.getMamiName();
+a.getPapaName();
+부모가 가진 것만 이용가능함.
+자식의 권한으로 부모에게 접근한다 생각하면 될듯
+
+4. 부모클래스가 자식클래스에게 점프는 불가
+ChildClass b = new ParentClass();
+
+
+
+접근제한자
+priavte = 같은 클래스내에서
+default = 같은 패키지내에서
+protected = 같은 패키지 + 상속
+public = 모두
 
 홀짝관련
 홀 수 짝수 나오면 2로 나눴을 때 나눈값이 1이냐 0이냐로 구분

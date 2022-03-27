@@ -1,4 +1,4 @@
-package com.lec.ex3_access;
+package st09_ex2;
 
 public class AccessTestMain {
 

@@ -1,8 +1,6 @@
-package com.lec.ex2_parking;
+package st09_ex1;
 
 import java.util.Scanner;
-
-import com.lec.cons.Constant;
 /*
 주차장 들어올 때 결과 : “11라1111”님 어서오세요
                        입차시간 : 12시
@@ -17,7 +15,7 @@ public class Parking {
 	private int inTime;
 	private int outTime;
 	private int fee;
-	//private final int HOURLYPARKINGRATE=2000; //상수를 위에 정의 해주는 것 final써서 고정값을 명시
+	private final int HOURLYPARKINGRATE=2000; //상수를 위에 정의 해주는 것 final써서 고정값을 명시
 	public Parking() {}
 	
 	//생성자 함수
@@ -29,7 +27,7 @@ public class Parking {
 	//메소드
 	public void out(int outTime) {
 		this.outTime = outTime;
-		fee = (outTime-inTime)* Constant.HOURLYPARKINGRATE;
+		fee = (outTime-inTime)* HOURLYPARKINGRATE;
 		System.out.printf("\"%s\"님 안녕히 가세요\n입차시간 : %d시\n출차시간 : %d시\n주차요금 : %d원\n\n",no, inTime, outTime, fee);
 	}
 

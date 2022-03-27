@@ -1,4 +1,4 @@
-package com.lec.ex7_product;
+package st09_ex4;
 
 public class ProductTestMain {
 	public static void main(String[] args) {

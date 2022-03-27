@@ -1,4 +1,4 @@
-package com.lec.ex01_parentchild;
+package ex1;
 
 public class TestMain {
 	public static void main(String[] args) {

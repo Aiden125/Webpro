@@ -1,4 +1,4 @@
-package ex08_ex4_student;
+package st08_ex4_student;
 //이름, 국어, 영어, 수학, 총합, 평균 점수를 출력하는 프로그램 작성.
 
 /*이름	국어	영어	수학	총점	평균

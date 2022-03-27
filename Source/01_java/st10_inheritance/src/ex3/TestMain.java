@@ -1,4 +1,4 @@
-package com.lec.ex06_override;
+package ex3;
 
 public class TestMain {
 	public static void main(String[] args) {

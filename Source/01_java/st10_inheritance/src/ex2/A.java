@@ -1,4 +1,4 @@
-package com.lec.ex04_abc;
+package ex2;
 
 public class A extends S {
 	public A() {

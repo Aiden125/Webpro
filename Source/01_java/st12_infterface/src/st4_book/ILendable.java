@@ -1,4 +1,4 @@
-package st3_book;
+package st4_book;
 // 대출상태에 관한 변수(2가지)
 // 대출, 반납, 상태 메소드
 public interface ILendable {

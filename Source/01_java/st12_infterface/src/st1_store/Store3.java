@@ -1,9 +1,12 @@
-package com.lec.ex01_store;
+package st1_store;
 //Áõ±Ç°¡¿¡ ¸ÅÀå3È£Á¡: ±èÄ¡Âî°³-6,000  ºÎ´ëÂî°³-7,000  ºñºö¹ä-7,000 ¼ø´ë±¹-6,000
-public class Store3 extends HeadQuarterStore {
-
+public class Store3 implements HeadQuarterStore {
+	
+	private String str;
+	
 	public Store3(String str) {
-		super(str);
+		this.str = str;
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public void kimchi() {
@@ -24,6 +27,12 @@ public class Store3 extends HeadQuarterStore {
 	@Override
 	public void gonggibab() {
 		System.out.println("°ø±â¹ä - 1,000¿ø");
+	}
+	public String getStr() {
+		return str;
+	}
+	public void setStr(String str) {
+		this.str = str;
 	}
 
 }

@@ -2,6 +2,8 @@ package com.lec.ex04_abc;
 
 public class TestMain {
 	public static void main(String[] args) {
+
+		//방법 1
 		S s = new S();
 		// A a = new A();
 		S a = new A();//객체는 A로 만들었고, 변수의 타입은 S인 상황. 즉, 타입S인 변수a = 새로운 A객체로 지정할 것이다 라는 의미
@@ -13,5 +15,21 @@ public class TestMain {
 		for(S obj : arr) {
 			System.out.println(obj.s);
 		}
+		
+		//방법2
+//		S[] z = {new S(), new A(), new B(), new C()};
+//		for(S a : z) {
+//			System.out.println(a.s);
+//		}
+		
+		//방법3
+//		S[] s = new S[4];
+//		s[0] = new S();
+//		s[1] = new A();
+//		s[2] = new B();
+//		s[3] = new C();
+//		for(S a : s) {
+//			System.out.println(a.s);
+//		}
 	}
 }

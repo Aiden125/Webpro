@@ -1,9 +1,9 @@
-package com.lec.ex01_store;
+package ex1_store;
 //증권가에 매장3호점: 김치찌개-6,000  부대찌개-7,000  비빔밥-7,000 순대국-6,000
-public class Store3 extends HeadQuarterStore {
+public class Store3 extends HeadQuaterStore {
 
-	public Store3(String str) {
-		super(str);
+	public Store3(String store) {
+		super(store);
 	}
 	@Override
 	public void kimchi() {
@@ -25,5 +25,4 @@ public class Store3 extends HeadQuarterStore {
 	public void gonggibab() {
 		System.out.println("공기밥 - 1,000원");
 	}
-
 }

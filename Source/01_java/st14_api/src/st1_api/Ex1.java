@@ -1,6 +1,6 @@
-package com.lec.ex1_string;
+package st1_api;
 
-public class Ex02_stringAPImethod {
+public class Ex1 {
 	public static void main(String[] args) {
 		boolean searok = true;
 		boolean searak = true;

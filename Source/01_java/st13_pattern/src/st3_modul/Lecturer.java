@@ -1,6 +1,7 @@
 package st3_modul;
 
-import st3.*;
+import st3.GetSalary;
+import st3.JobLec;
 
 public class Lecturer extends Person {
 	private String subject;
@@ -8,8 +9,8 @@ public class Lecturer extends Person {
 	public Lecturer(String id, String name, String subject) {
 		super(id, name);
 		this.subject = subject;
-		setJob(new JobLec());
-		setGet(new GetSalary());
+		setJob(new JobLec()); //강의를 합니다. 출력
+		setGet(new GetSalary()); //월급을 받습니다. 출력
 	}
 	@Override
 	public void print() {

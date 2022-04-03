@@ -11,9 +11,11 @@ public class TestMain {
 		System.out.println("업무시간이니 다 일합시다");
 		for(Person p : person)
 			p.job();
+		System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
 		System.out.println("월말엔 다 지급할 것 지급");
 		for(Person p : person)
 			p.get();
+		System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
 		System.out.println("궁금하면 프린트");
 		for(Person p :person)
 			p.print();

@@ -13,7 +13,7 @@ public class Ex01 {
 			System.out.println("str1과 str2는 다른 주소값");
 		}
 		if(str1.equals(str2)) {
-			System.out.println("같은 물자열");
+			System.out.println("같은 문자열");
 		}
 		System.out.println(str1==str3? "str1과 3은 같은 주소":"str1과 3은 다른주소");
 		System.out.println(str2.equals(str3)? "같은 스트링" : "다른 스트링");

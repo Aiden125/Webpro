@@ -1,9 +1,9 @@
-package com.lec.ex1_string;
+package st1_api;
 
 import java.util.Scanner;
 
 // 배열에 있는 전화번호 찾아 전체 전화번호 출력
-public class Ex07_searchTel {
+public class Ex3_searchTel {
 	public static void main(String[] args) {
 		String[] tels = {"010-9999-9999" , "02-8888-8888" , "010-7777-8888"};
 		Scanner sc = new Scanner(System.in);

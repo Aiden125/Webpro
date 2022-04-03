@@ -1,9 +1,9 @@
-package com.lec.ex1_string;
+package st1_api;
 
 import java.util.Scanner;
 
 // 전화번호 받아, 입력받은 전화번호, 짝수번째 문자, 거꾸로, 전화번호 앞자리, 전화번호 뒷자리
-public class Ex06_telPrint {
+public class Ex4_telPrint {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 

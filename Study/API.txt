@@ -1,0 +1,89 @@
+자주쓸만한 API
+
+함수 1 = a
+함수 2 = b
+함수 3 = c
+라고 가정
+
+정규표현식
+https://goo.gl/Hlntbd
+
+정규표현식 연습장
+https://www.nextree.co.kr/p4327
+
+-a와 b 문자열을 합침 
+a.concat(b)
+
+-특정 인덱스부터 끝 인덱스까지
+a.substring(숫자)
+
+-특정 인덱스부터 특정 인덱스앞까지
+a.substring(3, 5) -> a의 인덱스3부터 4까지.
+
+-글자 길이를 반환
+a.length()
+
+-모든 문자를 대문자로
+a.toUpperCase()
+
+-모든 문자를 소문자로
+a.toLowerCase()
+
+-특정 인덱스번째 문자를 반환
+a.charAt()
+
+-특정 문자가 나오는 위치의 인덱스
+a.indexOf('-')
+
+-특정 위치부터 검색해서 첫번째 특정 문자가 나오는 위치 인덱스
+a.indexOf('-', 3) -> 3번째 인덱스부터 검색해서 -가 처음으로 나오는 위치의 인덱스
+
+-특정 문자열이 나오는 인덱스 반환
+a.indexOf("가나다") -> "가나다"가 나오는 위치 인덱스
+
+-indexOf에서 찾는 문자 혹은 문자열이 없는 경우
+-> -1 반환
+
+-마지막 특정 문자 위치 반환
+a.lastIndexOf('-')
+
+-특정 위치부터 검색해 마지막 특정 문자 위치 인덱스 반환
+a.lastInedxOf('-', 3)
+
+-대소문자 구분없이 비교
+a.equalsIgnoreCase(b)
+
+-앞 뒤 공백제거. 중간 공백은 제거x
+a.trim()
+
+-특정 문자를 특정 문자로 수정(문자열도 가능)
+a.replace('가', '9')
+
+-모든 공백을 없애고자 할 때
+a.replace(" ", "")
+
+-모든 알파벳 없애기(정규표현식 참고)
+a.replaceAll("[a-zA-Z]", "")
+
+-모든 한글 없애기
+a.replaceAll("[가-힣]", "")
+
+-주소값 확인하기(완전히 주소값은 아니지만 비슷한 형태)
+a.hashCode()
+
+-토큰화 시키는 객체
+StringTokenizer something = new StringTokenizer(a) -> a를 스페이스 기준으로 토큰화 시켜줌
+
+-내가 원하는 구분자로 토큰화
+StringTokenizer something = new StringTokenizer(a, '/')
+-> a를 '/' 기준으로 토큰화 시켜줌
+
+-토큰의 갯수를 세는 객체
+something.countTokens() -> 토큰화된 something의 토큰 갯수를 반환
+
+-각개의 토큰을 출력
+while(something.hasMoreTokens()) {
+System.out.println(tokenizer1.nextToken()); }
+->와일문(토큰이 남아있을 때 까지 다음문장 실행)
+->next토큰 각각 토큰 반환(이 경우는 출력)
+만약, 와일문을 안쓴다면 맨 먼저 있는 토큰만 출력해줌

@@ -3,7 +3,7 @@ package com.lec.ex3_math;
 import java.util.Random;
 
 // 로또번호 6개 뽑기
-public class Ex04 {
+public class Ex04_rottery {
 	public static void main(String[] args) {
 		int[] lotto = new int[6];
 		Random random = new Random();

@@ -16,7 +16,7 @@ public class Test {
 			System.out.println("같은 번호가 있어서 put 불가");
 		}
 		
-		//이렇게 하는 경우 불린 값을 써야됨
+//		이렇게 하는 경우 불린 값을 써야됨
 //		boolean ok = false;
 //		while(iterator.hasNext()) {
 //			Integer key = iterator.next();

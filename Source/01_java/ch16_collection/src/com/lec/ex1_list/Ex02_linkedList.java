@@ -1,5 +1,5 @@
 package com.lec.ex1_list;
-
+//LinkedList = 배열중간에 값을 끼워넣어야하는 일이 있을 때.
 import java.util.ArrayList;
 import java.util.LinkedList;
 

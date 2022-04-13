@@ -37,6 +37,8 @@ SELECT * FROM EMP WHERE MOD(EMPNO, 2) != 0;
     -- EX. 홀수달에 입사한 사원의 모든 필드 출력
 SELECT * FROM EMP WHERE MOD(TO_CHAR(HIREDATE, 'MM'), 2)=1;
 
+
+
 -- 2. 문자관련함수
 -- (1)대소문자관련
 SELECT UPPER('abcABC') FROM DUAL; --대문자로
@@ -132,6 +134,7 @@ SELECT REPLACE(ENAME, 'A', 'XX') FROM EMP;
 SELECT REPLACE(HIREDATE, '0', ' ') FROM EMP;
 
 
+
 -- 3. 날짜관련함수 및 예약
 -- (1) SYSDATE : 지금
 SELECT SYSDATE FROM DUAL;
@@ -203,6 +206,8 @@ SELECT ENAME, HIREDATE, ROUND(HIREDATE-4, 'MONTH')+19 "월급날" FROM EMP;
 
 -- (7) NEXT_DAY(날짜, '수') : 특정날짜로부터 처음 도래하는 수요일
 
+
+
 -- 4. 형변환 함수 (문자<->숫자, 문자<->날짜)
 
 -- (1) TO_CHAR(날짜형데이터, '출력형식') 
@@ -241,6 +246,7 @@ SELECT ENAME, NVL(COMM, 0) FROM EMP;
     SELECT ENAME, NVL(TO_CHAR(MGR),'CEO') FROM EMP;
 
 
+
 -- 6. ETC
 -- (1) EXTRACT 결과가 숫자로 뽑힘
 SELECT EXTRACT(YEAR FROM SYSDATE) FROM DUAL; --숫자로 뽑
@@ -273,10 +279,10 @@ SELECT EMPNO, ENAME, JOB, SAL, SAL*1.15 "New Salary", SAL*0.15 "Increase"
     FROM EMP;
 
 --3. 이름, 입사일, 입사일로부터 6개월 후 돌아오는 월요일 구하여 출력하는 SELECT 문장을 기술하시오.
-SELECT ENAME, HIREDATE, NEXT_DAY(ROUND(ADD_MONTHS(HIREDATE, 6), 'DAY'),'월') FROM EMP;
+SELECT ENAME, HIREDATE, NEXT_DAY(ADD_MONTHS(HIREDATE, 6),'월') FROM EMP;
 
 --4. 이름, 입사일, 입사일로부터 현재까지의 개월수, 급여, 입사일부터 현재까지의 받은 급여의 총계를 출력
-SELECT ENAME, HIREDATE, FLOOR(MONTHS_BETWEEN(SYSDATE, HIREDATE)) MONTHS, SAL,
+SELECT ENAME, HIREDATE, TRUNC(MONTHS_BETWEEN(SYSDATE, HIREDATE)) MONTHS, SAL,
     FLOOR(MONTHS_BETWEEN(SYSDATE, HIREDATE))*SAL + TRUNC((SYSDATE-HIREDATE)/365)*2*NVL(COMM,0) COST
     FROM EMP;
     
@@ -285,7 +291,7 @@ SELECT ENAME, LPAD(SAL, 15, '*')
     FROM EMP;
 
 --6. 모든 사원의 정보를 이름,업무,입사일,입사한 요일을 출력하는 SELECT 문장을 기술하시오.
-SELECT ENAME, JOB, HIREDATE, TO_CHAR(HIREDATE, 'DY') DAY
+SELECT ENAME, JOB, HIREDATE, TO_CHAR(HIREDATE, 'DAY') DAY
     FROM EMP;
 
 --7. 이름의 길이가 6자 이상인 사원의 정보를 이름,이름의 글자수,업무를 출력

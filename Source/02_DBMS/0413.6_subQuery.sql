@@ -1,0 +1,132 @@
+-- [VI] SUB QUERY ; QUERY안에 QUERY가 내포
+
+
+
+-- ★ 1. 서브 쿼리 개념(필요성)
+-- 서브쿼리를 써야할 때 예시 : 급여제일 많이 받는 사람의 사번, 이름, 직책, 급여
+SELECT MAX(SAL) FROM EMP;
+SELECT EMPNO, MAX(SAL) FROM EMP GROUP BY EMPNO;
+
+SELECT MAX(SAL) FROM EMP; --서브쿼리
+SELECT EMPNO, ENAME, JOB, SAL
+    FROM EMP
+    WHERE SAL = (SELECT MAX(SAL) FROM EMP); -- 메인쿼리(서브쿼리는 괄호로 묶여있어야 함)
+
+
+-- 서브쿼리 종류(1) 단일행 서브쿼리 - 서브쿼리를 실행했을 때 결과가 단일행 일 때 : =, >, >=, <, <=, != 등등 부등호 사용가능
+
+    -- EX. SCOTT이 근무하는 부서이름 출력
+SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT'; --서브쿼리
+SELECT DNAME
+    FROM DEPT
+    WHERE DEPTNO = (SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT'); --메인쿼리
+    
+SELECT DNAME FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME='SCOTT';
+
+
+-- 서브쿼리 종류(2) 다중행 서브쿼리(서브쿼리 결과 2행이상) : IN. ANY, ALL, EXISTS
+    -- EX. JOB이 MANAGER인 사람의 부서이름
+    SELECT DEPTNO FROM EMP WHERE JOB='MANAGER'; -- 서브쿼리
+    SELECT DNAME FROM DEPT
+        WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE JOB='MANAGER');
+
+
+
+-- ★ 2. 단일행 서브쿼리
+    -- 아래 문제 전처리(SCOTT 부서번호:20, 근무지:DALLAS)
+SELECT E.DEPTNO, LOC FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME='SCOTT';
+
+-- SCOTT과 동일한 부서번호 추가를 위해 인서트 하는데, 부모가 되는 DEPT부터 해야지 제대로 설정됨
+INSERT INTO DEPT VALUES(50, 'IT', 'DALLAS');
+INSERT INTO EMP (EMPNO, ENAME, DEPTNO) VALUES (9999, '홍길덩', 50); --EMP뒤에 저렇게 세개만 넣으면 저 데이터만 넣겠다는 것. 나머지는 NULL로 자동설정
+
+    -- EX. SCOTT과 같은 부서인 사람의 이름과 급여 출력
+SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT'; --서브쿼리
+SELECT ENAME, SAL
+    FROM EMP
+    WHERE DEPTNO = (SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT') AND ENAME!='SCOTT'; --메인 쿼리
+
+    -- EX. SCOTT과 같은 근무지인 사람의 이름과 급여 출력
+SELECT LOC FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME='SCOTT'; -- 서브쿼리
+SELECT ENAME, SAL
+    FROM EMP E, DEPT D
+    WHERE E.DEPTNO=D.DEPTNO
+        AND LOC = (SELECT LOC FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME='SCOTT')
+        AND ENAME!='SCOTT';
+    ROLLBACK; --가장 최근에 한 DML 취소(DML-데이터추가,수정,삭제 등을 취소)
+    
+
+    -- EX. 최초입사일과 최초입사한 사람이름
+SELECT MIN(HIREDATE) FROM EMP; -- 단일행 서브쿼리
+SELECT ENAME, HIREDATE
+    FROM EMP
+    WHERE HIREDATE = (SELECT MIN(HIREDATE) FROM EMP); --메인쿼리
+    
+    
+    -- EX. 최근입사일과 최근입사한 사람이름
+SELECT MAX(HIREDATE) FROM EMP; -- 단일행 서브쿼리
+SELECT ENAME, HIREDATE
+    FROM EMP
+    WHERE HIREDATE = (SELECT MAX(HIREDATE) FROM EMP); --메인쿼리
+    
+    
+    -- EX. 최초입사일과 최초입사한 사람이름, 최근입사일과 최근입사한 사람이름
+    -- 셀렉트문에 서브쿼리 넣어서 하는경우
+SELECT
+    (SELECT MAX(HIREDATE) FROM EMP) LAST,
+    (SELECT ENAME FROM EMP
+    WHERE HIREDATE = (SELECT MAX(HIREDATE) FROM EMP)) LASTMAN,
+    (SELECT MIN(HIREDATE) FROM EMP) FIRST,
+    (SELECT ENAME FROM EMP
+    WHERE HIREDATE = (SELECT MIN(HIREDATE) FROM EMP)) FIRSTMAN
+    FROM DUAL;
+    
+    -- JOIN 이용해서 하는 경우
+    SELECT E1.HIREDATE, E1.ENAME, E2.HIREDATE, E2.ENAME
+    FROM EMP E1, EMP E2
+    WHERE E1.HIREDATE = (SELECT MIN(HIREDATE) FROM EMP)
+    AND E2.HIREDATE = (SELECT MAX(HIREDATE) FROM EMP);
+
+    -- EX. SCOTT과 같은 부서에 근무하는 사람들의 급여합
+SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT'; --서브쿼리
+SELECT SUM(SAL)
+    FROM EMP
+    WHERE DEPTNO = (SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT'); --메인쿼리
+    
+    -- EX. SCOTT과 동일한 직책(JOB)을 가진 사원의 모든 필드
+SELECT JOB FROM EMP WHERE ENAME='SCOTT';
+SELECT * FROM EMP WHERE JOB=(SELECT JOB FROM EMP WHERE ENAME='SCOTT');
+
+    -- EX. DALLAS에서 근무하는 사원의 이름, 부서번호
+SELECT DEPTNO FROM DEPT WHERE LOC='DALLAS'; -- 서브쿼리
+SELECT ENAME, DEPTNO
+    FROM EMP
+    WHERE DEPTNO=(SELECT DEPTNO FROM DEPT WHERE LOC='DALLAS'); -- 메인쿼리
+
+    -- EX. 'KING'이 직속상사인 사원의 이름과 급여
+SELECT EMPNO FROM EMP WHERE ENAME='KING'; -- 서브쿼리
+SELECT ENAME, SAL
+    FROM EMP
+    WHERE MGR=(SELECT EMPNO FROM EMP WHERE ENAME='KING'); -- 메인쿼리
+    
+SELECT W.ENAME, W.SAL
+    FROM EMP W, EMP M
+    WHERE W.MGR=M.EMPNO AND M.ENAME='KING';
+
+
+    -- EX1. 평균 급여 이하로 받는 사원의 이름과 급여를 출력
+SELECT AVG(SAL) FROM EMP;
+SELECT ENAME, SAL
+    FROM EMP
+    WHERE SAL<=(SELECT AVG(SAL) FROM EMP)
+    ORDER BY SAL;
+
+    -- EX2. 평균급여 이하로 받는 사원의 이름, 급여, 평균급여 출력
+SELECT ENAME, SAL, ROUND((SELECT AVG(SAL) FROM EMP))
+    FROM EMP
+    WHERE SAL <= (SELECT AVG(SAL) FROM EMP)
+
+
+
+
+

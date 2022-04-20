@@ -1,3 +1,6 @@
+궁금증)
+MYSQL에서 NVL??
+
 EXERD 플러그인 하는법
 
 mysql 다운로드

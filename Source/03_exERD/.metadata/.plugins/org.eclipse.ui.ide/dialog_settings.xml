@@ -4,7 +4,6 @@
 		<item value="" key="ResourceWorkingSetFilter.STORE_WORKING_SET"/>
 		<item value="1" key="ResourceViewer.STORE_SORT_TYPE"/>
 	</section>
-<<<<<<< HEAD
 	<section name="SaveAsDialogSettings">
 		<item value="525" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
@@ -12,6 +11,4 @@
 		<item value="208" key="DIALOG_X_ORIGIN"/>
 		<item value="137" key="DIALOG_Y_ORIGIN"/>
 	</section>
-=======
->>>>>>> fb2ed32134aba05344bb01f069284e93efe8552a
 </section>

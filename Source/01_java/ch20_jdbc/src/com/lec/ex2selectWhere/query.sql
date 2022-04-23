@@ -26,6 +26,31 @@ SELECT EMPNO, ENAME, SAL, GRADE
     WHERE SAL BETWEEN LOSAL AND HISAL AND DEPTNO = (SELECT DEPTNO FROM DEPT WHERE DNAME=UPPER('SALES'));
     
     
+--1. 사용자에게 부서명을 받아
+--	1-1. 부서존재하는경우 : 부서정보와 사원정보(사원, 이름, 급여, 급여등급)를 출력
+--	1-2. 부서존재하지 않는 경우 : 없다고 출력
+
+SELECT DNAME, EMPNO, ENAME, SAL, GRADE
+    FROM EMP E, DEPT D, SALGRADE
+    WHERE E.DEPTNO=D.DEPTNO
+    AND SAL BETWEEN LOSAL AND HISAL
+    AND DNAME=UPPER('SALES');
     
+    
+-- 부서번호를 입력받아 중복체크 확인 후 입력 진행
+SELECT COUNT(*) CNT FROM DEPT WHERE DEPTNO=30;
+
+desc dept;
+
+
+
+
+-- 부서번호가 중복되는지 체크하기. COUNT함수 이용
+SELECT COUNT(*) CNT FROM DEPT WHERE DEPTNO=30;
+-- 인서트하기
+INSERT INTO DEPT VALUES (50, 'GOODGOOD', 'SEOUL');
+SELECT * FROM DEPT;
+ROLLBACK;
+
     
     

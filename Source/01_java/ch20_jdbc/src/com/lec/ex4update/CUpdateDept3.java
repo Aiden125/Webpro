@@ -14,10 +14,12 @@ public class CUpdateDept3 {
 		Connection conn = null;
 		Statement  stmt = null;
 		ResultSet  rs   = null;
+		
 		try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, "scott", "tiger");
 			stmt = conn.createStatement();
+			
 			while(true) {
 				System.out.print("수정할 부서번호 ?");
 				int deptno = scanner.nextInt();

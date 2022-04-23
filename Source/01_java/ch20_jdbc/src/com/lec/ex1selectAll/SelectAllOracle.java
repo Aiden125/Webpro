@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
-
+// EMP테이블의 모든 정보를 출력하기
+// 사번, 이름, 직책, 상사사번, 입사일, 급여, 상여, 부서번호
 public class SelectAllOracle {
 	public static void main(String[] args) {
 		String driver = "oracle.jdbc.driver.OracleDriver";
@@ -15,6 +16,7 @@ public class SelectAllOracle {
 		Statement stmt  = null; // SQL전송객체 변수
 		ResultSet rs 	= null; // SELECT문 결과 받는 객체 변수
 		String query = "SELECT * FROM EMP";
+		
 		try {
 			Class.forName(driver); // 1단계 : 드라이버 로드
 			conn = DriverManager.getConnection(url, "scott", "tiger"); // 2 단계 : DB연결
@@ -22,6 +24,7 @@ public class SelectAllOracle {
 			rs = stmt.executeQuery(query); // 4단계 : SQL전송 + 5단계 : SQL전송 결과 받기
 			// 6단계 : 결과 받아서 원하는 로직 수행
 			System.out.println("사번\t이름\t직책\t\t상사사번\t입사일\t\t급여\t상여\t부서번호");
+			
 			while(rs.next()) {
 				int empno = rs.getInt("empno"); // empno를 숫자형태로 가져와라
 				String ename = rs.getString("empno"); // ename를 문자형태로 가져와라
@@ -41,6 +44,7 @@ public class SelectAllOracle {
 							empno, ename, job, mgr, hiredate, sal, comm, deptno);
 				}
 			}
+			
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 		} catch (SQLException e) {

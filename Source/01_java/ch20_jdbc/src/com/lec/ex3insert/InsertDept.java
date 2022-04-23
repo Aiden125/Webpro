@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
-
+// 부서번호를 입력받아 정보입력.(중복체크 x)
 public class InsertDept {
 	public static void main(String[] args) {
 		String driver = "oracle.jdbc.driver.OracleDriver";
@@ -23,6 +23,7 @@ public class InsertDept {
 		// insert를 날리려고 하기 때문에 resultset 필요없음(resultset은 셀렉트 할 때)
 		Connection conn = null;
 		Statement stmt = null;
+		
 		try {
 			Class.forName(driver); // (1)
 			conn = DriverManager.getConnection(url, "scott", "tiger"); // (2)

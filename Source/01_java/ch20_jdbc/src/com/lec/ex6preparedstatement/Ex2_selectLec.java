@@ -6,6 +6,7 @@ public class Ex2_selectLec {
 	public static void main(String[] args) {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		
 		Scanner scanner = new Scanner(System.in);
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
@@ -13,6 +14,7 @@ public class Ex2_selectLec {
 		String sql = "SELECT EMPNO, ENAME, JOB, SAL" + 
 				"    FROM EMP E, DEPT D" + 
 				"    WHERE E.DEPTNO=D.DEPTNO AND DNAME=UPPER(?)";
+		
 		// (1)단계 ~ (7)단계
 		try {
 			Class.forName(driver);
@@ -39,6 +41,8 @@ public class Ex2_selectLec {
 			}else {
 				System.out.println("해당 부서의 직원은 없습니다");
 			}
+			
+			
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 		} catch (SQLException e) {

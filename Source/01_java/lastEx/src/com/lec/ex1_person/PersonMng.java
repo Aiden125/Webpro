@@ -12,20 +12,24 @@ public class PersonMng {
 	public static void main(String[] args) {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		Scanner sc = new Scanner(System.in);
 		String fn, sql;
+		
 		try {
 			Class.forName(driver); // (1)드라이버 로드
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
-		}// (1)드라이버 로드
+		}
+		
 		do {
 			System.out.println("1:입력 || 2:직업별조회 || 3:전체조회 || 그외:종료");
 			fn = sc.next(); // 1,2,3,a
+			
 			switch(fn) {
 			case "1": // 이름, 직업명, 국, 영, 수 입력 받아 insert
 				// 2~7단계
@@ -60,6 +64,7 @@ public class PersonMng {
 					}
 				}
 				break;
+				
 			case "2":
 				sql = "SELECT ROWNUM RANK, A.*" + 
 						"    FROM (SELECT PNAME, JNAME , KOR, ENG, MAT, KOR+ENG+MAT SUM" + 
@@ -102,6 +107,7 @@ public class PersonMng {
 				}
 				
 				break;
+				
 			case "3":
 				sql = "SELECT ROWNUM RANK, A.*" + 
 						"    FROM (SELECT PNAME, JNAME , KOR, ENG, MAT, KOR+ENG+MAT SUM" + 

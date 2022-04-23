@@ -13,7 +13,6 @@ public class Ex1_insertDept {
 		String url    = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 		Scanner scanner = new Scanner(System.in);
 		
-		
 		//추가할 데이터 받기
 		System.out.println("추가할 부서번호?");
 		int deptno = scanner.nextInt();

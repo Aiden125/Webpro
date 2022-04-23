@@ -11,6 +11,8 @@ import java.util.Scanner;
 	1-1. 부서존재하는경우 : 부서정보와 사원정보(사원, 이름, 급여, 급여등급)를 출력
 	1-2. 부서존재하지 않는 경우 : 없다고 출력
 */
+// 결과값 도출 성공. 이쁘게 정리한건 아니기 떄문에 출력이 이쁘게 되진 않는 상태
+// 틀렸던 부분 - String.format으로 변수 넣을 때 %s 로 입력값을 넣는데 ''(싱글커테이션) 안넣어서 오류 발생했었음(주의)
 public class Ex3_selectDnameEmp {
 	public static void main(String[] args) {
 		String driver = "oracle.jdbc.driver.OracleDriver";
@@ -33,12 +35,14 @@ public class Ex3_selectDnameEmp {
 			conn = DriverManager.getConnection(url, "scott", "tiger"); // (2)
 			stmt = conn.createStatement(); // (3)
 			rs = stmt.executeQuery(sql1); // (4) + (5)
+			
 			if(rs.next()) {
 				System.out.println("부서번호 : "+rs.getInt("deptno"));
 				System.out.println("부서 이름 : "+dname);
 				System.out.println("부서 위치 : "+rs.getString("loc"));
 				rs.close();
 				rs = stmt.executeQuery(sql2); // (4) + (5)
+				
 				if(rs.next()) { // 해당부서명에 사원이 있는 경우
 					do {
 						int empno = rs.getInt("empno");

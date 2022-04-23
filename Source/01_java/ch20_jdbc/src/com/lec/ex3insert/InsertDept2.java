@@ -1,5 +1,5 @@
 package com.lec.ex3insert;
-// 부서번호를 입력받아 중복체크 확인 후 입력 진행
+// 부서번호를 입력받아 중복체크 확인 후 입력 진행(중복 체크할 때 select문을 써야함)
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,6 +11,7 @@ public class InsertDept2 {
 	public static void main(String[] args) {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+		
 		Scanner scanner = new Scanner(System.in);
 		Connection conn = null; // DB연결객체 변수
 		Statement stmt = null; // SQL전송객체 변수
@@ -23,8 +24,9 @@ public class InsertDept2 {
 			
 			System.out.println("입력할 부서번호는?");
 			int deptno = scanner.nextInt();
-			// 부서번호 중복체크
+			// 부서번호 중복체크(중복체크를 위해 셀렉트문 실행)
 			String selectSQL = "SELECT COUNT(*) CNT FROM DEPT WHERE DEPTNO="+deptno;
+			
 			
 			rs = stmt.executeQuery(selectSQL);
 			rs.next();
@@ -38,6 +40,8 @@ public class InsertDept2 {
 				scanner.nextLine();
 				String loc = scanner.nextLine();
 				String insertSql = String.format("INSERT INTO DEPT VALUES(%d,'%s','%s')", deptno, dname, loc);
+				
+				
 				int result = stmt.executeUpdate(insertSql);
 				if(result>0) {
 					System.out.println("입력 성공");
@@ -62,4 +66,3 @@ public class InsertDept2 {
 // System.out.println("입력할 부서위치는?");
 // String loc = scanner.next();
 // String sql = String.format("INSERT INTO DEPT VALUES(%d,'%s','%s')", deptno, dname, loc);
-// insert를 날리려고 하기 때문에 resultset 필요없음(resultset은 셀렉트 할 때)

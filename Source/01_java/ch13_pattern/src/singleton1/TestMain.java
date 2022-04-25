@@ -6,9 +6,9 @@ public class TestMain {
 		SingletonClass obj2 = SingletonClass.getInstance();
 		obj1.setI(99);
 		System.out.println("obj1의 i : "+obj1.getI());
-		System.out.println("obj1의 i : "+obj2.getI());
+		System.out.println("obj2의 i : "+obj2.getI());
 		obj2.setI(19);
 		System.out.println("obj1의 i : "+obj1.getI());
-		System.out.println("obj1의 i : "+obj2.getI());
+		System.out.println("obj2의 i : "+obj2.getI());
 	}
 }

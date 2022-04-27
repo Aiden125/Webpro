@@ -1,5 +1,6 @@
 --
 DROP TABLE CUSTOMER;
+-- DROP TABLE CUSTOMER CASCADE CONSTRAINTS;(참조하는 경우가 있는 경우 강제삭제(절대 안쓰는편)
 DROP TABLE CUS_LEVEL;
 DROP SEQUENCE CUSTOMER_SQ;
 
@@ -28,9 +29,12 @@ CREATE TABLE CUSTOMER (
     cID NUMBER(6) PRIMARY KEY,
     cTEL VARCHAR2(20) NOT NULL,
     cNAME VARCHAR2(30) NOT NULL,
-    cPOINT NUMBER(10) DEFAULT 1000,
+    cPOINT NUMBER(10) DEFAULT 1000 CHECK(cPOINT>=0),
     cAMOUNT NUMBER(10) DEFAULT 0,
     LEVELNO NUMBER(2) DEFAULT 1 REFERENCES CUS_LEVEL(LEVELNO)
+    -- 아래에 제약조건 쓰는 경우.
+    -- PRIMARY KEY(cID)
+    -- FOREIGN KEY(LEVELNO) REFERENCES CUS_LEVEL(LEVELNO)
 );
 
 INSERT INTO CUSTOMER(cID, cTEL, cNAME)
@@ -39,66 +43,113 @@ INSERT INTO CUSTOMER(cID, cTEL, cNAME)
     VALUES(CUSTOMER_SQ.NEXTVAL, '010-3333-3333', '유재석');
 INSERT INTO CUSTOMER(cID, cTEL, cNAME)
     VALUES(CUSTOMER_SQ.NEXTVAL, '010-5555-5555', '정형돈');
+INSERT INTO CUSTOMER VALUES (CUSTOMER_SQ.NEXTVAL, '010-7777-7777','유재석',0,5000000,5);
+INSERT INTO CUSTOMER VALUES (CUSTOMER_SQ.NEXTVAL, '010-5231-5231','정준하',0,150000,2);
 
 SELECT * FROM CUS_LEVEL;
 SELECT * FROM CUSTOMER;
 
 
+-- 결과가 1명이상일 경우 ARRAYLIST에 담기
+-- 아닌 경우 그냥 변수에 담아도 됨
+
 -- 0. 레벨이름들 검색 : public Vector<String> getLevelNames()
 SELECT LEVELNAME FROM CUS_LEVEL;
 
--- 1. cId로 검색 : public CustomerDto cIdGetCustomer(int cId)
+-- 1. cId로 검색
+-- 고유키에 해당하기에 한 행만 오는경우로 적용(배열안씀)
+-- CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, forlevelUP
+-- public CustomerDto cIdGetCustomer(int cId)
 SELECT cID, cTEL, cNAME, cPOINT, cAMOUNT, LEVELNAME,
-        (SELECT HIGH-CAMOUNT+1 FROM CUSTOMER WHERE CID=C.CID AND LEVELNO!=5) forLEVELUP
+        (SELECT HIGH-cAMOUNT+1 FROM CUSTOMER WHERE CID=C.CID AND LEVELNO!=5) forLEVELUP
     FROM CUSTOMER C, CUS_LEVEL L
     WHERE C.LEVELNO=L.LEVELNO
-    AND cid=1;
+    AND cid=4;
+-- 위 구문에서 단순히 WHERE절에 LEVELNO조건을 넣으면 아예 출력 자체가 안되기 때문에 서브쿼리로 넣어줘야함
     
--- 2. 폰뒤4자리(FULL) 검색 - CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 레벨업을 위한 쓸 돈
+    
+-- 2. 폰뒤4자리(FULL) 검색
+-- 여러행이 올 수 있기에 어레이에 담음
 -- public ArrayList<CustomerDto> cTelGetCustomers(String cTel);
-SELECT cTEL, cNAME, cPOINT, cAMOUNT, LEVELNAME,
+-- CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 레벨업을 위한 쓸 돈
+SELECT cID, cTEL, cNAME, cPOINT, cAMOUNT, LEVELNAME,
     (SELECT HIGH-CAMOUNT+1 FROM CUSTOMER WHERE CID=C.CID AND LEVELNO!=5) forLEVELUP
     FROM CUSTOMER C, CUS_LEVEL L
     WHERE C.LEVELNO=L.LEVELNO
-    AND cTEL LIKE '%6666';
+    AND cTEL LIKE '%'||'6666'; -- 자바에서도 %를 남겨야하기 때문에 연결연산자로 연결 해놓음
 
--- 3. 고객이름검색 - CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 레벨업을 위한 쓸 돈
+-- 3. 고객이름검색
 -- public ArrayList<CustomerDto> cNameGetCustomers(String cName);
-SELECT cTEL, cNAME, cPOINT, cAMOUNT, LEVELNAME,
+-- CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 레벨업을 위한 쓸 돈
+SELECT cID, cTEL, cNAME, cPOINT, cAMOUNT, LEVELNAME,
     (SELECT HIGH-CAMOUNT+1 FROM CUSTOMER WHERE CID=C.CID AND LEVELNO!=5) forLEVELUP
     FROM CUSTOMER C, CUS_LEVEL L
     WHERE C.LEVELNO=L.LEVELNO
-    AND cNAME='박명수';
+    AND cNAME='유재석'
+    ORDER BY cAMOUNT DESC;
 
--- 4. 포인트로만 구매(1000원짜리를 포인트로만 구매) : public int buyWithPoint(int cAmount, int cId)
+-- 4. 포인트로만 구매(1000원짜리를 포인트로만 구매) : public int buyWithPoint(int cId, int cAmount)
 UPDATE CUSTOMER SET cPOINT=cPOINT-1000 WHERE cID=1;
 
 -- 5. 물품구매 (1000000원짜리를 구매할 경우. 포인트는 구매금액의 5%)
--- 물품구매시 UPDATE 2회 필요(구매누적금액 UPDATE와 LEVELNO UPDATE)
--- public int buy(int cAmount, int cId)
+-- public int buy(int cId, int cAmount)
+-- 물품구매 update에는 cPoint, cAmount, levelNo 수정
+
+-- 5-1. cPOINT, cAMOUNT 변경
+UPDATE CUSTOMER SET cPOINT=cPOINT+(1000000*0.05), cAMOUNT=cAMOUNT+1000000
+    WHERE cID=1;
+SELECT * FROM CUSTOMER;
+
+-- 5-2. 변경할 LEVELNO 출력구문(변경하기 전 현레벨번호와 수정될레벨번호)
+SELECT cID, cNAME, cAMOUNT, C.LEVELNO 현레벨, L.LEVELNO 수정될레벨
+    FROM CUSTOMER C, CUS_LEVEL L
+    WHERE cAMOUNT BETWEEN LOW AND HIGH;
+
+-- 5-3. LEVELNO 변경
+UPDATE CUSTOMER SET LEVELNO = (
+SELECT L.LEVELNO 수정될레벨
+    FROM CUSTOMER C, CUS_LEVEL L
+    WHERE cAMOUNT BETWEEN LOW AND HIGH AND cID=1) -- cID를 안에도 넣는 이유는 단일행 함수로 만들어주기 위해서 넣는 것
+    WHERE cID=1;
+    
+SELECT * FROM CUSTOMER;
+
+-- 5-1과 5-3을 합치기 CPOINT, CAMOUNT, LEVELNO를 한꺼번에 수정하기
+-- cID를 안에도 넣는 이유는 단일행 함수로 만들어주기 위해서 넣는 것
+UPDATE CUSTOMER SET cPOINT=cPOINT+(1000000*0.05),
+                    cAMOUNT=cAMOUNT+1000000,
+                    LEVELNO = ( SELECT L.LEVELNO 수정될레벨
+                                FROM CUSTOMER C, CUS_LEVEL L
+                                WHERE cAMOUNT+1000000 BETWEEN LOW AND HIGH AND cID=1)
+    WHERE cID=1;
+SELECT * FROM CUSTOMER;
 
 
-
--- 6. 등급별출력 - CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 레벨업을위한쓸돈
+-- 6. 등급별출력
 -- public ArrayList<CustomerDto> levelNameGetCustomers(String levelName)
+-- CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 레벨업을 위한 쓸 돈
 SELECT cID, cTEL, cNAME, cPOINT, cAMOUNT, LEVELNAME,
     (SELECT HIGH-CAMOUNT+1 FROM CUSTOMER WHERE CID=C.CID AND LEVELNO!=5) forLEVELUP
     FROM CUSTOMER C, CUS_LEVEL L
     WHERE C.LEVELNO=L.LEVELNO
     AND LEVELNAME='NORMAL';
 
--- 7.전체출력 - CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 레벨업을위한쓸돈
+-- 7.전체출력
+-- CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 레벨업을 위한 쓸 돈
 -- public ArrayList<CustomerDto> getCustomers()
 SELECT cID, cTEL, cNAME, cPOINT, cAMOUNT, LEVELNAME,
     (SELECT HIGH-CAMOUNT+1 FROM CUSTOMER WHERE CID=C.CID AND LEVELNO!=5) forLEVELUP
     FROM CUSTOMER C, CUS_LEVEL L
     WHERE C.LEVELNO=L.LEVELNO;
     
--- 8. 회원가입(고객전화와 고객이름은 입력받아 INSERT)
+-- 8. 회원가입(cTEL, cNAME 입력받아 INSERT)
 -- public int insertCustomer(String cTel, String cName)
+-- int insertCustomer(CustomerDto dto) 이렇게 Dto쪽으로 넘겨도 ok 매개변수 많은 경우 이렇게 넘기는 경우 꽤 있음
+INSERT INTO CUSTOMER (cID, cTEL, cNAME)
+    VALUES (CUSTOMER_SQ.NEXTVAL, '010-4455-5544', '하하');
+SELECT * FROM CUSTOMER;
 
-
--- 9. 번호수정 : public int updateCustomer(String cTel, int cId)
+-- 9. 번호수정 : public int updateCustomer(int cId, String cTel)
 UPDATE CUSTOMER SET cTEL='010-3333-1111' WHERE cID=1;
 
 -- 10. 회원탈퇴 : public int deleteCustomer(String cTel)

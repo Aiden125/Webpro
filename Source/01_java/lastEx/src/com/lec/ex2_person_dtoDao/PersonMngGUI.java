@@ -9,9 +9,11 @@ import java.util.Vector;
 import javax.swing.*;
 
 public class PersonMngGUI extends JFrame implements ActionListener{
+	
 	// 화면에 들어갈 컴포넌트
-	private Container contPane;
-	private JPanel jpup, jpbtn;
+	private Container contPane;//전체틀(박스)
+	private JPanel jpup, jpbtn; //학번, 이름 담는=jpup , jpbtn학생입력, 학생수정 담는
+	
 	private JTextField txtName, txtKor, txtEng, txtMat;
 	private Vector<String> jnames;
 	private JComboBox<String> comJob;

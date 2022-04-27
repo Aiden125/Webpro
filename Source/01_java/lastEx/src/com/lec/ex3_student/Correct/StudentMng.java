@@ -13,31 +13,59 @@ public class StudentMng extends JFrame implements ActionListener{
 	private StudentDao dao = StudentDao.getInstance();
 	
 	// 화면구현 
-	private Container contenPane;
-	private JPanel    jpup, jpbtn;
-	private JTextField txtSNo, txtSName, txtScore;
-	private Vector<String> mNames; // 콤보박스에 들어갈 전공리스트를 담을 vector
-	private JComboBox<String> comMname;
+	private Container contenPane; //껍데기
+	private JPanel    jpup, jpbtn; //작은껍데기
+	
+	private JTextField txtSNo, txtSName, txtScore; //텍스트박스
+	
+	//첫번째 합판/버튼
 	private JButton btnSNoSearch, btnSNameSearch, btnMNameSearch;
+
+	//두번째 합판 버튼 
 	private JButton btnInput, btnUpdate;
 	private JButton btnStudentOut, btnExpelOut, btnExpel, btnExit;
+	
+	//출력칸
 	private JTextArea txtPool;
 	private JScrollPane scrollPane;
 	
+	
+	// 콤보박스 알맹이 (콤보박스에 들어갈 전공리스트를 담을 vector(배열))
+	private Vector<String> mNames; 
+	// 콤보박스 껍데기
+	private JComboBox<String> comMname;
+	
+	
+	// 생성자 함수 만들기(필요한 것들을 이 안에)
 	public StudentMng(String title) {
 		super(title);
+		
+		// x버튼 누르면 꺼지는거
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		contenPane = getContentPane(); // 화면구현
+		
+		
+		// FlowLayout = 위에서 아래 순서대로 생기는거
+		// GridLayout = 행렬 느낌
+		// BorderLayout = 동서남북 정렬
+		
+		// 컨테이너 기본형 = 보더
+		// 패널 기본형 = 플로우
+		
+		// 가장 큰 껍데기 박스 불러오기
+		contenPane = getContentPane();
 		contenPane.setLayout(new FlowLayout());
 		
 		jpup = new JPanel(new GridLayout(4, 3));
 		jpbtn = new JPanel(new FlowLayout());
+		
+		// 필요한 값들 채워주기ㄴ
 		txtSNo = new JTextField(10);
 		txtSName = new JTextField(10);
-		mNames = dao.getMNamelist();
-		comMname = new JComboBox<String>(mNames);
+		mNames = dao.getMNamelist(); //리스트 불러오기
+		comMname = new JComboBox<String>(mNames); //콤보박스에 넣기
 		txtScore = new JTextField(10);
 		
+		// 버튼이름 입력
 		btnSNoSearch = new JButton("학번검색");
 		btnSNameSearch = new JButton("이름검색");
 		btnMNameSearch = new JButton("전공검색");
@@ -47,8 +75,11 @@ public class StudentMng extends JFrame implements ActionListener{
 		btnExpelOut  = new JButton("제적자출력");
 		btnExpel     = new JButton("제적처리");
 		btnExit      = new JButton("종료");
+		
+		// 아래공간부분
 		txtPool      = new JTextArea(10, 50);
 		scrollPane   = new JScrollPane(txtPool);
+		
 		
 		jpup.add(new JLabel("학번", (int) CENTER_ALIGNMENT));
 		jpup.add(txtSNo);
@@ -105,6 +136,8 @@ public class StudentMng extends JFrame implements ActionListener{
 				txtSName.setText(dto.getsName());
 				comMname.setSelectedItem(dto.getmName());
 				//txtScore.setText(""+dto.getScore()); // ""+100 => "100"
+				//setText() 괄호안에 String값만 들어가기 때문에 애매한 변수인
+				//Score를 형 변환해주기
 				txtScore.setText(String.valueOf(dto.getScore()));
 				txtPool.setText(sNo + "번 검색 완료");
 			}else { // 해당 학번이 DB에 없는 경우 

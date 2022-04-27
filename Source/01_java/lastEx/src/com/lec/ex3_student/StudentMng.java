@@ -9,18 +9,21 @@ import java.util.Vector;
 import javax.swing.*;
 
 public class StudentMng extends JFrame implements ActionListener {
+	
 	private StudentDao dao = StudentDao.getInstance();
 
 	private Container contenPane;
 	private JPanel jpup, jpbtn;
 	private JTextField txtsno, txtsname, txtscore;
-	private Vector<String> mnames; // 콤보박스에 들어갈 전공리스트를 담을 벡터
-	private JComboBox<String> commname;
+	
 	private JButton btnsnosearch, btnsnamesearch, btnmnamesearch;
 	private JButton btninput, btnupdate;
 	private JButton btnstudentout, btnexpelout, btnexpel, btnexit;
 	private JTextArea txtpool;
 	private JScrollPane scrollpane;
+	
+	private Vector<String> mnames; // 콤보박스에 들어갈 전공리스트를 담을 벡터
+	private JComboBox<String> commname;
 
 	public StudentMng(String title) {
 		super(title);

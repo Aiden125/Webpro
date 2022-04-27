@@ -3,6 +3,8 @@ package com.lec.ex4_supermarket;
 //입력, 수정, 삭제는 dto안씀
 //출력할 때만 dto씀
 public class CustomerDto {
+	
+	// 필요데이터 정의
 	private int cid;
 	private String ctel;
 	private String cname;
@@ -11,6 +13,7 @@ public class CustomerDto {
 	private String levelName;
 	private int forLevelUp;
 	
+	//생성자 정의
 	public CustomerDto(int cid, String ctel, String cname, int cpoint, int camount, String levelName,
 			int forLevelUp) {
 		this.cid = cid;

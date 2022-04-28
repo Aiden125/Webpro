@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="16" version="2.0">
 <workbenchAdvisor/>
+<<<<<<< HEAD
 <window height="770" width="970" x="911" y="131">
+=======
+<window height="770" width="1048" x="58" y="136">
+>>>>>>> 9266d548a78121df64c01c34012bdba448558e1c
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -59,7 +63,11 @@
 <editor id="com.tomato.exerd.editor.DiagramEditor" name="student.exerd" partName="student.exerd" path="D:/Webpro/Source/03_exERD/newProject/student.exerd" title="student.exerd" tooltip="newProject/student.exerd" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/student.exerd"/>
 </editor>
+<<<<<<< HEAD
 <editor id="com.tomato.exerd.editor.DiagramEditor" name="supermarket.exerd" partName="supermarket.exerd" path="D:/Webpro/Source/03_exERD/newProject/supermarket.exerd" title="supermarket.exerd" tooltip="newProject/supermarket.exerd" workbook="DefaultEditorWorkbook">
+=======
+<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="supermarket.exerd" partName="supermarket.exerd" path="C:/Webpro/Source/03_exERD/newProject/supermarket.exerd" title="supermarket.exerd" tooltip="newProject/supermarket.exerd" workbook="DefaultEditorWorkbook">
+>>>>>>> 9266d548a78121df64c01c34012bdba448558e1c
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/supermarket.exerd"/>
 </editor>
 <editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="Customer.exerd" partName="Customer.exerd" path="D:/Webpro/Source/03_exERD/newProject/Customer.exerd" title="Customer.exerd" tooltip="newProject/Customer.exerd" workbook="DefaultEditorWorkbook">

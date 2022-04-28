@@ -60,7 +60,6 @@ SELECT LEVELNAME FROM CUS_LEVEL;
 -- 고유키에 해당하기에 한 행만 오는경우로 적용(배열안씀)
 -- CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, forlevelUP
 -- public CustomerDto cIdGetCustomer(int cId)
--- public CustomerDto cIdGetCustomer(int cid)
 SELECT cID, cTEL, cNAME, cPOINT, cAMOUNT, LEVELNAME,
         (SELECT HIGH-cAMOUNT+1 FROM CUSTOMER WHERE CID=C.CID AND LEVELNO!=5) forLEVELUP
     FROM CUSTOMER C, CUS_LEVEL L
@@ -72,7 +71,6 @@ SELECT cID, cTEL, cNAME, cPOINT, cAMOUNT, LEVELNAME,
 -- 2. 폰뒤4자리(FULL) 검색
 -- 여러행이 올 수 있기에 어레이에 담음
 -- public ArrayList<CustomerDto> cTelGetCustomers(String cTel);
--- public ArrayList<CUstomerDto> cTelGetCustomers(String ctel);
 -- CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 레벨업을 위한 쓸 돈
 SELECT cID, cTEL, cNAME, cPOINT, cAMOUNT, LEVELNAME,
     (SELECT HIGH-CAMOUNT+1 FROM CUSTOMER WHERE CID=C.CID AND LEVELNO!=5) forLEVELUP
@@ -158,5 +156,3 @@ UPDATE CUSTOMER SET cTEL='010-3333-1111' WHERE cID=1;
 DELETE FROM CUSTOMER WHERE cTEL='010-6666-6666';
 COMMIT;
 ROLLBACK;
-
-

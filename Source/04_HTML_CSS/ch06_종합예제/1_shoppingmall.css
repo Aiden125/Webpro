@@ -21,6 +21,7 @@ a{
     width: 1000px;
     margin: 0 auto;
     height: 30px;
+    line-height:30px;
     background-color: black;
     overflow: hidden;
 }
@@ -35,11 +36,11 @@ a{
 /**********logo***********/
 #header .logo {
     width: 300px;
+    margin: 30px auto;
+    border: 5px solid red;
+    text-align: center;
     height: 150px;
     line-height: 150px;
-    text-align: center;
-    border: 5px solid red;
-    margin: 30px auto;
 }
 
 /**********hitmenu***********/
@@ -52,8 +53,8 @@ a{
     float:right;
     width:100px;
     height:40px;
-    line-height:40px;
     border:1px solid gray;
+    line-height:40px;
     text-align:center;
     font-weight:bold;
 }
@@ -66,10 +67,10 @@ a{
 
 /**********lnb***********/
 .lnb ul {
+    width:1000px;
     overflow: hidden;
     border-top:1px dotted black;
     border-bottom:1px dotted black;
-    width:1000px;
     height:30px;
     margin:0 auto;
 }
@@ -88,15 +89,14 @@ a{
 /**********content***********/
 #content{
     width:1000px;
-    height:1200px;
     margin:0 auto;
 }
 #content .setion1 {
     overflow: hidden;
 }
 #content .section1 .slide_banner {
-    float: left;
     border: 1px solid gray;
+    float: left;
     width: 698px;
     height: 398px;
     line-height: 398px;

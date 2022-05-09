@@ -1,0 +1,28 @@
+﻿*{
+    padding:0;
+    margin:0;
+}
+div{
+    border:1px solid red;
+    margin:5px;
+    padding:5px;
+    text-align:center;
+}
+li{
+    list-style:none;
+}
+#wrap{
+    overflow:hidden;
+}
+#wrap #content, #wrap #banner{
+    float:left;
+}
+#nav > div{
+    overflow:hidden;
+}
+.mainmenu > li{
+    float:left;
+}
+#submenu > li{
+    clear:both;
+}

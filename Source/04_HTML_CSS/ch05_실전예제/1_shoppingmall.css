@@ -1,0 +1,156 @@
+﻿*{
+    margin:0;
+    padding:0;
+}
+
+
+li{
+    list-style:none;
+}
+a{
+    text-decoration:none;
+    color:black;
+}
+/**********HEADER***********/
+
+/**********gub***********/
+.gnb {
+    background-color: black;
+}
+.gnb ul {
+    width: 1000px;
+    margin: 0 auto;
+    height: 30px;
+    line-height:30px;
+    background-color: black;
+    overflow: hidden;
+}
+.gnb ul li a{
+    float: left;
+    text-align:center;
+    width: 100px;
+    color:white;
+    font-weight:bold;
+}
+
+/**********logo***********/
+#header .logo {
+    width: 300px;
+    margin: 30px auto;
+    border: 5px solid red;
+    text-align: center;
+    height: 150px;
+    line-height: 150px;
+}
+
+/**********hitmenu***********/
+.hitmenu{
+    width:1000px;
+    overflow:hidden;
+    margin:2px auto;
+}
+.hitmenu ul li{
+    float:right;
+    width:100px;
+    height:40px;
+    border:1px solid gray;
+    line-height:40px;
+    text-align:center;
+    font-weight:bold;
+}
+.hitmenu > ul > li:last-child{
+    border-radius:10px 0 0 10px;
+}
+.hitmenu > ul > li:first-child {
+    border-radius: 0 10px 10px 0;
+}
+
+/**********lnb***********/
+.lnb ul {
+    width:1000px;
+    overflow: hidden;
+    border-top:1px dotted black;
+    border-bottom:1px dotted black;
+    height:30px;
+    margin:0 auto;
+}
+
+.lnb ul li a {
+    float: left;
+    text-align: center;
+    width: 120px;
+    height: 30px;
+    line-height:30px;
+    font-weight: bold;
+}
+
+
+
+/**********content***********/
+#content{
+    width:1000px;
+    margin:0 auto;
+}
+#content .setion1 {
+    overflow: hidden;
+}
+#content .section1 .slide_banner {
+    border: 1px solid gray;
+    float: left;
+    width: 698px;
+    height: 398px;
+    line-height: 398px;
+    text-align: center;
+}
+#content .section1 .side_banner {
+    float: left;
+    border: 1px solid gray;
+    width: 298px;
+    height: 398px;
+    line-height: 398px;
+    text-align: center;
+}
+
+.hit_product ul li{
+    float:left;
+    margin:3px;
+    border:1px solid gray;
+    width:242px;
+    height:392px;
+    line-height:392px;
+    text-align:center;
+}
+.md_product ul li {
+    float: left;
+    margin: 3px;
+    border: 1px solid gray;
+    width: 242px;
+    height: 392px;
+    line-height: 392px;
+    text-align: center;
+}
+
+
+/**********footer***********/
+#footer{
+    width:1000px;
+    height:200px;
+    margin:0 auto;
+    overflow:hidden;
+}
+#footer .office_logo, #footer .office_address, #footer .shopping_info {
+    float: left;
+    border: 1px solid gray;
+    width: 331px;
+    height: 150px;
+}
+#footer > .copyright{
+    float:left;
+    margin:2px 0;
+    width:1000px;
+    height:48px;
+    line-height:48px;
+    background-color:black;
+    color:white;
+    text-align:center;
+}

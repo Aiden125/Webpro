@@ -4,12 +4,12 @@ package com.lec.ex3_student;
 public class StudentDto {
 	
 	// 필요한 데이터 정의
-	private String rank;
+	private int rank;
 	private String mname;
 	private String sname;
 	private String sno;
 	private int score;
-	// private int sexpel; 필요없음
+	//private int sexpel; 필요없음
 	
 	// 매개변수 없는 생성자 만들기
 	public StudentDto() { }
@@ -18,51 +18,65 @@ public class StudentDto {
 	public StudentDto(String sno) {
 		this.sno = sno;
 	}
+	
+	
 
-
-
-	public StudentDto( String sno, String sname,  String mname, int score) {
+	public StudentDto(String mname,  String sname, int score, String sno) {
 		this.mname = mname;
 		this.sname = sname;
 		this.sno = sno;
 		this.score = score;
 	}
-
-	//입력용 : mname, sname, score, sexpel
-	public StudentDto(String mname, String sname, int score, int sexpel) {
-		this.mname = mname;
-		this.sname = sname;
-		this.score = score;
-		this.sexpel = sexpel;
-	}
 	
-	//출력용 :
-	public StudentDto(String rank, String mname, String sname, int score, int sexpel) {
+	
+	// 전공검색용
+	public StudentDto(int rank, String mname, String sname, int score) {
 		super();
 		this.rank = rank;
 		this.mname = mname;
 		this.sname = sname;
 		this.score = score;
-		this.sexpel = sexpel;
+	}
+	
+	// 학생 업데이트용
+	
+
+	//입력용 : mname, sname, score, sexpel
+	public StudentDto(String mname, String sname, int score) {
+		this.mname = mname;
+		this.sname = sname;
+		this.score = score;
+	}
+	
+
+	//출력용 :
+	public StudentDto(int rank, String mname, String sname, int score, int sexpel) {
+		super();
+		this.rank = rank;
+		this.mname = mname;
+		this.sname = sname;
+		this.score = score;
 	}
 
 
 	@Override
 	public String toString() { // rank가 0일때와 아닐 때를 나눠서 하기
 		if(rank!=0) {
-			return
+			return rank+"등"+"\t"+sname+"\t"+mname+"\t"+score;
+		}else {
+			return sno+"\t"+sname+"\t"+mname+"\t"+score;
 		}
 //		return "등수=" + rank + ", 전공=" + mname + ", 이름=" + sname + ", 점수=" + score + ", 제적여부="
 //				+ sexpel;
 	}
 
 
-	public String getRank() {
+	public int getRank() {
 		return rank;
 	}
 
 
-	public void setRank(String rank) {
+	public void setRank(int rank) {
 		this.rank = rank;
 	}
 
@@ -96,16 +110,6 @@ public class StudentDto {
 		this.score = score;
 	}
 
-
-	public int getSexpel() {
-		return sexpel;
-	}
-
-
-	public void setSexpel(int sexpel) {
-		this.sexpel = sexpel;
-	}
-
 	public String getSno() {
 		return sno;
 	}
@@ -113,6 +117,7 @@ public class StudentDto {
 	public void setSno(String sno) {
 		this.sno = sno;
 	}
+
 
 	
 	

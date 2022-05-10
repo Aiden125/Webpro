@@ -1,0 +1,62 @@
+자바스크립트
+
+1.
+자바스크립트는
+변수가 이미 있더라도 다시 정의하면
+기존 값을 버리고 새로운 값으로 가져감.
+(자바처럼 형식을 계속 유지하지 않음)
+
+2.
+자바슼 오류는 실행한뒤 f12에 콘솔창가서 확인.
+submit을 쓰거나해서 페이지가 넘어가면 확인이 안되기에
+애매한 부분 사이에 
+
+(방법1)
+alert(1)
+오류부분
+alert(2)
+
+(방법2)
+console.log(1)
+오류부분
+console.log(2)
+이런식으로 넣어서 어디까지
+제대로 실행되는지 확인
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+2개의 태그가 일정 폭이나 비율을 갖게하는 방법
+#grid{\
+display:grid; -->  보여지는걸    grid  형태로 지정
+grid-template-colums: 150px 1fr; --> 첫번째꺼는 150px을 쓰고 두번째 애가 나머지를 다 씀
+grid-template-colums: 1fr 1fr; --> 서로 같은 비율을 가짐
+grid-template-colums: 2fr 1fr; --> 첫번째꺼가 2의 비율 두번째꺼가 1의 비율을 가짐
+}
+
+
+caniuse.com ---> 어떤 태그를 얼마나 쓰는지, 브라우저 버전에 따라 사용 가능한 지 등
+
+
+스크린 > 800 일 때 안보이게 하고 싶은 경우
+@media(min-width:800px){
+div{
+display:none;
+}
+}
+
+스크린 < 800 일 때 안보이게 하고 싶은 경우 
+@media(max-width:800px){
+div{
+display:none;
+}
+}
+
+
+
+자바스크립트
+
+-이벤트-
+버튼과 텍스트 입력창(바디에 입력)
+<input type="button" value="hi" onclick="alert('hi')">
+<input type="text" onchange="alert('changed')">

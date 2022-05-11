@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script>
+        // Number, parseInt의 차이를 알아보자
+        // Number = 완전히 숫자만 넣어야 적용. 숫자가 아니면 NaN 반환
+        // parseInt = 문자가 같이 섞여 있어도 숫자만 반환
+        str = "100점";
+        i = Number(str)
+        document.write("<h3>i = Number(str)</h3>");
+        document.write("i의 타입은 " + typeof (i) + " - 값" + i + "<br>");
+
+        i = parseInt(str)
+        document.write("<h3>i = parseInt(str)</h3>");
+        document.write("i의 타입은 " + typeof (i) + " - 값" + i + "<br>");
+
+
+        //16진수를 넣어보자
+        //Number는 인식을 못해 NaN을 반환.
+        //parseInt는 (str, 16) 이런식으로 16진수 임을 명시하면 인식함
+        str = "FF";
+        i = Number(str)
+        document.write("<h3>i = Number(str)</h3>");
+        document.write("i의 타입은 " + typeof (i) + " - 값" + i + "<br>");
+
+        i = parseInt(str, 16)
+        document.write("<h3>i = parseInt(str)</h3>");
+        document.write("i의 타입은 " + typeof (i) + " - 값" + i + "<br>");
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

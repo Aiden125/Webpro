@@ -1,0 +1,41 @@
+﻿
+td{
+    text-align:center;
+}
+
+span {
+    color: red;
+}
+
+#wrap {
+    width: 350px;
+}
+
+.board {
+    border: 2px solid lightgray;
+}
+
+.board .board_t {
+    font-weight: bold;
+}
+
+#header {
+    width: 260px;
+}
+
+#content {
+    width: 190px;
+}
+#footer {
+    text-align: center;
+    margin: 20px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="email"],
+input[type="submit"],
+input[type="reset"] {
+    border: 1px solid gray;
+}

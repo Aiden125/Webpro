@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table{
+            width:100px;
+            margin:0 auto;
+            border:1px solid red;
+            text-align:center;
+        }
+        caption{
+            text-decoration:underline;
+            margin-bottom:20px;
+            font-size:1.3em;
+            font-weight:bold;
+            width:200px;
+        }
+    </style>
+    <script>
+        // 사용자로부터 구구단 수를 입력받아 해당 구구단 출력
+
+        do {
+            var su = Number(prompt("출력을 원하는 구구단은 몇 단입니까?", "2~9단 중"));
+            if (isNaN(su) || su < 2 || su > 9) {
+                alert("2~9단만 출력 가능");
+            } else {
+                break;
+            }
+        } while (true);
+        document.write("<table>");
+        document.write("<caption>" + su + "단 구구단</caption>");
+        for (var i = 1; i <= 9; i++) {
+            document.write("<tr><td>"+ su + " * " + i + " = " + (su * i) + "</td></tr>");
+        }
+        document.write("</table>");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

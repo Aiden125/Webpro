@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //자바스크립트는 배열을 객체처럼 취급. 따라서 밑에 선언한 arr 두개가 모두 같음
+        //객체는 중괄호{}로, {속성명, }
+        //배열이 아니면 forEach문은 못쓰기 때문에 for in문을 씀
+        var arr = ["홍길딱", "김길둑", 3];
+        var arr = { 0: "홍길딱", 1: "김길둑", 2: 3 };
+        var person = {
+            name : "홍길딱",
+            age : 22
+        };
+        document.write("arr[0] = " + arr[0] + "<br>");
+        document.write("person[name] = " + person["name"] + "," + person.name + person.age);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -12,13 +12,13 @@
          */
         // js : 기본데이터타입(number, string, boolean) vs 객체데이터타입
 
-        var priNum = 273.21; // var priNum = new Number(273.21);
-        var objNum = new Number(273.21);
+        var priNum = 273.21; // 그냥 만들어서 number타입
+        var objNum = new Number(273.21); //new해서 만들었기에 오브젝트 타입
         document.write("priNum의 타입 : " + typeof (priNum) + "<br>"); //number
         document.write("objNum의 타입 : " + typeof (objNum) + "<br>"); //object
 
 
-        //constructor : 생성자함수
+        //constructor : 생성자함수(모두 넘버타입의 생성자 함수를 갖는다)
         document.write("priNum 생성자함수 : " + priNum.constructor + "<br>");
         document.write("objNum 생성자함수 : " + objNum.constructor + "<br>");
 

@@ -15,13 +15,27 @@
         Rectangle.prototype.getArea = function() {
             return this.width * this.height;
         };
-
+        Rectangle.prototype.toString = function () {
+            var output = "";
+            for (var key in this) {
+                if (key != "toString" && key != "getArea") {
+                    output += key + " : " + this[key] + "<br>";
+                } else if (key == "getAtrea") {
+                    output += "넓이 " + this[key] + "<br>";
+                }//if
+            }//for
+            return output;
+        };
 
         rect1 = new Rectangle(5, 3);
         rect2 = new Rectangle(10, 10);
+        document.write(rect1);
+        document.write(rect1.getArea());
+        document.write("<hr>");
         document.write("rect1의 생성자 함수는 " + rect1.constructor + "<br>");
         document.write("rect2의 생성자 함수는 " + rect2.constructor + "<br>");
         document.write("rect1의 타입은 : " + typeof (rect1) + "<br>");
+        document.write("rect2의 타입은 : " + typeof (rect2) + "<br>");
         if (rect1.constructor == rect2.constructor) {
             document.write("rect1과 rect2의 타입은 같다");
         } else {

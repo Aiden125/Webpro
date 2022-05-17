@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        // 윈도우가 업로드 되자마자 뭔가 시행하게 하기.
+        // getElementById 가 무엇인지 --> id를 노드로 삼아 특정한 곳을 접근하는법
+        // 즉, id위치를 접근해서 값을 바꿔줬고, js를 설정해준 상황
+
+        // 변수는 계속 필요할 수 있으니 전역변수로
+        var id;
+        var toggle1 = 0, toggle2 = 0;
+        var header1, header2;
+
+
+        //윈도우가 로드되면 동작할 것들
+        window.onload = function () {
+            header1 = document.getElementById("header-1");
+            header1.innerHTML = "시간";
+            header2 = document.getElementById("header-2");
+            header2.innerHTML = new Date().toLocaleString();
+
+            id = setInterval(function () {
+                header2.innerHTML = new Date().toLocaleString();
+            }, 1000);
+        };
+
+
+        //onclick즉 클릭 했을 때 발생시킬 이벤트
+        function change(n) {
+            if (n == 1) {
+                if (toggle1 == 0) {
+                    header1.innerHTML = "현재";
+                    toggle1 = 1;
+                } else if (toggle1 == 1) {
+                    header1.innerHTML = "시간";
+                    toggle1 = 0;
+                }
+            } else if (n == 2) {
+                if (toggle2 == 0) {
+                    //타이머 중지
+                    clearInterval(id);
+                    toggle2 = 1;
+                } else if (toggle2 == 1) {
+                    //타이머 가동
+                    id = setInterval(function () {
+                        header2.innerHTML = new Date().toLocaleString();
+                    }, 1000);
+                    toggle2 = 0;
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <h1 id="header-1">HEADER-1</h1>
+    <h1 id="header-2">HEADER-2</h1>
+    <button onclick="change(1)">바꿔-1</button>
+    <button onclick="change(2)">바꿔-2(타이머 토글)</button>
+</body>
+</html>

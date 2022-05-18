@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function openconfirm() {
+            var child = open("5_confirm.html", "", "width=600, height=700, left=100");
+            if (!child) {
+                alert("팝업 차단 해제 해주세요");
+            }
+        }
+
+        function chk() {
+            if (check.value != 1) {
+                alert("중복체크를 먼저 진행해주세요")
+                return false;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <form onsubmit="return chk()">
+        <input type="hidden" name="check" id="check" value="0" />
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" name="id" id="id" /></td>
+                <td><input type="button" onclick="openconfirm()" value="중복체크"></td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="submit" value="회원가입" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

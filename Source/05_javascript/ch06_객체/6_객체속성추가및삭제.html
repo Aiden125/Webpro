@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var student = {
+            name: "홍길동",
+            age: "25"
+        };
+        
+        document.write(student.name + " " + student["name"]);
+        document.write("<hr>");
+
+        student.name = "김길동";
+        document.write(student.name + " " + student["name"]);
+        document.write("<hr>");
+
+        student.name = "신길동";
+        document.write(student.name + " " + student["name"]);
+        document.write("<hr>");
+
+
+        student.kor = 100; //객체에 속성 추가
+        student.mat = 99;
+        student.hobby = "프로그래밍";
+
+        document.write("<hr>");
+        //toString에 함수 부여
+        student.toString = function () {
+            var output = "";
+            for (var key in this) {
+                if (key != "toString") { //여기 if문을 안넣으면 toString도 키 값이기 때문에 toString 값 그 자체도 나옴 꼭 넣기.
+                output += key + " : " + this[key] + "<br>";
+                }
+            }
+            return output;
+        };
+        document.write(student + "<hr>");
+
+        //객체 속성 제거
+        delete (student.hobby);
+        delete (student.age);
+
+        //객체 속성 제거 후
+        document.write(student);
+
+        
+        // student.toString = function () { };
+
+
+
+
+        //요약정리
+        // 1. student.kor = 100; 이런식으로 이미 만들어진 객체에 속성 추가 가능
+        // 2. student.toString에 함수를 넣을수도 있음
+        // 3. toString 속성 추가할 때는 꼭 if문 넣어서 toString 속성은 안나오도록 해주기.
+
+        // ?? 자바스크립에서 toString에 함수를 넣는다는건 어떻게 했을 때 동작하는걸 표현하는건지?
+        // --> document.write(student); 를 실행하면 .toString을 자동으로 붙여서 실행하게 되는데
+        // 이 때 안에 있는 데이터가 아닌, object값을 불러오기 때문에 이를 바꿔 실행할 수 있게 해주는 것
+        // 자바에서 하는 오버라이드의 기능과 같지만 같은 형태는 아님(js에서는 student.toString이라는 속성에 기능을 추가하는 형태)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

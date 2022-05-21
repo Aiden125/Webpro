@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table{
+            background-color:green;
+            margin:0 auto;
+        }
+        td{
+            width:150px;
+            height:150px;
+            text-align:center;
+            line-height:150px;
+            background-color:white;
+        }
+    </style>
+    <script>
+        // 위숫자 키보드 입력시 red바탕(48~56)
+        // 오른쪽 숫자 키보드 입력시 yellow바탕(96~104)
+        window.onkeydown = function () {
+            var tds = document.querySelectorAll("td");
+            var keyvalue = event.keyCode;
+            for (idx = 0; idx < tds.length; idx++) {
+                tds[idx].style.backgroundColor = "white";
+            }
+            if (48 <= keyvalue && keyvalue <= 56) {
+                keyvalue = keyvalue - 48;
+                tds[keyvalue].style.backgroundColor = "red";
+            } else if (96 <= keyvalue && keyvalue <= 106) {
+                keyvalue = keyvalue - 96;
+                tds[keyvalue].style.backgroundColor = "yellow";
+            } 
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td onkeydown="key(0)">0</td>
+            <td onkeydown="key(1)">1</td>
+            <td onkeydown="key(2)">2</td>
+        </tr>
+        <tr>
+            <td onkeydown="key(3)">3</td>
+            <td onkeydown="key(4)">4</td>
+            <td onkeydown="key(5)">5</td>
+        </tr>
+        <tr>
+            <td onkeydown="key(6)">6</td>
+            <td onkeydown="key(7)">7</td>
+            <td onkeydown="key(8)">8</td>
+        </tr>
+    </table>
+</body>
+</html>

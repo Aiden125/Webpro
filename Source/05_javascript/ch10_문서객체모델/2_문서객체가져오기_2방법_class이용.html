@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //클래스 이름을 노드로 삼아 특정 행동 지정하기.
+
+        window.onload = function () {
+            // getElementsByClassName()의 return 값은 배열로 잡힘.
+            // 하나만 있는 경우 0번 인덱스꺼로 잡힘.
+            var clock1 = document.getElementsByClassName("clock1");
+            clock1[0].innerHTML = new Date().toLocaleString();
+
+            var clock2 = document.getElementsByClassName("clock2")[0];
+            clock2.value = new Date().toLocaleString();
+            
+            clock2.style.color = "red"; //clock2.style = "color:red;"
+            clock2.style.fontSize = "20px"; //font-size 이런건 '-' 없애고 대문자로
+        };
+
+
+    </script>
+</head>
+<body>
+    <h1 class="clock1"></h1>
+    <input type="text" class="clock2" value="시간"/>
+</body>
+</html>

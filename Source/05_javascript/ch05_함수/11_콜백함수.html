@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //var i = function () {
+        //    alert(1);
+        //}
+        //i();
+        //callTenTimes(i);
+
+        //callTenTimes 정의
+        function callTenTimes(callback) { //매개변수로 받은 콜백함수를 10번 호출
+            for (var cnt = 0; cnt < 10; cnt++) {
+                callback();
+            }
+        }
+
+        //funVar 정의
+        var funVar = function () {
+            document.write(new Date() + "<br>");
+        };
+
+        //callTenTimes 호출
+        callTenTimes(funVar);
+        //위, 아래가 정확히 같은 기능
+        callTenTimes(function () {
+            document.write(new Date() + "<br>");
+        });
+
+
+        // 요약
+        // 콜백은 왜쓸까?
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

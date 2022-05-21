@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        // 왜 전역변수로 쿼리를 액세스하면 적용이 안되는가?
+        var img;
+
+        function mup() {
+            img = document.querySelector("img");
+            img.src = "img/but1.gif";
+        }
+
+        function mdown() {
+            img = document.querySelector("img");
+            img.src = "img/but2.gif";
+        }
+    </script>
+</head>
+<body>
+    <p>
+        <img src="img/but1.gif" alt="단추" onmouseup="mup()" onmousedown="mdown()"/>
+    </p>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        // 1초동안 반복문을 몇번 수행했는지
+
+        // 현재 밀리세컨
+        /* 반복문{
+           반복횟수 ++
+           현재 밀리세컨이 st + 1000이면 스톱
+         }*/
+
+        var cnt = 0; //반복횟수 담당
+        var startTime = new Date().getTime(); //현재 밀리세컨
+        while (new Date().getTime() <= startTime+1000) {
+            cnt++;
+        }
+        document.write(cnt);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

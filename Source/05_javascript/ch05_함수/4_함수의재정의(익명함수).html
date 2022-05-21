@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="4_b.js"></script>"
+    <script src="4_a.js"></script>
+    <script>
+        var funVar = function () {
+            alert("함수A");
+        };
+        funVar();
+
+        // 익명 함수의 재정의
+        var funVar = function () {
+            alert("함수B");
+        }
+        funVar(33);
+
+
+        // 함수의 재정의 요약정리(익명함수)
+        // 익명함수는 선언-호출 순서를 지키기 때문에
+        // 위에 실행결과는 함수A, 함수B 순서대로 도출됨
+        // 매개변수가 없는 함수를 선언했더라도 매개변수를 넣어도 에러x
+    </script>
+</head>
+<body>
+
+</body>
+</html>

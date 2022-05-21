@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        function sumAll() {
+            var result = 0;
+            var len = arguments.length;
+
+            if (len == 0) {
+                result = -999;
+            } else if (len >= 1) {
+                for (var cnt = 0; cnt < len; cnt++) {
+                    result += arguments[cnt];
+                }
+            } 
+            return result;
+        }
+
+        var sum = sumAll(); // 매개변수 없으면 -999 리턴
+        document.write("sumAll() = " + sum + "<br>");
+        var sum = sumAll(3); // 매개변수 1개 이상이사면 누적값 리턴
+        document.write("sumAll() = " + sum + "<br>");
+        var sum = sumAll(1,2,3,4,5); // 15
+        document.write("sumAll() = " + sum + "<br>");
+
+
+        // 문제 : 매개변수가 없으면 -999 리턴, 매개변수가 1개이상이면 숫자들의 누적합 출력
+        // 파악점1 : 선언적 함수이기 때문에 선언 위치 상관X
+        // 파악점2 : 리턴값 지정. 지정 안할 시 결과는 undefined
+
+
+        // 문제 다르게 풀어보기.
+        // 조건 : 선언적 함수 사용x, 일반for문 사용x(참고로 for-each 문은 사용불가)
+        // 
+    </script>
+</head>
+<body>
+
+</body>
+</html>

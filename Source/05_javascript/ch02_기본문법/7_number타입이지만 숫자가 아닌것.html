@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        // number타입이지만 실제 값 자체는 숫자가 아닌것들
+        // NaN, infinity(무한대)
+        // isNaN, isFinite
+        i = Number("a");
+        document.write("i가 NaN인지 : " + isNaN(i) + "<br>");
+
+        i = 10 / 0;
+        document.write("i=" + i + " - i가 유한한 수인지" + isFinite(i));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="4_b.js"></script>"
+    <script src="4_a.js"></script>
+    <script>
+
+        //내가 정의한 부분
+        funVar(33);
+
+        //남이 정의한 부분(재정의)
+        
+        funVar(33);
+
+
+        // 함수의 재정의 요약정리(선언적함수)
+        // 상황 - 내가 이미 선언한 변수명을 다른 누군가 겹치는 경우
+        // 위 같이 하면 funVar(); 두번 다 함수B로 호출
+        // cause, 재정의되어 마지막값으로 보기 때문에
+
+        // 두번째 상황 - js파일을 받아온 상황
+        // 현재는 a, b 파일로 각각 funVar가 있는데
+        // 이 경우도 마찬가지로 나중에 import한 것이 적용됨
+    </script>
+</head>
+<body>
+
+</body>
+</html>

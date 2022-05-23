@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+													<!-- 동의하지 않으면 안넘어가게하기. 라디오버튼을 쓸 때  -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		window.onload = function() {
+			document.querySelector("form").onsubmit = function(){
+				//디폴트 이벤트 제한 : 동의합니다를 check하지 않으면 제한
+				var agreeYes = document.querySelector("input[name='agree']"); // 맨 첫번째 있는 하나만 가져옴
+				if(!agreeYes.checked){
+					alert("동의하셔야 진행됩니다");
+					return false;
+				}
+			};			
+		};
+
+	</script>
+</head>
+<body>
+	<fieldset>
+		(서울=연합뉴스) 박상돈 기자 = 산업통상자원부는 이번 한미정상회담의 경제 성과로 기존의 한미 국장급 산업협력대화를 장관급 '공급망·산업대화'(SCCD)로 격상한 것과 인도·태평양 경제프레임워크(IPEF) 참여를 공식화한 것 등을 꼽았다.
+	</fieldset>	
+	<form action="">
+		<input type="radio" name="agree" value="yes">동의	
+		<input type="radio" name="agree" value="no">비동의
+		<input type="submit" value="다음">	
+	</form>
+</body>
+</html>

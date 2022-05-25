@@ -11,7 +11,7 @@
 <%
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
-	if(id==null || !id.equals("aaa") || pw==null || !pw.equals("111")){
+	if(id==null || id.equals("aaa") || pw==null || pw.equals("111")){
 		//String msg = "Check the ID and PW";
 		String msg = "<b>아이디와 비밀번호 확인 요망</b>";
 		msg = URLEncoder.encode(msg, "utf-8");

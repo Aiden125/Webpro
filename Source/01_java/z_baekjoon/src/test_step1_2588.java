@@ -2,12 +2,16 @@ import java.util.Scanner;
 
 public class test_step1_2588 {
 	public static void main(String[] args) {
-		int x,y;
-		String yStr;
 		Scanner sc = new Scanner(System.in);
-		x = sc.nextInt();
-		yStr = sc.next();
-		int a1 = x * Integer.parseInt((yStr.indexOf(2)));
+		int x = sc.nextInt();
+		int y = sc.nextInt();
+		int a = ((y/100)*100);
+		int b = (((y-a)/10)*10);
+		int c = ((y-(a+b)));
+		System.out.println((x*c));
+		System.out.println((x*b)/10);
+		System.out.println((x*a)/100);
+		System.out.println(x*y);
 	}
 }
 

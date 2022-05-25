@@ -1,5 +1,6 @@
 package com.mega.exam;
-
+//actionDo 만들어서 하기. 실무에서는 보통 이렇게하는데,
+		//일단 원래대로 진행을 하지만 원래 진행하던걸 actionDo에 넣어서 맨 아래로 빼주고 doGet에서는 actionDo를 호출하는 형식으로 깔끔하게 정리하는 방식
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -28,8 +29,7 @@ public class Ex2_exam extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//actionDo 만들어서 하기. 실무에서는 보통 이렇게하는데,
-		//일단 원래대로 진행을 하지만 원래 진행하던걸 actionDo에 넣어서 맨 아래로 빼주고 doGet에서는 actionDo를 호출하는 형식으로 깔끔하게 정리하는 방식
+		
 		actionDo(request, response);
 		
 	}

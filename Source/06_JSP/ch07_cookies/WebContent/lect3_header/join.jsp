@@ -25,6 +25,7 @@
 </script>
 </head>
 <body>
+	<jsp:include page="header.jsp"/>
 	<div id="joinForm_wrap">
 		<form action="joinPro.jsp" method="post" name="frmJoin" onsubmit="return chkJoinInfo()">
 			<div id="join_title">회원가입</div>

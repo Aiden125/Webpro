@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<style>
-	#logoutForm_wrap{
+	#mainForm_wrap{
 		width:430px;
 		margin:0 auto;
 		height:600px;
@@ -20,21 +20,10 @@
 	</style>
 </head>
 <body>
-
-<%
-	Cookie[] cs = request.getCookies();
-	if(cs!=null){
-		for(Cookie c : cs){
-			if(c.getName().equals("id")){
-				c.setMaxAge(0);
-				response.addCookie(c);
-				break;
-			}//if
-		}//for
-	}//if
-	response.sendRedirect("main.jsp");
-%>
-
-
+	<jsp:include page="header.jsp"/>
+	<div id="mainForm_wrap">
+		main 화면
+	</div>	
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

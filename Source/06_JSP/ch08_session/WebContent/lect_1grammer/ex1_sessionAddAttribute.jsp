@@ -12,8 +12,8 @@
 	session.setAttribute("sessionName", "sessionValue");
 	session.setAttribute("myNum", 123);
 %>	
-	<h1>세션에 sessionName 속성 추가</h1>
-	<h1>세션에 myNum 속성 추가</h1>
+	<h1>세션에 sessionName 속성 추가 됨</h1>
+	<h1>세션에 myNum 속성 추가 됨</h1>
 	<a href="ex2_sessionGet.jsp">세션 GET</a>
 </body>
 </html>

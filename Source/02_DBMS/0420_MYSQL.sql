@@ -12,6 +12,7 @@ drop user user01;
 SHOW DATABASES;
 create database MOONDB; -- 새로운 MOONDB 데이터베이스 생성
 USE MOONDB; -- MOONDB 데이터베이스로 들어감
+select * from personal;  -- jsp에서 출력 예정
 SELECT DATABASE(); -- 현재 들어와있는 데이터베이스
 USE WORLD; -- WORLD 데이터베이스 영역으로 들어감
 USE MOONDB; -- 다시 MOONDB로 들어가기

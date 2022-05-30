@@ -42,4 +42,3 @@ INSERT INTO EMP01 SELECT * FROM EMP01; -- 인덱스 제거 후 INSERT 속도
 
 
 
-

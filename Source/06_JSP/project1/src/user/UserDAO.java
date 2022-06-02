@@ -30,21 +30,21 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				if(rs.getString(1).equals(userPassword)) {
-					return 1; //�α��� ����
+					return 1;
 				}
 				else {
-					return 0; //��й�ȣ ����ġ
+					return 0;
 				}
 			}
-			return -1; // ���̵� ����
+			return -1;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return -2; // �����ͺ��̽� ����
+		return -2;
 	}
 	
 	public int join(User user) {
-		String SQL = "INSERT INTO USER VALUES(?, ?)";
+		String SQL = "INSERT INTO GAME VALUES(?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserID());
@@ -53,6 +53,6 @@ public class UserDAO {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return -1; // �����ͺ��̽� ����
+		return -1;
 	}
 }

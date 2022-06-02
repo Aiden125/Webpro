@@ -12,7 +12,7 @@
 <jsp:include page="header.jsp"/>
 	<div id="loginForm_wrap">
 		<div id="login_title">로그인</div>
-		<form action="loginPro.jsp" method="post">
+		<form action="loginAction.jsp" method="post">
 			<table>
 				<tr>
 					<td> </td><!-- 빈공간 할당  -->
@@ -34,25 +34,10 @@
 						<input type="submit" value="로그인" class="loginBtn_style">
 					</td>
 				</tr>
-				<tr>
-					<td colspan="2">
-						<%
-							String msg = request.getParameter("msg");
-							if(msg!=null){
-						%>
-							<p id="login_findIdPw" onclick="alert('아이디는 aaa/pw는 111');">
-							아이디/비밀번호를 잊으셨나요?
-							</p>	
-						<%	
-							}
-						%>
-					</td>
-				</tr>
 			</table>
 			<p id="login_join">회원이 아닙니다. 회원가입 진행해주세요<a href="<%=conPath %>/join.jsp"> 회원가입</a></p>
 		</form>
 	</div>
-	<jsp:include page="footer.jsp"/>
 </body>
 </html>
 

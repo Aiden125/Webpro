@@ -40,7 +40,6 @@ public class FriendsDao {
 		Statement stmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM FRIENDS";
-		
 		try {
 			conn = getConnection();
 			stmt = conn.createStatement();

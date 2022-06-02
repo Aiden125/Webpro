@@ -6,12 +6,9 @@ public class FriendsDto {
 	private String phone;
 	
 	public FriendsDto() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public FriendsDto(int no, String name, String phone) {
-		super();
 		this.no = no;
 		this.name = name;
 		this.phone = phone;
@@ -34,6 +31,11 @@ public class FriendsDto {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	@Override
+	public String toString() {
+		return "[no=" + no + ", name=" + name + ", phone=" + phone + "]";
 	}
 	
 	

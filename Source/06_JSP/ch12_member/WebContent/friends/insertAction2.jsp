@@ -15,7 +15,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-	<jsp:useBean id="dto" class="com.lec.friends.FriendsDto" scope="request"/>
+	<jsp:useBean id="dto" class="com.lec.friends.FriendsDto" scope="page"/>
 	<jsp:setProperty name="dto" property="*"/>
 	
 <%
@@ -24,7 +24,7 @@
 	if(result == FriendsDao.SUCCESS){
 		out.println("<script>");
 		out.println("alert('친구추가 되었습니다.')");
-		out.println("location.href='view.jsp'");
+		out.println("location.href='view2.jsp'");
 		out.println("</script>");
 	}else{ //회원가입 실패(DB오류)
 		out.println("<script>");

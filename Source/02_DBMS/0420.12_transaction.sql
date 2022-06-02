@@ -1,55 +1,34 @@
---  [XII] TRANSACTION ¸í·É¾î : COMMIT(Æ®·£Àè¼Ç¹Ý¿µ); ROLLBACK(Æ®·£Àè¼Ç Ãë¼Ò); SAVEPOINT(Æ®·£Àè¼Ç ºÐÇÒ)
+--  [XII] TRANSACTION ëª…ë ¹ì–´ : COMMIT(íŠ¸ëžœìž­ì…˜ë°˜ì˜); ROLLBACK(íŠ¸ëžœìž­ì…˜ ì·¨ì†Œ); SAVEPOINT(íŠ¸ëžœìž­ì…˜ ë¶„í• )
 DROP TABLE DEPT01;
-CREATE TABLE DEPT01 AS SELECT * FROM DEPT; -- Æ®·£Àè¼Ç¿¡ ¾È½×ÀÓ
-SELECT * FROM DEPT01; -- Æ®·£Àè¼Ç¿¡ ¾È½×ÀÓ
-DELETE FROM DEPT01; -- ½×ÀÓ
+CREATE TABLE DEPT01 AS SELECT * FROM DEPT; -- íŠ¸ëžœìž­ì…˜ì— ì•ˆìŒ“ìž„
+SELECT * FROM DEPT01; -- íŠ¸ëžœìž­ì…˜ì— ì•ˆìŒ“ìž„
+DELETE FROM DEPT01; -- ìŒ“ìž„
 SELECT * FROM DEPT01;
-ROLLBACK; -- DELETE ±¸¹® ·Ñ¹é
+ROLLBACK; -- DELETE êµ¬ë¬¸ ë¡¤ë°±
 
--- »õ·Î¿î Æ®·£Àè¼Ç ½ÃÀÛ
+-- ìƒˆë¡œìš´ íŠ¸ëžœìž­ì…˜ ì‹œìž‘
 SELECT * FROM DEPT01;
 DELETE FROM DEPT01 WHERE DEPTNO=40;
-COMMIT; -- Àû¿ë
+COMMIT; -- ì ìš©
 
--- »õ·Î¿î Æ®·£Àè¼Ç ½ÃÀÛ
+-- ìƒˆë¡œìš´ íŠ¸ëžœìž­ì…˜ ì‹œìž‘
 SELECT * FROM DEPT01; -- 10, 20, 30
 
--- ¼¼°³ Áß µÎ°³ÀÇ Æ®·£Àè¼Ç¸¸ ½ÇÇàÀ» ¿øÇÏ°Å³ª ÇÑ´Ù¸é
+-- ì„¸ê°œ ì¤‘ ë‘ê°œì˜ íŠ¸ëžœìž­ì…˜ë§Œ ì‹¤í–‰ì„ ì›í•˜ê±°ë‚˜ í•œë‹¤ë©´
 DELETE FROM DEPT01 WHERE DEPTNO=30;
-SAVEPOINT C1; -- C1ÁöÁ¡ : 10, 20¹ø ºÎ¼­¸¸ ÀÖ´Â ÁöÁ¡
+SAVEPOINT C1; -- C1ì§€ì  : 10, 20ë²ˆ ë¶€ì„œë§Œ ìžˆëŠ” ì§€ì 
 
 DELETE FROM DEPT01 WHERE DEPTNO=20;
-SELECT * FROM DEPT01; -- 10¹ø ºÎ¼­¸¸ ³²À½
-SAVEPOINT C2; -- C2ÁöÁ¡ : 10¹ø ºÎ¼­¸¸ ÀÖ´Â ÁöÁ¡
+SELECT * FROM DEPT01; -- 10ë²ˆ ë¶€ì„œë§Œ ë‚¨ìŒ
+SAVEPOINT C2; -- C2ì§€ì  : 10ë²ˆ ë¶€ì„œë§Œ ìžˆëŠ” ì§€ì 
 
 DELETE FROM DEPT01 WHERE DEPTNO=10;
-SELECT * FROM DEPT01; -- µ¥ÀÌÅÍ ¾øÀ½
+SELECT * FROM DEPT01; -- ë°ì´í„° ì—†ìŒ
 
-ROLLBACK TO C2; -- C2ÁöÁ¡À¸·Î ·Ñ¹é
+ROLLBACK TO C2; -- C2ì§€ì ìœ¼ë¡œ ë¡¤ë°±
 
-SELECT * FROM DEPT01; -- 10¹ø ºÎ¼­
-ROLLBACK TO C1; -- 10¹ø, 20¹ø ºÎ¼­
+SELECT * FROM DEPT01; -- 10ë²ˆ ë¶€ì„œ
+ROLLBACK TO C1; -- 10ë²ˆ, 20ë²ˆ ë¶€ì„œ
 SELECT * FROM DEPT01;
-COMMIT; -- 30¹ø ºÎ¼­ Áö¿î°Å¸¸ Ä¿¹ÔµÊ
+COMMIT; -- 30ë²ˆ ë¶€ì„œ ì§€ìš´ê±°ë§Œ ì»¤ë°‹ë¨
 SELECT * FROM DEPT01;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

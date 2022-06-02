@@ -1,4 +1,4 @@
-<%@page import="com.lec.member.MemberDao"%>
+<%@page import="com.lec.member.MemberDaoConn"%>
 <%@page import="com.lec.member.MemberDto"%>
 <%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -33,9 +33,9 @@
 			if(dto.getPw()==null){
 				dto.setPw(sessionPw);
 			}
-			MemberDao mDao = MemberDao.getInstance();
+			MemberDaoConn mDao = new MemberDaoConn();
 			int result = mDao.modifyMember(dto);
-			if(result==MemberDao.SUCCESS){ //수정 성공 
+			if(result==MemberDaoConn.SUCCESS){ //수정 성공 
 				session.setAttribute("member", dto); //수정된 DB내용을 session속성으로 부여
 				out.println("<script>");
 				out.println("alert('회원정보 수정이 완료되었습니다.')");

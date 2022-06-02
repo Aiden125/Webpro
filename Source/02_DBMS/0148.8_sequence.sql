@@ -1,15 +1,15 @@
--- [VIII] SEQUENCE : ¼øÂ÷¹øÈ£ »ý¼º±â, ÀÎÀ§ÀûÀÎ PK »ç¿ë ¿ëµµ
-DROP SEQUENCE FRIEND_SEQ; --½ÃÄö½º »èÁ¦ÇÏ±â(ÀÖ´ÂÁö ¾ø´ÂÁö ¸ð¸£±â¿¡ ÀÏ´Ü »èÁ¦)
+-- [VIII] SEQUENCE : ìˆœì°¨ë²ˆí˜¸ ìƒì„±ê¸°, ì¸ìœ„ì ì¸ PK ì‚¬ìš© ìš©ë„
+DROP SEQUENCE FRIEND_SEQ; --ì‹œí€€ìŠ¤ ì‚­ì œí•˜ê¸°(ìžˆëŠ”ì§€ ì—†ëŠ”ì§€ ëª¨ë¥´ê¸°ì— ì¼ë‹¨ ì‚­ì œ)
 CREATE SEQUENCE FRIEND_SEQ
-    START WITH 1 -- 1¹ø ºÎÅÍ ½ÃÄö½º ½ÃÀÛÇÏ±â.
-    INCREMENT BY 1 -- 1¾¿ Ä¿Áö°Ô ÇÏ±â
-    MAXVALUE 9999 -- ÃÖ´ë ¸î±îÁö Ä¿Áú ¼ö ÀÖ°ÔÇÒÁö Á¶°Ç
-    MINVALUE 1 -- ÃÖ¼Ò Á¶°Ç
-    NOCACHE -- ÄÄÇ»ÅÍ¸¦ ²°´Ù ÄÑµµ ÃÊ±âÈ­µÇÁö¾Ê°Ô.
-    NOCYCLE; -- ÃÖ´ëÀÎ 9999±îÁö °¡¸é ¿¡·¯¸¦ ¹ß»ý ½ÃÅ´. ¸¸¾à ¼±¾ð ¾ÈÇÏ¸é ´Ù½Ã 1·Î µ¹¾Æ°¡¼­ ¹Ýº¹
+    START WITH 1 -- 1ë²ˆ ë¶€í„° ì‹œí€€ìŠ¤ ì‹œìž‘í•˜ê¸°.
+    INCREMENT BY 1 -- 1ì”© ì»¤ì§€ê²Œ í•˜ê¸°
+    MAXVALUE 9999 -- ìµœëŒ€ ëª‡ê¹Œì§€ ì»¤ì§ˆ ìˆ˜ ìžˆê²Œí• ì§€ ì¡°ê±´
+    MINVALUE 1 -- ìµœì†Œ ì¡°ê±´
+    NOCACHE -- ì»´í“¨í„°ë¥¼ ê»ë‹¤ ì¼œë„ ì´ˆê¸°í™”ë˜ì§€ì•Šê²Œ.
+    NOCYCLE; -- ìµœëŒ€ì¸ 9999ê¹Œì§€ ê°€ë©´ ì—ëŸ¬ë¥¼ ë°œìƒ ì‹œí‚´. ë§Œì•½ ì„ ì–¸ ì•ˆí•˜ë©´ ë‹¤ì‹œ 1ë¡œ ëŒì•„ê°€ì„œ ë°˜ë³µ
     
-CREATE SEQUENCE FRIEND_SEQ2 -- À§¿¡¿Í ¶È°°À½. »ý·« °¡´ÉÇÑ°Å ´Ù »« °Í
-    MAXVALUE 9999 -- ÃÖ´ë ¸î±îÁö Ä¿Áú ¼ö ÀÖ°ÔÇÒÁö Á¶°Ç
+CREATE SEQUENCE FRIEND_SEQ2 -- ìœ„ì—ì™€ ë˜‘ê°™ìŒ. ìƒëžµ ê°€ëŠ¥í•œê±° ë‹¤ ëº€ ê²ƒ
+    MAXVALUE 9999 -- ìµœëŒ€ ëª‡ê¹Œì§€ ì»¤ì§ˆ ìˆ˜ ìžˆê²Œí• ì§€ ì¡°ê±´
     NOCACHE
     NOCYCLE;
 
@@ -21,29 +21,29 @@ CREATE SEQUENCE FRIEND_SEQ
     NOCYCLE;
 DROP TABLE FRIEND;
 CREATE TABLE FRIEND(
-    NUM NUMBER(4) PRIMARY KEY, --½ÃÄö½º ÀÌ¿ë
+    NUM NUMBER(4) PRIMARY KEY, --ì‹œí€€ìŠ¤ ì´ìš©
     NAME VARCHAR2(30) NOT NULL,
-    TEL VARCHAR2(30) UNIQUE, -- NULLÇã¿ë, À¯ÀÏÇÑ °«
+    TEL VARCHAR2(30) UNIQUE, -- NULLí—ˆìš©, ìœ ì¼í•œ ê°“
     ADDRESS VARCHAR2(300),
     LAST_MODIFYED DATE DEFAULT SYSDATE);
 
 INSERT INTO FRIEND(NUM, NAME, TEL, ADDRESS)
-    VALUES(FRIEND_SEQ.NEXTVAL, '¸¶±æµÏ',  NULL, '¼­¿ï½Ã ¿ë»ê±¸');
+    VALUES(FRIEND_SEQ.NEXTVAL, 'ë§ˆê¸¸ë‘‘',  NULL, 'ì„œìš¸ì‹œ ìš©ì‚°êµ¬');
     
 INSERT INTO FRIEND (NUM, NAME, TEL, ADDRESS)
-    VALUES(FRIEND_SEQ.NEXTVAL, 'È¾°ñµ¿', NULL, '¼­¿ï½Ã °­³²±¸');
--- [VIII] SEQUENCE : ¼øÂ÷¹øÈ£ »ý¼º±â, ÀÎÀ§ÀûÀÎ PK »ç¿ë ¿ëµµ
-DROP SEQUENCE FRIEND_SEQ; --½ÃÄö½º »èÁ¦ÇÏ±â(ÀÖ´ÂÁö ¾ø´ÂÁö ¸ð¸£±â¿¡ ÀÏ´Ü »èÁ¦)
+    VALUES(FRIEND_SEQ.NEXTVAL, 'íš¡ê³¨ë™', NULL, 'ì„œìš¸ì‹œ ê°•ë‚¨êµ¬');
+-- [VIII] SEQUENCE : ìˆœì°¨ë²ˆí˜¸ ìƒì„±ê¸°, ì¸ìœ„ì ì¸ PK ì‚¬ìš© ìš©ë„
+DROP SEQUENCE FRIEND_SEQ; --ì‹œí€€ìŠ¤ ì‚­ì œí•˜ê¸°(ìžˆëŠ”ì§€ ì—†ëŠ”ì§€ ëª¨ë¥´ê¸°ì— ì¼ë‹¨ ì‚­ì œ)
 CREATE SEQUENCE FRIEND_SEQ
-    START WITH 1 -- 1¹ø ºÎÅÍ ½ÃÄö½º ½ÃÀÛÇÏ±â.
-    INCREMENT BY 1 -- 1¾¿ Ä¿Áö°Ô ÇÏ±â
-    MAXVALUE 9999 -- ÃÖ´ë ¸î±îÁö Ä¿Áú ¼ö ÀÖ°ÔÇÒÁö Á¶°Ç
-    MINVALUE 1 -- ÃÖ¼Ò Á¶°Ç
-    NOCACHE -- ÄÄÇ»ÅÍ¸¦ ²°´Ù ÄÑµµ ÃÊ±âÈ­µÇÁö¾Ê°Ô.
-    NOCYCLE; -- ÃÖ´ëÀÎ 9999±îÁö °¡¸é ¿¡·¯¸¦ ¹ß»ý ½ÃÅ´. ¸¸¾à ¼±¾ð ¾ÈÇÏ¸é ´Ù½Ã 1·Î µ¹¾Æ°¡¼­ ¹Ýº¹
+    START WITH 1 -- 1ë²ˆ ë¶€í„° ì‹œí€€ìŠ¤ ì‹œìž‘í•˜ê¸°.
+    INCREMENT BY 1 -- 1ì”© ì»¤ì§€ê²Œ í•˜ê¸°
+    MAXVALUE 9999 -- ìµœëŒ€ ëª‡ê¹Œì§€ ì»¤ì§ˆ ìˆ˜ ìžˆê²Œí• ì§€ ì¡°ê±´
+    MINVALUE 1 -- ìµœì†Œ ì¡°ê±´
+    NOCACHE -- ì»´í“¨í„°ë¥¼ ê»ë‹¤ ì¼œë„ ì´ˆê¸°í™”ë˜ì§€ì•Šê²Œ.
+    NOCYCLE; -- ìµœëŒ€ì¸ 9999ê¹Œì§€ ê°€ë©´ ì—ëŸ¬ë¥¼ ë°œìƒ ì‹œí‚´. ë§Œì•½ ì„ ì–¸ ì•ˆí•˜ë©´ ë‹¤ì‹œ 1ë¡œ ëŒì•„ê°€ì„œ ë°˜ë³µ
     
-CREATE SEQUENCE FRIEND_SEQ2 -- À§¿¡¿Í ¶È°°À½. »ý·« °¡´ÉÇÑ°Å ´Ù »« °Í
-    MAXVALUE 9999 -- ÃÖ´ë ¸î±îÁö Ä¿Áú ¼ö ÀÖ°ÔÇÒÁö Á¶°Ç
+CREATE SEQUENCE FRIEND_SEQ2 -- ìœ„ì—ì™€ ë˜‘ê°™ìŒ. ìƒëžµ ê°€ëŠ¥í•œê±° ë‹¤ ëº€ ê²ƒ
+    MAXVALUE 9999 -- ìµœëŒ€ ëª‡ê¹Œì§€ ì»¤ì§ˆ ìˆ˜ ìžˆê²Œí• ì§€ ì¡°ê±´
     NOCACHE
     NOCYCLE;
 
@@ -55,35 +55,35 @@ CREATE SEQUENCE FRIEND_SEQ
     NOCYCLE;
 DROP TABLE FRIEND;
 CREATE TABLE FRIEND(
-    NUM NUMBER(4) PRIMARY KEY, --½ÃÄö½º ÀÌ¿ë
+    NUM NUMBER(4) PRIMARY KEY, --ì‹œí€€ìŠ¤ ì´ìš©
     NAME VARCHAR2(30) NOT NULL,
-    TEL VARCHAR2(30) UNIQUE, -- NULLÇã¿ë, À¯ÀÏÇÑ °ª
+    TEL VARCHAR2(30) UNIQUE, -- NULLí—ˆìš©, ìœ ì¼í•œ ê°’
     ADDRESS VARCHAR2(300),
     LAST_MODIFYED DATE DEFAULT SYSDATE);
 
 INSERT INTO FRIEND (NUM, NAME, TEL, ADDRESS)
-    VALUES(FRIEND_SEQ.NEXTVAL, 'È¾°ñµ¿', NULL, '¼­¿ï½Ã °­³²±¸');
+    VALUES(FRIEND_SEQ.NEXTVAL, 'íš¡ê³¨ë™', NULL, 'ì„œìš¸ì‹œ ê°•ë‚¨êµ¬');
 SELECT * FROM FRIEND;
 INSERT INTO FRIEND (NUM, NAME, TEL, ADDRESS)
-    VALUES (FRIEND_SEQ.NEXTVAL, '½Å±æµ¿', '010-2222-3333','¼­¿ï½Ã ¿µµîÆ÷±¸');
+    VALUES (FRIEND_SEQ.NEXTVAL, 'ì‹ ê¸¸ë™', '010-2222-3333','ì„œìš¸ì‹œ ì˜ë“±í¬êµ¬');
 INSERT INTO FRIEND (NUM, NAME, TEL, ADDRESS)
-    VALUES (FRIEND_SEQ.NEXTVAL, '½Å±æµ¿', '010-2222-3333','¼­¿ï½Ã ¿µµîÆ÷±¸');
+    VALUES (FRIEND_SEQ.NEXTVAL, 'ì‹ ê¸¸ë™', '010-2222-3333','ì„œìš¸ì‹œ ì˜ë“±í¬êµ¬');
 SELECT * FROM FRIEND;
 
-SELECT FRIEND_SEQ.CURRVAL FROM DUAL; -- ÇöÀç ½ÃÄö½º °ª
+SELECT FRIEND_SEQ.CURRVAL FROM DUAL; -- í˜„ìž¬ ì‹œí€€ìŠ¤ ê°’
 COMMIT;
 
 
--- EX. ÃÊ±â°ª 101ºÎÅÍ ÃÖ´ë°ª 999,999±îÁö 1¾¿ Áõ°¡ÇÏ´Â TEST_SEQ ½ÃÄö½º¸¦ »ý¼º
+-- EX. ì´ˆê¸°ê°’ 101ë¶€í„° ìµœëŒ€ê°’ 999,999ê¹Œì§€ 1ì”© ì¦ê°€í•˜ëŠ” TEST_SEQ ì‹œí€€ìŠ¤ë¥¼ ìƒì„±
 CREATE SEQUENCE TEST_SEQ START WITH 101 MAXVALUE 999999 NOCACHE;
-SELECT TEST_SEQ.CURRVAL FROM DUAL; -- ½ÃÄö½ºÀÇ ÇöÀç °ªÀÌ ¾ø¾î¼­ ¿¡·¯
+SELECT TEST_SEQ.CURRVAL FROM DUAL; -- ì‹œí€€ìŠ¤ì˜ í˜„ìž¬ ê°’ì´ ì—†ì–´ì„œ ì—ëŸ¬
 SELECT TEST_SEQ.NEXTVAL FROM DUAL;
 
 
 
 
 
--- ¿¬½À¹®Á¦ PDF4Àå
+-- ì—°ìŠµë¬¸ì œ PDF4ìž¥
 DROP TABLE BOOKCATEGORY;
 DROP TABLE BOOK;
 
@@ -92,10 +92,10 @@ CREATE TABLE BOOKCATEGORY (
     CATEGORY_NAME VARCHAR2(50) UNIQUE,
     OFFICE_LOC VARCHAR2(50) NOT NULL);
 
-INSERT INTO BOOKCATEGORY VALUES(100, 'Ã¶ÇÐ', '3Ãþ ÀÎ¹®½Ç');
-INSERT INTO BOOKCATEGORY VALUES(200, 'ÀÎ¹®', '3Ãþ ÀÎ¹®½Ç');
-INSERT INTO BOOKCATEGORY VALUES(300, 'ÀÚ¿¬°úÇÐ', '4Ãþ °úÇÐ½Ç');
-INSERT INTO BOOKCATEGORY VALUES(400, 'IT', '4Ãþ °úÇÐ½Ç');
+INSERT INTO BOOKCATEGORY VALUES(100, 'ì² í•™', '3ì¸µ ì¸ë¬¸ì‹¤');
+INSERT INTO BOOKCATEGORY VALUES(200, 'ì¸ë¬¸', '3ì¸µ ì¸ë¬¸ì‹¤');
+INSERT INTO BOOKCATEGORY VALUES(300, 'ìžì—°ê³¼í•™', '4ì¸µ ê³¼í•™ì‹¤');
+INSERT INTO BOOKCATEGORY VALUES(400, 'IT', '4ì¸µ ê³¼í•™ì‹¤');
 SELECT * FROM BOOKCATEGORY;
 
 CREATE TABLE BOOK (
@@ -105,11 +105,11 @@ CREATE TABLE BOOK (
     PUBLISHER VARCHAR(50),
     PUBYEAR NUMBER(4) DEFAULT TO_NUMBER(TO_CHAR(SYSDATE, 'YYYY')));
 
---¾Æ·¡Ã³·³ µðÆúÆ® °ªÀ¸·Î ³Ö±âÀ§ÇØ¼­´Â ÄÃ·³ ¸í½Ã¸¦ ¹Ýµå½Ã ÇØÁà¾ßÇÔ
+--ì•„ëž˜ì²˜ëŸ¼ ë””í´íŠ¸ ê°’ìœ¼ë¡œ ë„£ê¸°ìœ„í•´ì„œëŠ” ì»¬ëŸ¼ ëª…ì‹œë¥¼ ë°˜ë“œì‹œ í•´ì¤˜ì•¼í•¨
 INSERT INTO BOOK (BOOKNO, CATEGORY_CODE, BOOKNAME, PUBLISHER)
-VALUES('100A01', 100, 'Ã¶ÇÐÀÚÀÇ »î', '´õÁ¸ÃâÆÇ');
+VALUES('100A01', 100, 'ì² í•™ìžì˜ ì‚¶', 'ë”ì¡´ì¶œíŒ');
 INSERT INTO BOOK (BOOKNO, CATEGORY_CODE, BOOKNAME, PUBLISHER)
-VALUES('400A01', 400, 'ÀÌ°ÍÀÌ DB´Ù', '´õÁ¸ÃâÆÇ');
+VALUES('400A01', 400, 'ì´ê²ƒì´ DBë‹¤', 'ë”ì¡´ì¶œíŒ');
 SELECT * FROM BOOK;
 
 SELECT * FROM BOOKCATEGORY;
@@ -118,7 +118,7 @@ SELECT * FROM BOOK;
 
 
 
--- ¿¬½À¹®Á¦ PDF5Àå
+-- ì—°ìŠµë¬¸ì œ PDF5ìž¥
 DROP TABLE STUDENT;
 DROP TABLE MAJOR;
 DROP SEQUENCE MAJOR_SEQ;
@@ -128,10 +128,10 @@ CREATE TABLE MAJOR(
     MAJOR_NAME VARCHAR2(30) UNIQUE,
     MAJOR_OFFICE_LOC VARCHAR2(30) NOT NULL);
 
-INSERT INTO MAJOR VALUES(MAJOR_SEQ.NEXTVAL, '°æ¿µÁ¤º¸', '°æ¿µ°ü 305È£');
-INSERT INTO MAJOR VALUES(MAJOR_SEQ.NEXTVAL, '¼ÒÇÁÆ®¿þ¾î°øÇÐ', 'Á¤º¸°ü 808È£');
-INSERT INTO MAJOR VALUES(MAJOR_SEQ.NEXTVAL, 'µðÀÚÀÎ', '¿¹¼ú°ü 606È£');
-INSERT INTO MAJOR VALUES(MAJOR_SEQ.NEXTVAL, '°æÁ¦', '°æ»ó°ü 202È£');
+INSERT INTO MAJOR VALUES(MAJOR_SEQ.NEXTVAL, 'ê²½ì˜ì •ë³´', 'ê²½ì˜ê´€ 305í˜¸');
+INSERT INTO MAJOR VALUES(MAJOR_SEQ.NEXTVAL, 'ì†Œí”„íŠ¸ì›¨ì–´ê³µí•™', 'ì •ë³´ê´€ 808í˜¸');
+INSERT INTO MAJOR VALUES(MAJOR_SEQ.NEXTVAL, 'ë””ìžì¸', 'ì˜ˆìˆ ê´€ 606í˜¸');
+INSERT INTO MAJOR VALUES(MAJOR_SEQ.NEXTVAL, 'ê²½ì œ', 'ê²½ìƒê´€ 202í˜¸');
 
 SELECT * FROM MAJOR;
 
@@ -142,11 +142,11 @@ CREATE TABLE STUDENT(
     SCORE NUMBER(3) CHECK(0<=SCORE AND SCORE<=100));
 
 INSERT INTO STUDENT (STUDENT_CODE, STUDENT_NAME, SCORE, MAJOR_CODE)
-VALUES ('A01', '±è±æµ¿', 100, 1);
+VALUES ('A01', 'ê¹€ê¸¸ë™', 100, 1);
 INSERT INTO STUDENT (STUDENT_CODE, STUDENT_NAME, SCORE, MAJOR_CODE)
-VALUES ('A02', '¹®±æµ¿', 90, 2);
+VALUES ('A02', 'ë¬¸ê¸¸ë™', 90, 2);
 INSERT INTO STUDENT (STUDENT_CODE, STUDENT_NAME, SCORE, MAJOR_CODE)
-VALUES ('A03', 'È«±æµ¿', 95, 1);
+VALUES ('A03', 'í™ê¸¸ë™', 95, 1);
 SELECT * FROM STUDENT;
 
 
@@ -154,22 +154,22 @@ SELECT * FROM STUDENT;
 
 
 
--- ÃÑ ¿¬½À¹®Á¦1(8page ¹®Á¦)
---´ÙÀ½°ú °°Àº ±¸Á¶ÀÇ Å×ÀÌºíÀ» »ý¼ºÇÏ°í µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏ´Â SQL¹®À» Á¶°Ç¿¡ ¸Â°Ô ÀÛ¼ºÇÏ¿©
---ex1.sqlÆÄÀÏ°ú ½ÇÇà Ä¸Ã³ÆÄÀÏ(ex1.jpg³ª ex1.png)À» Á¦ÃâÇÏ½Ã¿À.
---[¿ä±¸»çÇ×]
---(1) °°Àº ÀÌ¸§ÀÇ Å×ÀÌºíÀÌ³ª ½ÃÄö½º°¡ ÀÖÀ» ¼ö ÀÖÀ¸´Ï ¸ÕÀú »èÁ¦ÇÏ°í Å×ÀÌºíÀ» »ý¼ºÇÏ½Ã¿À
+-- ì´ ì—°ìŠµë¬¸ì œ1(8page ë¬¸ì œ)
+--ë‹¤ìŒê³¼ ê°™ì€ êµ¬ì¡°ì˜ í…Œì´ë¸”ì„ ìƒì„±í•˜ê³  ë°ì´í„°ë¥¼ ìž…ë ¥í•˜ëŠ” SQLë¬¸ì„ ì¡°ê±´ì— ë§žê²Œ ìž‘ì„±í•˜ì—¬
+--ex1.sqlíŒŒì¼ê³¼ ì‹¤í–‰ ìº¡ì²˜íŒŒì¼(ex1.jpgë‚˜ ex1.png)ì„ ì œì¶œí•˜ì‹œì˜¤.
+--[ìš”êµ¬ì‚¬í•­]
+--(1) ê°™ì€ ì´ë¦„ì˜ í…Œì´ë¸”ì´ë‚˜ ì‹œí€€ìŠ¤ê°€ ìžˆì„ ìˆ˜ ìžˆìœ¼ë‹ˆ ë¨¼ì € ì‚­ì œí•˜ê³  í…Œì´ë¸”ì„ ìƒì„±í•˜ì‹œì˜¤
 DROP TABLE MEMBER;
 DROP TABLE MEMBER_LEVEL;
 DROP SEQUENCE MEMBER_MNO_SQ;
---(2) MEMBER Å×ÀÌºíÀº ÇÊµå º°·Î ´ÙÀ½ÀÇ Á¶°ÇÀ» ÁöÄÑ »ý¼ºÇÏ½Ã¿À.
---	¨ç mNO(¹øÈ£) : ÁÖÅ°
---	¨è mNAME(ÀÌ¸§) : NULL°ªÀ» ÀÔ·ÂÇÒ ¼ö ¾ø´Ù
---	¨é mPW(ºñ¹Ð¹øÈ£) : ¹Ýµå½Ã 1~8±ÛÀÚ ÀÌ³»ÀÇ ¹®ÀÚ¸¦ ÀÔ·ÂÇÑ´Ù
---	¨ê mEMAIL(¸ÞÀÏ) : ¸ðµç µ¥ÀÌÅÍ´Â EMAIL ÇÊµå°ªÀÌ ¸ðµÎ ´Ù¸£°Ô ÀÔ·ÂµÈ´Ù.
---	¨ë mPOINT(Æ÷ÀÎÆ®) : 0ÀÌ»óÀÇ °ª¸¸ ÀÔ·ÂÇÒ ¼ö ÀÖ´Ù.
---	¨ì mRDATE(°¡ÀÔÀÏ) : ÀÔ·ÂÇÏÁö ¾ÊÀ» ½Ã, ±âº»ÀûÀ¸·Î ÇöÀç³¯Â¥·Î ÀÔ·ÂµÈ´Ù.
---  ¨í LEVELNO : MEMBER_LEVEL Å×ÀÌºíÀÇ LEVELNO ÇÊµå¸¦ ÂüÁ¶ÇÏ´Â ¿Ü·¡Å°
+--(2) MEMBER í…Œì´ë¸”ì€ í•„ë“œ ë³„ë¡œ ë‹¤ìŒì˜ ì¡°ê±´ì„ ì§€ì¼œ ìƒì„±í•˜ì‹œì˜¤.
+--	â‘  mNO(ë²ˆí˜¸) : ì£¼í‚¤
+--	â‘¡ mNAME(ì´ë¦„) : NULLê°’ì„ ìž…ë ¥í•  ìˆ˜ ì—†ë‹¤
+--	â‘¢ mPW(ë¹„ë°€ë²ˆí˜¸) : ë°˜ë“œì‹œ 1~8ê¸€ìž ì´ë‚´ì˜ ë¬¸ìžë¥¼ ìž…ë ¥í•œë‹¤
+--	â‘£ mEMAIL(ë©”ì¼) : ëª¨ë“  ë°ì´í„°ëŠ” EMAIL í•„ë“œê°’ì´ ëª¨ë‘ ë‹¤ë¥´ê²Œ ìž…ë ¥ëœë‹¤.
+--	â‘¤ mPOINT(í¬ì¸íŠ¸) : 0ì´ìƒì˜ ê°’ë§Œ ìž…ë ¥í•  ìˆ˜ ìžˆë‹¤.
+--	â‘¥ mRDATE(ê°€ìž…ì¼) : ìž…ë ¥í•˜ì§€ ì•Šì„ ì‹œ, ê¸°ë³¸ì ìœ¼ë¡œ í˜„ìž¬ë‚ ì§œë¡œ ìž…ë ¥ëœë‹¤.
+--  â‘¦ LEVELNO : MEMBER_LEVEL í…Œì´ë¸”ì˜ LEVELNO í•„ë“œë¥¼ ì°¸ì¡°í•˜ëŠ” ì™¸ëž˜í‚¤
 CREATE TABLE MEMBER(
     mNO NUMBER(4) PRIMARY KEY,
     mNAME VARCHAR2(20) NOT NULL,
@@ -180,37 +180,34 @@ CREATE TABLE MEMBER(
     LEVELNO NUMBER(3) REFERENCES MEMBER_LEVEL(LEVELNO));
     
 
---(3) MEMBER_LEVEL Å×ÀÌºíÀº ÇÊµå º°·Î ´ÙÀ½ÀÇ Á¦¾àÁ¶°ÇÀ» ÁöÅ²´Ù.
---	¨ç LEVELNO : ÁÖÅ°
---	¨è LEVELNAME : NULL°ªÀ» ÀÔ·ÂÇÒ ¼ö ¾ø´Ù	
+--(3) MEMBER_LEVEL í…Œì´ë¸”ì€ í•„ë“œ ë³„ë¡œ ë‹¤ìŒì˜ ì œì•½ì¡°ê±´ì„ ì§€í‚¨ë‹¤.
+--	â‘  LEVELNO : ì£¼í‚¤
+--	â‘¡ LEVELNAME : NULLê°’ì„ ìž…ë ¥í•  ìˆ˜ ì—†ë‹¤	
 CREATE TABLE MEMBER_LEVEL(
     LEVELNO NUMBER(3) PRIMARY KEY,
     LEVELNAME VARCHAR2(20) NOT NULL);
     
---(4) MEMBER Å×ÀÌºíÀÇ mNO¹øÈ£´Â ½ÃÄö½º(MEMBER_MNO_SQ)¸¦ »ý¼ºÇÑ µÚ ÀÚµ¿»ý¼º ¹øÈ£·Î ÀÔ·Â
+--(4) MEMBER í…Œì´ë¸”ì˜ mNOë²ˆí˜¸ëŠ” ì‹œí€€ìŠ¤(MEMBER_MNO_SQ)ë¥¼ ìƒì„±í•œ ë’¤ ìžë™ìƒì„± ë²ˆí˜¸ë¡œ ìž…ë ¥
 CREATE SEQUENCE MEMBER_MNO_SQ
-    START WITH 1 -- 1¹ø ºÎÅÍ ½ÃÄö½º ½ÃÀÛÇÏ±â.
-    INCREMENT BY 1 -- 1¾¿ Ä¿Áö°Ô ÇÏ±â
-    MAXVALUE 9999 -- ÃÖ´ë ¸î±îÁö Ä¿Áú ¼ö ÀÖ°ÔÇÒÁö Á¶°Ç
-    MINVALUE 1 -- ÃÖ¼Ò Á¶°Ç
-    NOCACHE -- ÄÄÇ»ÅÍ¸¦ ²°´Ù ÄÑµµ ÃÊ±âÈ­ µÇÁö ¾Ê°Ô.
-    NOCYCLE; -- ÃÖ´ëÀÎ 9999±îÁö °¡¸é ¿¡·¯¸¦ ¹ß»ý ½ÃÅ´. ¸¸¾à ¼±¾ð ¾ÈÇÏ¸é ´Ù½Ã 1·Î µ¹¾Æ°¡¼­ ¹Ýº¹
+    START WITH 1 -- 1ë²ˆ ë¶€í„° ì‹œí€€ìŠ¤ ì‹œìž‘í•˜ê¸°.
+    INCREMENT BY 1 -- 1ì”© ì»¤ì§€ê²Œ í•˜ê¸°
+    MAXVALUE 9999 -- ìµœëŒ€ ëª‡ê¹Œì§€ ì»¤ì§ˆ ìˆ˜ ìžˆê²Œí• ì§€ ì¡°ê±´
+    MINVALUE 1 -- ìµœì†Œ ì¡°ê±´
+    NOCACHE -- ì»´í“¨í„°ë¥¼ ê»ë‹¤ ì¼œë„ ì´ˆê¸°í™” ë˜ì§€ ì•Šê²Œ.
+    NOCYCLE; -- ìµœëŒ€ì¸ 9999ê¹Œì§€ ê°€ë©´ ì—ëŸ¬ë¥¼ ë°œìƒ ì‹œí‚´. ë§Œì•½ ì„ ì–¸ ì•ˆí•˜ë©´ ë‹¤ì‹œ 1ë¡œ ëŒì•„ê°€ì„œ ë°˜ë³µ
 
 INSERT INTO MEMBER_LEVEL VALUES (-1, 'BLACK');
-INSERT INTO MEMBER_LEVEL VALUES (0, 'ÀÏ¹Ý');
-INSERT INTO MEMBER_LEVEL VALUES (1, '½Ç¹ö');
-INSERT INTO MEMBER_LEVEL VALUES (2, '°ñµå');
+INSERT INTO MEMBER_LEVEL VALUES (0, 'ì¼ë°˜');
+INSERT INTO MEMBER_LEVEL VALUES (1, 'ì‹¤ë²„');
+INSERT INTO MEMBER_LEVEL VALUES (2, 'ê³¨ë“œ');
 SELECT * FROM MEMBER_LEVEL;
 
 INSERT INTO MEMBER (mNO, mNAME, mPW, mEMAIL, mPOINT, mRDATE, LEVELNO)
-VALUES (MEMBER_MNO_SQ.NEXTVAL, 'È«±æµ¿', 'aa', 'hong@hong.com', 0, '22/03/10', 0);
+VALUES (MEMBER_MNO_SQ.NEXTVAL, 'í™ê¸¸ë™', 'aa', 'hong@hong.com', 0, '22/03/10', 0);
 INSERT INTO MEMBER (mNO, mNAME, mPW, mEMAIL, mPOINT, mRDATE, LEVELNO)
-VALUES (MEMBER_MNO_SQ.NEXTVAL, '½Å±æµ¿', 'bb', 'sin@sin.com', 1000, '22/04/01', 1);
+VALUES (MEMBER_MNO_SQ.NEXTVAL, 'ì‹ ê¸¸ë™', 'bb', 'sin@sin.com', 1000, '22/04/01', 1);
 SELECT * FROM MEMBER;
 
 SELECT mNO, mNAME, mRDATE, mEMAIL, mPOINT, LEVELNAME
     FROM MEMBER M, MEMBER_LEVEL L
     WHERE M.LEVELNO=L.LEVELNO;
-
-
-

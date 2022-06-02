@@ -10,32 +10,32 @@ CREATE TABLE MEMBER(
     GENDER VARCHAR2(1),
     EMAIL VARCHAR2(30),
     BIRTH DATE,
-    RDATE DATE NOT NULL, --°¡ÀÔÀÏ
+    RDATE DATE NOT NULL, --ê°€ìž…ì¼
     ADDRESS VARCHAR2(200)
 );
--- 1. È¸¿ø°¡ÀÔ½Ã IDÁßº¹Ã¼Å©¸¦ À§ÇÑ SQL : public int confirmId(String id)
+-- 1. íšŒì›ê°€ìž…ì‹œ IDì¤‘ë³µì²´í¬ë¥¼ ìœ„í•œ SQL : public int confirmId(String id)
 SELECT * FROM MEMBER WHERE ID='aaa';
 
--- 2. È¸¿ø°¡ÀÔ : pulbic int joinMember(MemberDto dto)
+-- 2. íšŒì›ê°€ìž… : pulbic int joinMember(MemberDto dto)
 INSERT INTO MEMBER (ID, PW, NAME, PHONE1, PHONE2, PHONE3, GENDER, EMAIL, BIRTH, RDATE, ADDRESS)
-    VALUES('aaa', '111', 'È«±æµ¿', '02', '1111', '1111', 'm', 'hong@h,com', '1995-12-05', SYSDATE, '¼­¿ï');
+    VALUES('aaa', '111', 'í™ê¸¸ë™', '02', '1111', '1111', 'm', 'hong@h,com', '1995-12-05', SYSDATE, 'ì„œìš¸');
     
--- 3. ·Î±×ÀÎ(id/pw) : pulblic int loginCheck(String id, String pw)
+-- 3. ë¡œê·¸ì¸(id/pw) : pulblic int loginCheck(String id, String pw)
 SELECT ID, PW FROM MEMBER WHERE ID='aaa';
 
--- 4. ID·Î dto°¡Á®¿À±â(·Î±×ÀÎ ¼º°ø µÇ¾úÀ» ¶§ ÇÒ ¾×¼Ç)(dto ÀÚÃ¼¸¦ ¼¼¼Ç¿¡´Ù°¡) : public MemberDto getMember(String id)
+-- 4. IDë¡œ dtoê°€ì ¸ì˜¤ê¸°(ë¡œê·¸ì¸ ì„±ê³µ ë˜ì—ˆì„ ë•Œ í•  ì•¡ì…˜)(dto ìžì²´ë¥¼ ì„¸ì…˜ì—ë‹¤ê°€) : public MemberDto getMember(String id)
 SELECT * FROM MEMBER WHERE ID='aaa';
 
--- 5. È¸¿øÁ¤º¸ ¼öÁ¤
+-- 5. íšŒì›ì •ë³´ ìˆ˜ì •
 UPDATE MEMBER SET PW='111',
-                NAME='½Å±æµ¿',
+                NAME='ì‹ ê¸¸ë™',
                 PHONE1 = '010',
                 PHONE2 = '9999',
                 PHONE3 = '8888',
                 GENDER = 'm',
                 EMAIL = 'hong@aa.com',
                 BIRTH = '1995-12-05',
-                ADDRESS = '¾È¾ç'
+                ADDRESS = 'ì•ˆì–‘'
             WHERE ID='aaa';
 SELECT * FROM MEMBER;
 commit;

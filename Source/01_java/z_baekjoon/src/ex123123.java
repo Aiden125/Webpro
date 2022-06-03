@@ -1,17 +1,16 @@
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 
 public class ex123123 {
-	public static void main(String[] args) {
-<<<<<<< HEAD
-		System.out.println(Math.min(100, 200, 300));
-		;
-=======
-		int[] arr = {15,2,4};
-		Arrays.sort(arr);
-		int a = getMedian(arr);
-		for(int i=0; i<arr.length; i++) {
-			System.out.println(arr[i]);
-		}
->>>>>>> 3536e868bdf027ac4fb70808ddfb02a8fb70508c
+	public static void main(String[] args) throws IOException {
+		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		 StringTokenizer st = new StringTokenizer(br.readLine());
+		  
+		 
 	}
 }

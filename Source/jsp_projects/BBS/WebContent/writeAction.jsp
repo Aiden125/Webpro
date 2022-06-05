@@ -4,8 +4,8 @@
 <%@ page import="java.io.PrintWriter" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="bbs" class="bbs.Bbs" scope="page"/>
-<jsp:setProperty name="user" property="bbsTitle"/>
-<jsp:setProperty name="user" property="bbsContent"/>
+<jsp:setProperty name="bbs" property="bbsTitle"/>
+<jsp:setProperty name="bbs" property="bbsContent"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,7 @@
 		if(session.getAttribute("userID") != null){
 			userID = (String) session.getAttribute("userID");
 		}
-		if(userID != null){
+		if(userID == null){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('로그인을 하세요.')");

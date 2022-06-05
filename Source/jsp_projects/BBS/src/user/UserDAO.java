@@ -30,17 +30,17 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				if(rs.getString(1).equals(userPassword)) {
-					return 1; //·Î±×ÀÎ ¼º°ø
+					return 1; //ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				}
 				else {
-					return 0; //ºñ¹Ð¹øÈ£ ºÒÀÏÄ¡
+					return 0; //ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½Ä¡
 				}
 			}
-			return -1; // ¾ÆÀÌµð°¡ ¾øÀ½
+			return -1; // ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return -2; // µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		return -2; // ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 	
 	public int join(User user) {
@@ -56,6 +56,6 @@ public class UserDAO {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return -1; // µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		return -1; // ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 }

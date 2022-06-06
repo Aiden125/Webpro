@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class ex123123 {
+public class nothing {
 	public static void main(String[] args) throws IOException {
 		 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		 StringTokenizer st = new StringTokenizer("¿À´Ã ³ª ¹ä °£´ÜÈ÷¸ÔÀ»°Ô");

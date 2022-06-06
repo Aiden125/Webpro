@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class test_step3_15552 {
+public class test_step3_11021 {
 	public static void main(String[] args) throws IOException {
 		int x,y,t;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -17,7 +17,7 @@ public class test_step3_15552 {
 			st = new StringTokenizer(br.readLine());
 			x = Integer.parseInt(st.nextToken());
 			y = Integer.parseInt(st.nextToken());
-			bw.write(x + y + "\n");
+			bw.write("Case #"+(i+1)+": "+(x + y) + "\n");
 		}
 		bw.close();
 	}

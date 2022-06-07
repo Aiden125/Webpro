@@ -24,12 +24,16 @@
 			response.sendRedirect("welcome.jsp");
 			
 	}else{ // id는 맞지만 pw가 틀린 경우
-		msg = URLEncoder.encode("pw를 체크하세요", "utf-8");
-		response.sendRedirect("login.jsp?msg="+msg);
+		out.println("<script>");
+		out.println("alert('pw를 체크하세요')");
+		out.println("history.back()");
+		out.println("</script>");
 		}
 	}else{ // 유효하지 않는 id를 입력한 경우
-		msg = URLEncoder.encode("id를 체크하세요", "utf-8");
-		response.sendRedirect("login.jsp?msg="+msg);
+		out.println("<script>");
+		out.println("alert('id를 체크하세요')");
+		out.println("history.back()");
+		out.println("</script>");
 	}
 %>	
 </body>

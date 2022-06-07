@@ -1,7 +1,6 @@
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.Arrays"%>
 <%@ page import="java.sql.Timestamp"%>
-<%@ page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%String conPath = request.getContextPath();%>

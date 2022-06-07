@@ -27,7 +27,7 @@ if(msg!=null){
 	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form action="loginOk.jsp" mehtod="post">
+	<form action="loginOk.jsp" method="post">
 		<table>
 		
 			<tr>

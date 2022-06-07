@@ -10,7 +10,7 @@
 </head>
 <body>
 <%
-	// name세션, id세션 만들기
+	// name세션, id세션 변수에 담기
 	String name = (String)session.getAttribute("name");
 	String id = (String)session.getAttribute("id");
 %>

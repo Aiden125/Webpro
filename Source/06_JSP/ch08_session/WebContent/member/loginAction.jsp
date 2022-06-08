@@ -24,7 +24,7 @@
 				session.setAttribute("name", "홍길동");
 				response.sendRedirect("main.jsp");
 				
-		}else{ //pw가 틀린 경우
+		}else{ // pw가 틀린 경우
 			msg = URLEncoder.encode("pw를 체크하세요", "utf-8");
 			response.sendRedirect("login.jsp?msg="+msg);
 			}

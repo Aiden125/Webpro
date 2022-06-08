@@ -1,3 +1,4 @@
+<%@page import="java.sql.Date"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.Arrays"%>
 <%@ page import="java.sql.Timestamp"%>

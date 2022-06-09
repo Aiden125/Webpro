@@ -1,0 +1,4 @@
+-- [VI] SUB QUERY ; QUERY안에 QUERY가 내포
+-- SELECT 필드1, (SELECT 필드 FROM 테이블 WHERE 조건)
+--      FROM 테이블
+--      WHERE 조건

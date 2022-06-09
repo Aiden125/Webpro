@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table {
+            width: 280px;
+            height: 100px;
+            margin: 0 auto;
+        }
+        h1{
+            color:blue;
+            text-align:center;
+            display:none;
+        }
+    </style>
+    <script>
+        var cl = ["red", "blue", "violet", "green", "orange", "yellow", "gray"];
+        window.onload = function () {
+            var tdc = document.querySelectorAll("td");
+            for (var idx in tdc) {
+                tdc[idx].style.backgroundColor = cl[idx];
+            }
+        };
+        function colorchange(n) {
+            document.body.style.backgroundColor = "black";
+            var onoff = document.getElementById("hh");
+            onoff.style.display = "block";
+        }
+        function resetbg() {
+            document.body.style.backgroundColor = "white";
+            var onoff = document.getElementById("hh");
+            onoff.style.display = "none";
+        }
+    </script>
+</head>
+<body>
+    <h1 id="hh">금요일에는 코딩을</h1>
+    <table>
+        <tr onmouseout="resetbg()">
+            <td onmouseover="colorchange(0)"></td>
+            <td onmouseover="colorchange(1)"></td>
+            <td onmouseover="colorchange(2)"></td>
+            <td onmouseover="colorchange(3)"></td>
+            <td onmouseover="colorchange(4)"></td>
+            <td onmouseover="colorchange(5)"></td>
+            <td onmouseover="colorchange(6)"></td>
+        </tr>
+    </table>
+</body>
+</html>

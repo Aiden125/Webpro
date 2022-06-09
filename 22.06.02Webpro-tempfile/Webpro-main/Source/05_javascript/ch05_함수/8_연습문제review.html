@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var sumAll = function () {
+            var result = 0;
+            var len = arguments.length;
+
+            if (len == 0) {
+                result = -999;
+            } else if (len >= 1) {
+                for (var idx in arguments) {
+                    result += arguments[idx];
+                }
+            }
+            return result;
+        };
+
+        document.write(sumAll() + "<br>");
+        document.write(sumAll(5) + "<br>");
+        document.write(sumAll(10,20,30) + "<br>");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

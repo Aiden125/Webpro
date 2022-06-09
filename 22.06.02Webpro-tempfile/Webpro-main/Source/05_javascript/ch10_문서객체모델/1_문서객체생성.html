@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        window.onload = function () {
+            // 방법1) 1. h1태그 생성 -> 2. 태그에 들어갈 textNode 생성 ->
+            // 방법1) 3. h1태그와 textNode 연결 -> 4. h1태그를 body에 추가
+
+            // 1. h1태그 생성
+            var h1 = document.createElement("h1");
+
+            // 2. textNode 생성
+            var textNode = document.createTextNode("추가한 h1태그 안 text");
+
+            // 3. h1태그와 textNode 연결
+            h1.appendChild(textNode);
+
+            // 4. h1태그를 body에 추가
+            document.body.appendChild(h1);
+
+
+
+            // 방법2) 1. img 태그 생성 -> 2. src속성변경 setting -> 3. img태그를 body에 추가
+            var img = document.createElement("img");
+            img.setAttribute("src", "img/red.jpg");
+            document.body.appendChild(img);
+
+
+
+            // 방법3) innerHTML을 이용
+            document.body.innerHTML += "<h1>방법3으로 추가</h3>";
+        };
+    </script>
+</head>
+<body>
+    <h1>Text Node</h1>
+    <img src="img/orange.jpg" />
+</body>
+</html>

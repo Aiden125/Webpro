@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var str = "abcd@ef1";
+
+        // 패턴
+        var patternNum = /[0-9]/; //숫자패턴
+        var patternEng = /[a-zA-Z]/; //알파벳 문자패턴
+        var patternKor = /[가-힣ㄱ-ㅎㅏ-ㅣ]/; //한글 문자패턴
+        var patternSpc = /[~`!@#$%^&*()_+-=|\\{}?/\[\]''""]/; // 특수문자 패턴[] 괄호는 역슬래시 넣고 넣어야함
+
+        
+
+        //있으면 true 없으면 false 리턴
+        document.write("str에 숫자가 포함되어 있는지 : " + patternNum.test(str) + "<br>");
+        document.write("str에 특수문자가 포함되어 있는지 : " + patternSpc.test(str) + "<br>");
+        document.write("str에 한글이 포함되어 있는지 : " + patternKor.test(str) + "<br>");
+        document.write("str에 알파벳이 포함되어 있는지 : " + patternEng.test(str) + "<br>");
+
+        //요약정리
+        //패턴은 슬래시로 시작해서 슬래시로 끝내기
+        //패턴 테스트는 테스트로 patternA.text(str)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

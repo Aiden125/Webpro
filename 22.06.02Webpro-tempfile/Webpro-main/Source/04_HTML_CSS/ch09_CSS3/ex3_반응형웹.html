@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title></title>
+    <style>
+        /* 페이지 초기화 */
+        * {
+            margin:0;
+            padding:0;
+        }
+        a{
+            text-decoration:none;
+            color:black;
+            display:block;
+            font-weight:bold;
+            font-size:1.2em;
+        }
+        li{
+            list-style:none;
+        }
+
+        /* 스마트폰 화면 
+        @media screen and (max-device-width:979px){
+            
+        }
+        */
+
+        /* 스마트폰 테스트용 (PC에서 테스트 하기위해 디바이스 삭제)
+            메뉴3개 1,3,5
+        */
+        @media screen and (max-width:979px) {
+            #wrap {
+                background-color: pink;
+                margin: 3px;
+            }
+            #wrap #nav ul li:nth-child(2),
+            #wrap #nav ul li:nth-child(4){
+                display:none;
+            }
+            #wrap #nav ul li{
+                width:33.3333%;
+            }
+        }
+
+        /* 태블릿 화면(메뉴 4개) 1,2,3,5 */
+        @media screen and (min-width:980px) and (max-width:1203px) {
+            #wrap {
+                background-color:aqua;
+                margin:3px;
+            }
+            #wrap #nav ul li:nth-child(4){
+                display:none;
+            }
+            #wrap #nav ul li{
+                width:25%;
+                box-sizing:border-box;
+            }
+        }
+        
+        /* pc화면(1600~2000px) (메뉴 5개)*/
+        @media screen and (min-width:1204px) and (max-width:2800px){
+            #wrap{
+                width:800px;
+                margin:3px auto;
+                background-color:lightyellow;
+            }
+            #wrap #nav ul li{
+                width:20%;
+            }
+        }
+
+        /* 공통 부분 */
+        #wrap{
+            border:1px solid gray;
+        }
+        #wrap #header{
+            height:100px;
+            line-height:100px;
+            text-align:center;
+        }
+        #wrap #nav ul{
+            overflow:hidden;
+        }
+        #wrap #nav ul li{
+            float:left;
+            height:50px;
+            line-height:50px;
+            text-align:center;
+            border:1px solid gray;
+            box-sizing:border-box;
+        }
+        #wrap #content {
+            padding:10px;
+        }
+        #wrap #footer{
+            height:100px;
+            line-height:100px;
+            text-align:center;
+            font-size:1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header"><h1>웹표준 반응형</h1></div>
+        <div id="nav">
+            <ul>
+                <li><a href="#menu1">menu1</a></li>
+                <li><a href="#menu2">menu2</a></li>
+                <li><a href="#menu3">menu3</a></li>
+                <li><a href="#menu4">menu4</a></li>
+                <li><a href="#menu5">menu5</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <h2>The standard Lorem Ipsum passage</h2>
+            <p>used since the 1500s "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+        </div>
+        <div id="footer">김코딩 주식회사</div>
+    </div>
+</body>
+</html>

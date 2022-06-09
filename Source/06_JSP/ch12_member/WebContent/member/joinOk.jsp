@@ -30,24 +30,25 @@
 	if(result == MemberDao.MEMBER_NONEXISTENT){ //사용 가능한 경우
 		result = mDao.joinMember(dto); //회원가입. (만약 회원가입DB오류면 result에 0)
 		if(result == MemberDao.SUCCESS){ //회원가입 성공
-			session.setAttribute("id", dto.getId()); //회원가입만해서 id세션만 증정
-			out.println("<script>");
-			out.println("alert('회원가입 감사합니다.')");
-			out.println("location.href='login.jsp'");
-			out.println("</script>");
-		}else{ //회원가입 실패(DB오류)
-			out.println("<script>");
-			out.println("alert('회원가입 실패되었습니다.')");
-			out.println("history.back()");
-			out.println("</script>");
-		}
+			session.setAttribute("id", dto.getId()); //회원가입만해서 id세션만 증정%>
+			<script>
+			alert("회원가입 감사합니다.");
+			location.href="login.jsp";
+			</script>
+		<%}else{ //회원가입 실패(DB오류)%>
+			<script>
+			alert("회원가입 실패.");
+			history.back();
+			</script>
+		<%}
 		
-	}else{ //사용 불가(이미 존재)
-		out.println("<script>");
-		out.println("alert('중복된 ID입니다. 다른 아이디를 사용하세요')");
-		out.println("history.back()");
-		out.println("</script>");
-	}
+	}else{ //사용 불가(이미 존재)%>
+		<script>
+			alert("중복된 아이디.");
+			location.href="login.jsp";
+			history.back();
+			</script>
+	<%}
 %>
 	
 

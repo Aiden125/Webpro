@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #header, #wrap, #footer{
+            width:600px; margin:0 auto; border:1px solid gray;
+        }
+        #header{overflow:hidden;}
+        #header .logo{ /* 후손선택자(아래단) */
+            float:left;
+            padding:10px 30px 10px 130px;
+        }
+        #header .name { /* 자손선택자(바로아래단) */
+            float: left;
+            padding: 20px 30px 10px 70px;
+        }
+        div p{ /* 후손선택자(div 밑에 있는 p) */
+            font-size:25px; /* p태그의 기본폰트는 16px */
+        }
+        div > p{ /* 자손(자식) 선택자 (div 바로 밑에 있는 p) */
+            color:red;
+            font-size:1em;
+        }
+        #footer{text-align:center;}
+    </style>
+</head>
+<body>
+    
+    <div id="header">
+        <div class="logo">
+            <h1>LOGO</h1>
+        </div>
+        <div class="name">
+            <h2>코딩 주식회사</h2>
+        </div>
+    </div>
+    
+    <div id="wrap">
+        <p>
+            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident,
+        </p>
+        <ul>
+            <li><p>"At vero eos et accusamus et iusto</p></li>
+            <li><p>"At vero eos et accusamus et iusto</p></li>
+            <li><p>"At vero eos et accusamus et iusto</p></li>
+        </ul>
+    </div>
+    
+    <div id="footer">
+        <p>서울시 강남구 역삼동 코딩빌딩 401호</p>
+    </div>
+
+</body>
+</html>

@@ -10,18 +10,14 @@ public class test_step3_10951 {
 		int a, b;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		StringTokenizer st;
-		
-		do {
-			st = new StringTokenizer(br.readLine());
-			if(st.hasMoreElements()) {
-				a = Integer.parseInt(st.nextToken());
-				b = Integer.parseInt(st.nextToken());
-				bw.write(a+b+"\n");
-			}else {
-				break;				
-			}
-		}while(true);
+		String s = "";
+		while((s = br.readLine()) != null) {
+			StringTokenizer st;
+			st = new StringTokenizer(s);
+			a = Integer.parseInt(st.nextToken());
+			b = Integer.parseInt(st.nextToken());
+			bw.write(a+b+"\n");
+		}
 		bw.close();
 	}
 }

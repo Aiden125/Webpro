@@ -9,64 +9,49 @@ public class FileboardDto {
 	private String fcontent;
 	private String ffilename;
 	private String fpw;
-	private int fhit;
-	private int fref;
-	private int fre_step1;
-	private int fre_level;
+	private int    fhit;
+	private int    fref;
+	private int    fre_step;
+	private int    fre_level;
 	private String fip;
-	private Date frdate;
+	private Date   frdate;
 	private String cname;
 	private String cemail;
-	
-	
 	public FileboardDto() { }
-
-	public FileboardDto(int fnum, String cid, String fsubject, String fcontent, String ffilename, String fpw,
-			String fip, int fhit, int fref, int fre_step1, int fre_level, Date frdate) {
-		super();
+	// 글쓰기 용
+	public FileboardDto(int fnum, String cid, String fsubject, String fcontent, String ffilename, String fpw, int fhit,
+			int fref, int fre_step, int fre_level, String fip, Date frdate) {
 		this.fnum = fnum;
 		this.cid = cid;
 		this.fsubject = fsubject;
 		this.fcontent = fcontent;
 		this.ffilename = ffilename;
 		this.fpw = fpw;
-		this.fip = fip;
 		this.fhit = fhit;
 		this.fref = fref;
-		this.fre_step1 = fre_step1;
+		this.fre_step = fre_step;
 		this.fre_level = fre_level;
+		this.fip = fip;
 		this.frdate = frdate;
 	}
-	
-
-
-
-
-
-	public FileboardDto(int fnum, String cid, String fsubject, String fcontent, String ffilename, String fpw,
-			String fip, int fhit, int fref, int fre_step1, int fre_level, Date frdate, String cname, String cemail) {
-		super();
+	// 글목록용
+	public FileboardDto(int fnum, String cid, String fsubject, String fcontent, String ffilename, String fpw, int fhit,
+			int fref, int fre_step, int fre_level, String fip, Date frdate, String cname, String cemail) {
 		this.fnum = fnum;
 		this.cid = cid;
 		this.fsubject = fsubject;
 		this.fcontent = fcontent;
 		this.ffilename = ffilename;
 		this.fpw = fpw;
-		this.fip = fip;
 		this.fhit = fhit;
 		this.fref = fref;
-		this.fre_step1 = fre_step1;
+		this.fre_step = fre_step;
 		this.fre_level = fre_level;
+		this.fip = fip;
 		this.frdate = frdate;
 		this.cname = cname;
 		this.cemail = cemail;
 	}
-
-
-
-
-
-
 	public int getFnum() {
 		return fnum;
 	}
@@ -91,6 +76,12 @@ public class FileboardDto {
 	public void setFcontent(String fcontent) {
 		this.fcontent = fcontent;
 	}
+	public String getFfilename() {
+		return ffilename;
+	}
+	public void setFfilename(String ffilename) {
+		this.ffilename = ffilename;
+	}
 	public String getFpw() {
 		return fpw;
 	}
@@ -109,17 +100,23 @@ public class FileboardDto {
 	public void setFref(int fref) {
 		this.fref = fref;
 	}
-	public int getFre_step1() {
-		return fre_step1;
+	public int getFre_step() {
+		return fre_step;
 	}
-	public void setFre_step1(int fre_step1) {
-		this.fre_step1 = fre_step1;
+	public void setFre_step(int fre_step) {
+		this.fre_step = fre_step;
 	}
 	public int getFre_level() {
 		return fre_level;
 	}
 	public void setFre_level(int fre_level) {
 		this.fre_level = fre_level;
+	}
+	public String getFip() {
+		return fip;
+	}
+	public void setFip(String fip) {
+		this.fip = fip;
 	}
 	public Date getFrdate() {
 		return frdate;
@@ -133,60 +130,17 @@ public class FileboardDto {
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
-	public String getCmail() {
-		return cemail;
-	}
-	public void setCmail(String cmail) {
-		this.cemail = cmail;
-	}
-
-	public String getFfilename() {
-		return ffilename;
-	}
-
-
-
-	public String getFip() {
-		return fip;
-	}
-
-
-
-
-
-
-	public void setFip(String fip) {
-		this.fip = fip;
-	}
-
-
-
-
-
-
 	public String getCemail() {
 		return cemail;
 	}
-
-
-
-
-
-
 	public void setCemail(String cemail) {
 		this.cemail = cemail;
 	}
-
-
-
-
-
-
-	public void setFfilename(String ffilename) {
-		this.ffilename = ffilename;
+	@Override
+	public String toString() {
+		return "FileboardDto [fnum=" + fnum + ", cid=" + cid + ", fsubject=" + fsubject + ", fcontent=" + fcontent
+				+ ", ffilename=" + ffilename + ", fpw=" + fpw + ", fhit=" + fhit + ", fref=" + fref + ", fre_step="
+				+ fre_step + ", fre_level=" + fre_level + ", fip=" + fip + ", frdate=" + frdate + ", cname=" + cname
+				+ ", cemail=" + cemail + "]";
 	}
-
-
-	
-
 }

@@ -1,20 +1,16 @@
 package com.lec.dto;
-
 import java.sql.Date;
-
 public class BookDto {
 	private int bid;
 	private String btitle;
-	private int bprice;
+	private int    bprice;
 	private String bimage1;
 	private String bimage2;
 	private String bcontent;
-	private int bdiscount;
-	private Date brdate;
-	
-	public BookDto() {
-	}
-	
+	private int    bdiscount;
+	private Date   brdate;
+	// 생성자 & getter & setter & toString
+	public BookDto() { }
 	public BookDto(int bid, String btitle, int bprice, String bimage1, String bimage2, String bcontent, int bdiscount,
 			Date brdate) {
 		this.bid = bid;
@@ -73,5 +69,11 @@ public class BookDto {
 	}
 	public void setBrdate(Date brdate) {
 		this.brdate = brdate;
-	} 
+	}
+	@Override
+	public String toString() {
+		return "BookDto [bid=" + bid + ", btitle=" + btitle + ", bprice=" + bprice + ", bimage1=" + bimage1
+				+ ", bimage2=" + bimage2 + ", bcontent=" + bcontent + ", bdiscount=" + bdiscount + ", brdate=" + brdate
+				+ "]";
+	}
 }

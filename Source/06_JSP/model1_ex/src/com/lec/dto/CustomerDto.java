@@ -1,7 +1,5 @@
 package com.lec.dto;
-
 import java.sql.Date;
-
 public class CustomerDto {
 	private String cid;
 	private String cpw;
@@ -10,10 +8,9 @@ public class CustomerDto {
 	private String cemail;
 	private String caddress;
 	private String cgender;
-	private Date cbirth;
-	private Date crdate;
-	
-	public CustomerDto() { }
+	private Date   cbirth;
+	private Date   crdate;
+	public CustomerDto() {}
 	public CustomerDto(String cid, String cpw, String cname, String ctel, String cemail, String caddress,
 			String cgender, Date cbirth, Date crdate) {
 		this.cid = cid;
@@ -26,8 +23,6 @@ public class CustomerDto {
 		this.cbirth = cbirth;
 		this.crdate = crdate;
 	}
-	
-	
 	public String getCid() {
 		return cid;
 	}
@@ -88,3 +83,10 @@ public class CustomerDto {
 				+ ", caddress=" + caddress + ", cgender=" + cgender + ", cbirth=" + cbirth + ", crdate=" + crdate + "]";
 	}
 }
+
+
+
+
+
+
+

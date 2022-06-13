@@ -11,9 +11,9 @@
 	function chkJoinInfo(){
 		if(frmJoin.cpw.value!=frmJoin.cpwChk.value){
 			alert('비밀번호를 확인하세요');
-			frmJoin.pw.value = '';
-			frmJoin.pwChk.value = '';
-			frmJoin.pw.focus();
+			frmJoin.cpw.value = '';
+			frmJoin.cpwChk.value = '';
+			frmJoin.cpw.focus();
 			return false;
 		}
 	}

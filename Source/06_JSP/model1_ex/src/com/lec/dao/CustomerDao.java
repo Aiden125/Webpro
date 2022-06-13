@@ -17,20 +17,17 @@ import com.lec.dto.CustomerDto;
 public class CustomerDao {
 	public static final int SUCCESS = 1;
 	public static final int FAIL = 0;
-	public static final int CUSTOMER_EXISTENT = 1;
-	public static final int CUSTOMER_NONEXISTENT = 0;
+	public static final int CUSTOMER_NONEXISTENT = 1;
+	public static final int CUSTOMER_EXISTENT = 0;
 	public static final int LOGIN_SUCCESS = 1;
 	public static final int LOGIN_FAIL = 0;
-	
-	
 	// 싱글톤
 	private static CustomerDao instance = new CustomerDao();
 	public static CustomerDao getInstance() {
 		return instance;
 	}
 	private CustomerDao() {}
-	
-	//Connection 객체 리턴 함수(connection pool 활용)
+	// Connection 객체 얻어오는 함수
 	private Connection getConnection() throws SQLException {
 		Connection conn = null;
 		try {
@@ -42,49 +39,44 @@ public class CustomerDao {
 		}
 		return conn;
 	}
-	
-	
-	//1. 회원가입시 cID 중복 확인
+	//1. 회원가입시 CID중복 체크
 	public int confirmCid(String cid) {
-		int result = CUSTOMER_EXISTENT;
-		Connection conn = null;
+		int result = CUSTOMER_EXISTENT; // 초기화
+		Connection        conn  = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT * FROM CUSTOMER WHERE cID=?";
-		
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM CUSTOMER WHERE CID=?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "cid");
+			pstmt.setString(1, cid);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result = CUSTOMER_EXISTENT;
 			}else {
-				result = CUSTOMER_NONEXISTENT;				
+				result = CUSTOMER_NONEXISTENT;
 			}
-		} catch (SQLException e) {
+		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		}finally {
 			try {
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn!=null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			}catch (SQLException e) {
+				// TODO: handle exception
 			}
 		}
 		return result;
 	}
-	
-	
 	//2. 회원가입
 	public int insertCustomer(CustomerDto dto) {
 		int result = FAIL;
-		Connection conn = null;
+		Connection        conn  = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO CUSTOMER(cID, cPW, cNAME, cTEL,"
-				+ " cEMAIL, cADDRESS, cGENDER, cBIRTH) " + 
-				"    VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, "
+				+ 								"CGENDER, CBIRTH)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -98,106 +90,100 @@ public class CustomerDao {
 			pstmt.setDate(8, dto.getCbirth());
 			result = pstmt.executeUpdate();
 			System.out.println("회원가입 성공");
-		} catch (SQLException e) {
-			System.out.println(e.getMessage() + "회원가입 실패 : " + dto);
-		} finally {
+		}catch (SQLException e) {
+			System.out.println(e.getMessage() + "회원가입실패 : " +dto);
+		}finally {
 			try {
-				if(pstmt!=null) pstmt.close();
-				if(conn!=null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			}catch (SQLException e) {
+				// TODO: handle exception
 			}
 		}
 		return result;
 	}
-	
-	
-	// 3. 로그인(cid, cpw)
+	// 3. 로그인(CID/CPW)
 	public int loginCheck(String cid, String cpw) {
 		int result = LOGIN_FAIL;
-		Connection conn = null;
+		Connection        conn  = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT * FROM CUSTOMER WHERE cID=? AND cPW=?";
-		
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM CUSTOMER WHERE CID=? AND CPW=?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "cid");
-			pstmt.setString(2, "cpw");
+			pstmt.setString(1, cid);
+			pstmt.setString(2, cpw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result = LOGIN_SUCCESS;
 			}else {
 				result = LOGIN_FAIL;
 			}
-		} catch (SQLException e) {
+		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		}finally {
 			try {
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn!=null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			}catch (SQLException e) {
+				// TODO: handle exception
 			}
 		}
 		return result;
 	}
-	
-	
-	// 4. CID로 DTO 출력하기
+	// 4. CID로 DTO 가져오기
 	public CustomerDto getCustomer(String cid) {
 		CustomerDto dto = null;
-		Connection conn = null;
+		Connection        conn  = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT * FROM CUSTOMER WHERE cID=?";
-		
+		ResultSet         rs    = null;
+		String sql = "SELECT * FROM CUSTOMER WHERE CID=?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, cid);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				String cpw = rs.getString("cpw");
-				String cname = rs.getString("cname");
-				String ctel = rs.getString("ctel");
-				String cemail = rs.getString("cemail");
-				String caddress = rs.getString("caddress");
+				// String cid;
+				String cpw     = rs.getString("cpw");
+				String cname   = rs.getString("cname");
+				String ctel    = rs.getString("ctel");
+				String cemail  = rs.getString("cemail");;
+				String caddress= rs.getString("caddress");
 				String cgender = rs.getString("cgender");
-				Date cbirth = rs.getDate("cbirth");
-				Date crdate = rs.getDate("crdate");
-				dto = new CustomerDto(cid, cpw, cname, ctel, cemail,
-									caddress, cgender, cbirth, crdate);
+				Date   cbirth  = rs.getDate("cbirth");
+				Date   crdate  = rs.getDate("crdate");
+				dto = new CustomerDto(cid, cpw, cname, ctel, cemail, 
+								caddress, cgender, cbirth, crdate);
 			}
-		} catch (SQLException e) {
+		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		}finally {
 			try {
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn!=null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			}catch (SQLException e) {
+				// TODO: handle exception
 			}
 		}
 		return dto;
 	}
-	
-	
 	//5. 회원정보 수정
 	public int updateCustomer(CustomerDto dto) {
 		int result = FAIL;
-		Connection conn = null;
+		Connection        conn  = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE CUSTOMER SET cPW=?, " + 
-				"                    cNAME=?, " + 
-				"                    cEMAIL=?, " + 
-				"                    cADDRESS=?, " + 
-				"                    cGENDER=?, " + 
-				"                    cBIRTH=? " + 
-				"                WHERE cID=?";
+		String sql = "UPDATE CUSTOMER SET CPW=?, " + 
+				"                    CNAME=?," + 
+				"                    CTEL = ?," + 
+				"                    CEMAIL = ?," + 
+				"                    CADDRESS = ?," + 
+				"                    CGENDER = ?," + 
+				"                    CBIRTH = ?" + 
+				"            WHERE CID=?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -210,32 +196,29 @@ public class CustomerDao {
 			pstmt.setDate(7, dto.getCbirth());
 			pstmt.setString(8, dto.getCid());
 			result = pstmt.executeUpdate();
-			System.out.println("정보수정 성공");
-		} catch (SQLException e) {
-			System.out.println(e.getMessage() + "정보수정실패 : " + dto);
-		} finally {
+			System.out.println("회원수정 성공");
+		}catch (SQLException e) {
+			System.out.println(e.getMessage() + "회원수정실패 : " +dto);
+		}finally {
 			try {
-				if(pstmt!=null) pstmt.close();
-				if(conn!=null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			}catch (SQLException e) {
+				// TODO: handle exception
 			}
 		}
 		return result;
 	}
-	
-	
-	// 6. 회원 리스트 보기(출력)
+	//6. 회원 리스트 보기(첫화면 main.jsp에서 사용할 부분 - top-N)
 	public ArrayList<CustomerDto> listCustomer(int startRow, int endRow){
 		ArrayList<CustomerDto> dtos = new ArrayList<CustomerDto>();
-		Connection conn = null;
+		Connection        conn  = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		ResultSet         rs    = null;
 		String sql = "SELECT * " + 
-				"    FROM (SELECT ROWNUM RN, cID, cPW, cNAME, cEMAIL, cADDRESS " + 
-				"                        FROM(SELECT * FROM CUSTOMER ORDER BY cID)) " + 
+				"    FROM (SELECT ROWNUM RN, CID, CPW, CNAME, CEMAIL, CADDRESS " + 
+				"                FROM (SELECT * FROM CUSTOMER ORDER BY CID)) " + 
 				"    WHERE RN BETWEEN ? AND ?";
-		
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -243,53 +226,68 @@ public class CustomerDao {
 			pstmt.setInt(2, endRow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				String cid = rs.getString("cid");
-				String cpw = rs.getString("cpw");
-				String cname = rs.getString("cname");
-				String cemail = rs.getString("cemail");
-				String caddress = rs.getString("caddress");
-				dtos.add(new CustomerDto(cid, cpw, cname, null, cemail, caddress, null, null, null));
+				String cid     = rs.getString("cid");
+				String cpw     = rs.getString("cpw");
+				String cname   = rs.getString("cname");
+				String cemail  = rs.getString("cemail");;
+				String caddress= rs.getString("caddress");
+				dtos.add(new CustomerDto(cid, cpw, cname, null, cemail, 
+						caddress, null, null, null));
 			}
-		} catch (SQLException e) {
+		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		}finally {
 			try {
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn!=null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			}catch (SQLException e) {
+				// TODO: handle exception
 			}
 		}
 		return dtos;
 	}
-	
-	
-	// 7. 등록된 회원수 출력
+	// 7. 등록된 회원수
 	public int getCustomerCnt() {
 		int totCnt = 0;
-		Connection conn = null;
+		Connection        conn  = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		ResultSet         rs    = null;
 		String sql = "SELECT COUNT(*) TOTCNT FROM CUSTOMER";
-		
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			rs.next();
-			totCnt = rs.getInt("totCnt"); //무조건 숫자로 한줄 반환하기 때문에 if, while문 필요x
-		} catch (SQLException e) {
+			totCnt = rs.getInt("totcnt");
+		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
+		}finally {
 			try {
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn!=null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
+				if(rs    != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn  != null) conn.close();
+			}catch (SQLException e) {
+				// TODO: handle exception
 			}
 		}
 		return totCnt;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

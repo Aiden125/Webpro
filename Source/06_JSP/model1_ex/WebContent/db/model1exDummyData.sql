@@ -1,4 +1,6 @@
--- 고객(CUSTOMER)테이블 더미 데이터
+-- 고객(CUSTOMER)테이블 dummy data
+INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH) 
+    VALUES ('aaa','111','홍길동','010-9999-9123', 'aaa@naver.com', '서울시 강남구','m','1991-01-01');
 INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH) 
     VALUES ('bbb','111','유길동','010-9999-9999', 'bbb@naver.com', '서울시 용산구','m','1991-01-01');
 INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH) 
@@ -9,10 +11,8 @@ INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH)
     VALUES ('eee','111','신길동','010-9999-9999', 'eee@joeun.com', '경기도 파주시','m','1991-01-01');
 INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH) 
     VALUES ('fff','111','유길동','010-9999-9999', 'fff@naver.com', '경기도 남양주시','m','1991-01-01');
-INSERT INTO CUSTOMER (CID, CPW, CNAME, CTEL, CEMAIL, CADDRESS, CGENDER, CBIRTH) 
-    VALUES ('aaa','111','유길동','010-9999-9999', 'fff@naver.com', '경기도 남양주시','m','1991-01-01');
-    
--- 도서(BOOK) 테이블 더미 데이터
+
+-- 도서(BOOK)테이블 dummy data    
 INSERT INTO BOOK (bID, bTITLE, bPRICE, bIMAGE1, bIMAGE2, bCONTENT, bDISCOUNT)
     VALUES (BOOK_SEQ.NEXTVAL, '내일의 부',16000,'100.jpg','noImg.png','좋아',10);
 INSERT INTO BOOK (bID, bTITLE, bPRICE, bIMAGE1, bIMAGE2, bCONTENT, bDISCOUNT)
@@ -43,7 +43,8 @@ INSERT INTO BOOK (bID, bTITLE, bPRICE, bIMAGE1, bIMAGE2, bCONTENT, bDISCOUNT)
     VALUES (BOOK_SEQ.NEXTVAL, '여행의 이유',1800,'113.jpg','noImg.png','김영하의 여행 경험',10);
 INSERT INTO BOOK (bID, bTITLE, bPRICE, bIMAGE1, bIMAGE2, bCONTENT, bDISCOUNT)
     VALUES (BOOK_SEQ.NEXTVAL, '작은 아씨들',2000,'114.jpg','noImg.png','좋다 ',10);
--- 파일첨부게시판(FILEBOARD)테이블 더미 데이터
+
+-- 게시판(FileBoard)테이블 dummy data
 INSERT INTO FILEBOARD (fNUM, cID, fSUBJECT, fCONTENT, fFILENAME, fPW, 
                 fREF, fRE_STEP, fRE_LEVEL, fIP)
         VALUES (FILEBOARD_SEQ.NEXTVAL, 'aaa', 'titile','',null,'111',
@@ -60,12 +61,6 @@ INSERT INTO FILEBOARD (fNUM, cID, fSUBJECT, fCONTENT, fFILENAME, fPW,
                 fREF, fRE_STEP, fRE_LEVEL, fIP)
         VALUES (FILEBOARD_SEQ.NEXTVAL, 'aaa', '제목','내용',null,'111',
                 2, 1, 1, '192.168.20.44'); -- 2번글에 대한 첫번째 답변글 추가
-SELECT * FROM FILEBOARD;
-commit;
-
-SELECT * FROM FILEBOARD;
-SELECT * FROM CUSTOMER;
-SELECT * FROM BOOK;
-SELECT * FROM FILEBOARD;
+SELECT * FROM FILEBOARD ORDER BY FREF DESC, FRE_STEP;
 commit;
 

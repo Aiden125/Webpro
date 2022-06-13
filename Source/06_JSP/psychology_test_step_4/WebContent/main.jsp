@@ -9,6 +9,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="<%=conPath%>/css/style.css" rel="stylesheet">
+<style>
+	h3{
+		margin-top:100px;
+	}
+</style>
 </head>
 <body>
 <%
@@ -21,21 +26,11 @@
 	session.setAttribute("P", 0);
 	session.setAttribute("J", 0);
 %>
-
 <div id=wrap>
-	<form action="./page2.jsp" method="post">
-		<p>Q1/Q12</p>
-		<h4>어색한 분위기의 OT 나는?</h4>
+		<h3>자고 일어났는데 20살, <br>대학교 1학년이 되어있다면?</h3>
 		<table id=table>
-			<tr>
-				<td><label><input type="radio" name="page1" value="E" required="required">잘 맞을거 같은 사람에게 먼저 다가간다</label></td>
-			</tr>
-			<tr>
-				<td><label><input type="radio" name="page1" value="I">일단은 기다리며 주위를 둘러본다</label></td>
-			</tr>
 		</table>
-			<br><input type="submit" value="다음질문" id="submit">
-	</form>
+			<br><input type="button" onclick="location.href='./page1.jsp'" value="시작하기" id="submit">
 </div>
 </body>
 </html>

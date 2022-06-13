@@ -1,20 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+	String conPath = request.getContextPath();
+%>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-h1{
-	font-size:30px;
-	text-align:center;
-}
-h2{
-	font-size:20px;
-	text-align:center;
-}
-</style>
+<link href="<%=conPath%>/css/style.css" rel="stylesheet">
 </head>
 <body>
 <%
@@ -23,24 +17,21 @@ h2{
 	session.setAttribute(page1, value+1);
 %>
 
-
-<h2> E : <%=session.getAttribute("E") %>
-I : <%=session.getAttribute("I") %>
-S : <%=session.getAttribute("S") %>
-N : <%=session.getAttribute("N") %>
-F : <%=session.getAttribute("F") %>
-T : <%=session.getAttribute("T") %>
-P : <%=session.getAttribute("P") %>
-J : <%=session.getAttribute("J") %></h2>
-
-<h1>< 심리테스트 ></h1>
-<h2>F인지 T인지? </h2>
-<div align=center>
+<div id=wrap>
 	<form action="./page10.jsp" method="post">
-		<input type="radio" name="page1" value="F">F
-		<input type="radio" name="page1" value="T">T
-		<br><input type="submit" value="다음질문">
+		<p>Q9/Q12</p>
+		<h4>술마신 다음 날 늦은 오후까지 연락이 안되는 친구 나는?</h4>
+		<table id=table>
+			<tr>
+				<td><label><input type="radio" name="page1" value="F" required="required">그래도 그렇지 이정도면 무슨일 있는거 아니야?</label></td>
+			</tr>
+			<tr>
+				<td><label><input type="radio" name="page1" value="T">늦게까지 자네</label></td>
+			</tr>
+		</table>
+			<br><input type="submit" value="다음질문" id="submit">
 	</form>
 </div>
+
 </body>
 </html>

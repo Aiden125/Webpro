@@ -1,20 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+	String conPath = request.getContextPath();
+%>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-h1{
-	font-size:30px;
-	text-align:center;
-}
-h2{
-	font-size:20px;
-	text-align:center;
-}
-</style>
+<link href="<%=conPath%>/css/style.css" rel="stylesheet">
 </head>
 <body>
 <%
@@ -22,24 +16,19 @@ h2{
 	int value = (int)session.getAttribute(page1);
 	session.setAttribute(page1, value+1);
 %>
-
-
-<h2> E : <%=session.getAttribute("E") %>
-I : <%=session.getAttribute("I") %>
-S : <%=session.getAttribute("S") %>
-N : <%=session.getAttribute("N") %>
-F : <%=session.getAttribute("F") %>
-T : <%=session.getAttribute("T") %>
-P : <%=session.getAttribute("P") %>
-J : <%=session.getAttribute("J") %></h2>
-
-<h1>< 심리테스트 ></h1>
-<h2>S인지 N인지? </h2>
-<div align=center>
+<div id=wrap>
 	<form action="./page5.jsp" method="post">
-		<input type="radio" name="page1" value="S">S
-		<input type="radio" name="page1" value="N">N
-		<br><input type="submit" value="다음질문">
+		<p>Q4/Q12</p>
+		<h4>내 뒷담을 까고 다니는 친구가 있다는 소문이 들려온다</h4>
+		<table id=table>
+			<tr>
+				<td><label><input type="radio" name="page1" value="S" required="required">진짠가? 다른애들한테 좀 물어봐야겠다</label></td>
+			</tr>
+			<tr>
+				<td><label><input type="radio" name="page1" value="N">내가 걔한테 뭐 했나? 일단 지켜보자</label></td>
+			</tr>
+		</table>
+			<br><input type="submit" value="다음질문" id="submit">
 	</form>
 </div>
 </body>

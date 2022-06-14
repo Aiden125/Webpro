@@ -10,14 +10,15 @@
 	<link href="<%=conPath%>/css/style.css" rel="stylesheet">
 </head>
 <body>
-<%
-	String[] names = {"홍길동", "김길둑", "손석구"};
-// 	for(String name : names){
+
+<!-- // 	for(String name : names){
 // 		out.println("<p>"+name+"</p>");
 // 	}
 // 	for(int i=0; i<names.length; i++){
 // 		out.println("<p>"+i+"번째 이름 : "+names[i]+"</p>");
-// 	}
+// 	} -->
+<%
+	String[] names = {"홍길동", "김길둑", "손석구"};
 %>
 	<c:set var="names" value="<%=names %>"/><!-- 변수 선언 -->
 	<c:forEach var="name" items="${names }">

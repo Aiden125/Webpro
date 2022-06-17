@@ -53,13 +53,14 @@ public class BoardDao {
 				int bid = rs.getInt("bid");
 				String bname = rs.getString("bname");
 				String btitle = rs.getString("btitle");
+				String bcontent = rs.getString("bcontent");
 				Date bdate = rs.getDate("bdate");
 				int bhit = rs.getInt("bhit");
 				int bgroup = rs.getInt("bgroup");
 				int bstep = rs.getInt("bstep");
 				int bindent = rs.getInt("bindent");
 				String bip = rs.getString("bip");
-				dtos.add(new BoardDto(bid, bname, btitle, bdate, bhit, bgroup, bstep, bindent, bip));
+				dtos.add(new BoardDto(bid, bname, btitle, bcontent, bdate, bhit, bgroup, bstep, bindent, bip));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -108,7 +109,7 @@ public class BoardDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO BOARD (bID, bNAME, bTITLE, bCONTENT, bGROUP, bSTEP, bINDENT, bIP) " + 
-				" VALUES(BOARD_SEQ.NEXTVAL, '?, ?, ?, BOARD_SEQ.CURRVAL, 0, 0, ?)";
+				" VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, BOARD_SEQ.CURRVAL, 0, 0, ?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -168,13 +169,14 @@ public class BoardDao {
 			if(rs.next()) {
 				String bname = rs.getString("bname");
 				String btitle = rs.getString("btitle");
+				String bcontent = rs.getString("bcontent");
 				Date bdate = rs.getDate("bdate");
 				int bhit = rs.getInt("bhit");
 				int bgroup = rs.getInt("bgroup");
 				int bstep = rs.getInt("bstep");
 				int bindent = rs.getInt("bindent");
 				String bip = rs.getString("bip");
-				dto = new BoardDto(bid, bname, btitle, bdate, bhit, bgroup, bstep, bindent, bip);
+				dto = new BoardDto(bid, bname, btitle, bcontent, bdate, bhit, bgroup, bstep, bindent, bip);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -205,13 +207,14 @@ public class BoardDao {
 			if(rs.next()) {
 				String bname = rs.getString("bname");
 				String btitle = rs.getString("btitle");
+				String bcontent = rs.getString("bcontent");
 				Date bdate = rs.getDate("bdate");
 				int bhit = rs.getInt("bhit");
 				int bgroup = rs.getInt("bgroup");
 				int bstep = rs.getInt("bstep");
 				int bindent = rs.getInt("bindent");
 				String bip = rs.getString("bip");
-				dto = new BoardDto(bid, bname, btitle, bdate, bhit, bgroup, bstep, bindent, bip);
+				dto = new BoardDto(bid, bname, btitle, bcontent, bdate, bhit, bgroup, bstep, bindent, bip);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

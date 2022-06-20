@@ -75,8 +75,10 @@
 					<tr>
 						<td>${dto.bid }</td>
 						<td>${dto.bname }</td>
+						
 						<!-- 글제목 -->
 						<td class="left">
+						
 							<!-- 답변글 들여쓰기 -->
 							<c:forEach var="i" begin="1" end="${dto.bindent }">
 								<c:if test="${i eq dto.bindent }">
@@ -88,6 +90,7 @@
 							</c:forEach>
 							<a href="${conPath }/content_view.do?bid=${dto.bid }&pageNum=${pageNum }">
 							${dto.btitle }</a>
+							
 							<!-- 조회수 10이상이면 * 넣기 -->
 							<c:if test="${dto.bhit >= 10 }">
 								<b> * </b>
@@ -95,7 +98,7 @@
 						</td> 
 						<td>${dto.bip }</td>
 						<td><fmt:formatDate value="${dto.bdate }" pattern="yy년MM월dd일(E)"/></td>
-						<td>${dto.bhit }</td>						
+						<td>${dto.bhit }</td>
 					</tr>
 				</c:forEach>
 			</c:if>

@@ -10,13 +10,13 @@ public class MemberDto {
 	private String mphoto;
 	private Date mbirth;
 	private String maddress;
-	private Date rdate;
+	private Date mrdate;
 	
 	public MemberDto() {
 	}
 
 	public MemberDto(String mid, String mpw, String mname, String memail, String mphoto, Date mbirth, String maddress,
-			Date rdate) {
+			Date mrdate) {
 		super();
 		this.mid = mid;
 		this.mpw = mpw;
@@ -25,7 +25,7 @@ public class MemberDto {
 		this.mphoto = mphoto;
 		this.mbirth = mbirth;
 		this.maddress = maddress;
-		this.rdate = rdate;
+		this.mrdate = mrdate;
 	}
 
 	public String getMid() {
@@ -84,20 +84,22 @@ public class MemberDto {
 		this.maddress = maddress;
 	}
 
-	public Date getRdate() {
-		return rdate;
+	
+
+	public Date getMrdate() {
+		return mrdate;
 	}
 
-	public void setRdate(Date rdate) {
-		this.rdate = rdate;
+	public void setMrdate(Date mrdate) {
+		this.mrdate = mrdate;
 	}
 
 	@Override
 	public String toString() {
 		return "MemberDto [mid=" + mid + ", mpw=" + mpw + ", mname=" + mname + ", memail=" + memail + ", mphoto="
-				+ mphoto + ", mbirth=" + mbirth + ", maddress=" + maddress + ", rdate=" + rdate + "]";
+				+ mphoto + ", mbirth=" + mbirth + ", maddress=" + maddress + ", mrdate=" + mrdate + "]";
 	}
-	
+
 	
 	
 }

@@ -25,10 +25,10 @@ INSERT INTO MVC_MEMBER (mID, mPw, mName, mEmail, mPhoto, mBirth, mAddress)
     VALUES ('han','1','한지민','han@naver.com','han.jpg','1982/11/05','서울시');
 
 -- 1. 로그인
-SELECT * FROM MVC_MEMBER WHERE mID='111' AND mPW='1234';
+SELECT * FROM MVC_MEMBER WHERE mID='aaa' AND mPW='1234';
 
 -- 2. ID로 DTO 가져오기
-SELECT * FROM MVC_MEMBER WHERE mID='111';
+SELECT * FROM MVC_MEMBER WHERE mID='aaa';
 
 -- 3. 로그인 중복체크
 SELECT * FROM MVC_MEMBER WHERE mID='111';
@@ -56,7 +56,10 @@ SELECT *
 -- 7. 회원 수 보기
 SELECT COUNT(*) TOTCNT
     FROM MVC_MEMBER;
-    
+
+
+COMMIT;
+SELECT * FROM MVC_MEMBER;
 
 
 

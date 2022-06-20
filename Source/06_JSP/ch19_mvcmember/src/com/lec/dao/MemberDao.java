@@ -17,6 +17,8 @@ import com.lec.dto.MemberDto;
 public class MemberDao {
 	public static final int SUCCESS = 1;
 	public static final int FAIL = 0;
+	public static final int LOGIN_SUCCESS = 1;
+	public static final int LOGIN_FAIL = 0;
 	private DataSource ds = null;
 	
 	// 싱글톤
@@ -24,6 +26,7 @@ public class MemberDao {
 	public static MemberDao getInstance() {
 		return instance;
 	}
+	// 커넥션풀
 	private MemberDao() {
 		try {
 			Context ctx = new InitialContext();
@@ -78,9 +81,9 @@ public class MemberDao {
 			pstmt.setString(2, mpw);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				result = FAIL;
-			}else {
 				result = SUCCESS;
+			}else {
+				result = FAIL;
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -99,7 +102,7 @@ public class MemberDao {
 	
 	// 3. mID로 DTO 가져오기
 	public MemberDto getMember(String mid) {
-		MemberDto dto = null;
+		MemberDto member = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -116,11 +119,11 @@ public class MemberDao {
 				String mphoto = rs.getString("mphoto");
 				Date mbirth = rs.getDate("mbirth");
 				String maddress = rs.getString("maddress");
-				Date rdate = rs.getDate("rdate");
-				dto = new MemberDto(mid, mpw, mname, memail, mphoto, mbirth, maddress, rdate);
+				Date mrdate = rs.getDate("mrdate");
+				member = new MemberDto(mid, mpw, mname, memail, mphoto, mbirth, maddress, mrdate);
 			}
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println(e.getMessage() + member);
 		} finally {
 			try {
 				if(rs!=null) rs.close();
@@ -131,7 +134,7 @@ public class MemberDao {
 				e.printStackTrace();
 			}
 		}
-		return dto;
+		return member;
 	}
 	
 	// 4. 회원가입
@@ -226,8 +229,8 @@ public class MemberDao {
 				String mphoto = rs.getString("mphoto");
 				Date mbirth = rs.getDate("mbirth");
 				String maddress = rs.getString("maddress");
-				Date rdate = rs.getDate("rdate");
-				dtos.add(new MemberDto(mid, mpw, mname, memail, mphoto, mbirth, maddress, rdate));
+				Date mrdate = rs.getDate("mrdate");
+				dtos.add(new MemberDto(mid, mpw, mname, memail, mphoto, mbirth, maddress, mrdate));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

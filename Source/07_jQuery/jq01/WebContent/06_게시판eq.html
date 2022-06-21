@@ -7,10 +7,10 @@
 	<script>
 		$(document).ready(function(){
 			$('tr').click(function(){
-				var no = $(this).children().eq(1).text();
-				// alert(no);
+				var no = $(this).children().eq(0).text();
+				 alert(no);
 				if(!isNaN(Number(no))){
-					alert('상세보기 페이지로 가자');
+					alert('상세보기 페이지로 이동됩니다');
 					location.href='03_toggle.html?no='+no+'&pageNum=';
 				}
 			});

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		td{
+			width:100px; height:100px; background-color:lightgreen;
+		}
+		.tdRed{
+			background-color:red;
+		}
+		.image {
+		    background-image: url(img/dduk.jpg);
+		    background-size: contain;
+		    background-repeat: no-repeat;
+		    background-position: center;
+		    border:1px solid black;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('td').click(function(){
+				$('td').removeClass('tdRed');
+				$('td').removeClass('image');
+				var no = $(this).attr('id');
+				var number = Math.ceil(Math.random()*8);
+				if(number == no){
+					$(this).addClass('image');
+					$('.result').text('정답입니다');
+				}else{
+					$(this).addClass('tdRed');
+					$('.result').text('틀렸습니다 정답은'+number);
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td id="0"></td><td id="1"></td><td id="2"></td>
+		</tr>
+		<tr>
+			<td id="3"></td><td id="4"></td><td id="5"></td>
+		</tr>
+		<tr>
+			<td id="6"></td><td id="7"></td><td id="8"></td>
+		</tr>
+	</table>
+	<p class="result"></p>
+</body>
+</html>

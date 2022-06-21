@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style></style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		var array = [{name: '가메출판사', link:'http://www.kame.co.kr'},
+					{name: '한빛미디어', link:'http://www.han.co.kr'},
+					{name: '다음', link:'http://www.daum.co.kr'},
+					{name: '구글', link:'http://www.google.co.kr'},
+					];
+		var out = '';
+		$.each(array, function(idx, item){
+			out += '<h1><a href="'+item.link+'">'+item.name+'</a></h1>';
+		});
+		$('body').html(out);
+	
+	
+		/* $.each(array, function(idx, item){ // 배열방이 4개기 때문에 4번 반복
+			$('body').html($('body').html() + '<h1>TEST</h1>'); // 바디에 test를 뿌려라
+		}); */
+	});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

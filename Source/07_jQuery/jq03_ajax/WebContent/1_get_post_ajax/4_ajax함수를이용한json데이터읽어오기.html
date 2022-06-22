@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		table{
+			border-collapse: collapse;
+		}
+		tr{
+			border-bottom:1px solid blue;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$.ajax({
+				url : 'ex.json',
+				dataType : 'json',
+				success : function(data){
+					out = '<tr><th>ID</th><th>NAME</th><th>PRICE</th><th>description</th></tr>';
+					$.each(data, function(idx, item){
+						out += '<tr><th>'+item.id+'</th><th>'+item.name+'</th><th>'
+								+item.price+'</th><th>'+item.description+'</th></tr>';
+					}); // $.each함수
+					$('#dataShow').html(out);
+				} // seucccess속성
+			}); // $.ajax함수
+		});
+	</script>
+</head>
+<body>
+	<table id="dataShow"></table>	
+</body>
+</html>

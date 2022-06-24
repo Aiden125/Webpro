@@ -15,8 +15,8 @@ import javax.sql.DataSource;
 import com.lec.dto.FileBoardDto;
 
 public class FileBoardDao {
-	final static int FAIL = 0;
-	final static int SUCCESS = 1;
+	public final static int FAIL = 0;
+	public final static int SUCCESS = 1;
 	DataSource ds = null;
 	
 	private static FileBoardDao instance = new FileBoardDao();
@@ -116,26 +116,26 @@ public class FileBoardDao {
 	
 	
 	// 3. 원글쓰기(insert)
-	public int writeBoard(FileBoardDto dto) {
+	public int writeBoard(String mid, String ftitle, String fcontent, String ffilename,
+			String fip) {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO FILEBOARD (fID, mID, fTITLE, fCONTENT, fFILENAME, " + 
 				"                fGROUP, fSTEP, fINDENT, fIP) " + 
 				"        VALUES(FILE_SEQ.NEXTVAL, ?, ?, ?, ?, " + 
-				"                FILE_SEQ.CURRVAL, ?, ?, ?)";
+				"                FILE_SEQ.CURRVAL, 0, 0, ?)";
 		
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getMid());
-			pstmt.setString(2, dto.getFtitle());
-			pstmt.setString(3, dto.getFcontent());
-			pstmt.setString(4, dto.getFfilename());
-			pstmt.setInt(5, dto.getFstep());
-			pstmt.setInt(6, dto.getFindent());
-			pstmt.setString(7, dto.getFip());
+			pstmt.setString(1, mid);
+			pstmt.setString(2, ftitle);
+			pstmt.setString(3, fcontent);
+			pstmt.setString(4, ffilename);
+			pstmt.setString(5, fip);
 			result = pstmt.executeUpdate();
+			System.out.println(result==SUCCESS? "원글쓰기 성공" : "원글쓰기 실패");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {

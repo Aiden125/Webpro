@@ -1,3 +1,4 @@
+package step3;
 import java.util.Scanner;
 
 public class test_step3_1110 {

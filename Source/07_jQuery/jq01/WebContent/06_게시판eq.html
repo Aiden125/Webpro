@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('tr').click(function(){
+				var no = $(this).children().eq(0).text();
+				 alert(no);
+				if(!isNaN(Number(no))){
+					alert('상세보기 페이지로 이동됩니다');
+					location.href='03_toggle.html?no='+no+'&pageNum=';
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>글번호</th><th>글제목</th><th>글쓴이</th><th>조회수</th>
+		</tr>
+		<tr>
+			<th>4</th><th>제목4</th><th>홍구리</th><th>45</th>
+		</tr>
+		<tr>
+			<th>3</th><th>제목3</th><th>김홍박</th><th>31</th>
+		</tr>
+		<tr>
+			<th>2</th><th>제목2</th><th>홍진호</th><th>22</th>
+		</tr>
+		<tr>
+			<th>1</th><th>제목1</th><th>김유공</th><th>51</th>
+		</tr>
+		
+	</table>
+</body>
+</html>

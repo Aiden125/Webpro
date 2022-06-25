@@ -10,7 +10,7 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<c:set var="vistiNum" value="${param.visitNum }"/>
+	<c:set var="visitNum" value="${param.visitNum }"/>
 	<c:choose>
 		<c:when test="${visitNum eq 0 }">
 			<h2>첫 방문 감사합니다</h2>

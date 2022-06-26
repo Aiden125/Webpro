@@ -1,17 +1,29 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.StringTokenizer;
 
 public class test_step4_8958 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int x = Integer.parseInt(br.readLine());
-		boolean[] arr = new boolean[x];
-		for(int i=0; i<x; i++) {
-			
+		int n = Integer.parseInt(br.readLine());
+		int total = 0, cnt = 0;
+		Character a;
+		String x;
+		for (int i = 0; i < n; i++) {
+			x = br.readLine();
+			for (int j = 0; j < x.length(); j++) {
+				a = x.charAt(j);
+				if (a.equals('O')) {
+					cnt++;
+					total += cnt;
+				} else {
+					cnt = 0;
+				}
+				total += cnt;
+			}
+			System.out.println(total/2);
+			cnt = 0;
+			total = 0;
 		}
 	}
 }

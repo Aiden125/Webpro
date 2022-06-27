@@ -44,6 +44,7 @@ SELECT COUNT(*) CNT FROM BOOK;
 -- 책 상세보기(bID로 dto가져오기)
 SELECT * FROM BOOK WHERE BID=1;
 
+
 -- ★ ★ 파일첨부게시판(FILEBOARD) 테이블 DAO ★ ★ 
 -- 1. 글목록(startRow~endRow)
     SELECT F.*, CNAME, CEMAIL

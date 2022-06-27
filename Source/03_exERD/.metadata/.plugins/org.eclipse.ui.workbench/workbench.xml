@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="14" version="2.0">
 <workbenchAdvisor/>
-<window height="768" width="1202" x="50" y="60">
+<window height="768" width="1515" x="52" y="44">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -137,7 +137,7 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottomFolder" ratio="0.6996904" ratioLeft="452" ratioRight="194" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottomFolder" ratio="0.9291085" ratioLeft="865" ratioRight="66" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="com.tomato.exerd.ui.views.domain" appearance="2" expanded="2">
 <page content="com.tomato.exerd.ui.views.domain" label="도메인"/>
 <page content="com.tomato.exerd.validate.ui.ValidateView" label="검토"/>
@@ -168,6 +168,7 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/데이터베이스구현평가.exerd"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/MBTI선물.exerd"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/0418member_review.exerd"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/데이터베이스구현평가.exerd"/>
 </editors>
 <item historyLabel="데이터베이스구현평가.exerd" index="0"/>
 <item historyLabel="MBTI선물.exerd" index="1"/>
@@ -192,6 +193,14 @@
 <item historyLabel="0418member_review.exerd" index="2"/>
 <item historyLabel="MBTI선물.exerd" index="1"/>
 <item historyLabel="0418member_review.exerd" index="2"/>
+<item historyLabel="MBTI선물.exerd" index="1"/>
+<item historyLabel="데이터베이스구현평가.exerd" index="3"/>
+<item historyLabel="MBTI선물.exerd" index="1"/>
+<item historyLabel="데이터베이스구현평가.exerd" index="3"/>
+<item historyLabel="MBTI선물.exerd" index="1"/>
+<item historyLabel="데이터베이스구현평가.exerd" index="3"/>
+<item historyLabel="MBTI선물.exerd" index="1"/>
+<item historyLabel="데이터베이스구현평가.exerd" index="3"/>
 <item active="true" historyLabel="MBTI선물.exerd" index="1"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

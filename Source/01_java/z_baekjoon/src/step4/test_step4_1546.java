@@ -1,3 +1,4 @@
+package step4;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,20 +12,22 @@ public class test_step4_1546 {
 		st = new StringTokenizer(br.readLine());
 		int arr[] = new int[n];
 		int max = -1;
-		double score = 0.0;
-		double totScore = 0.0;
-		for(int i=0; i<n; i++) {
+		double score = 0;
+		double totScore = 0;
+		
+		// max 값 추출 문제x
+		for(int i=0; i<n; i++) { 
 			arr[i] = Integer.parseInt(st.nextToken());
 			if(arr[i] > max) {
 				max = arr[i];
 			}
 		}
+		
 		for(int i=0; i<n; i++) {
-			score = ((double)(arr[i]/max))*100;
-			System.out.println(score);
+			score = (((double)arr[i]/max));
+			score *= 100;
 			totScore += score;
 		}
-		System.out.println(max);
-		System.out.println(totScore);
+		System.out.println(totScore/n);
 	}
 }

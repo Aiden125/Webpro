@@ -19,9 +19,8 @@ public class test_step4_8958 {
 				} else {
 					cnt = 0;
 				}
-				total += cnt;
 			}
-			System.out.println(total/2);
+			System.out.println(total);
 			cnt = 0;
 			total = 0;
 		}

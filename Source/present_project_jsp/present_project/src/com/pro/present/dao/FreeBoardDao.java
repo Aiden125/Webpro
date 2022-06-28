@@ -55,7 +55,7 @@ public class FreeBoardDao {
 			while(rs.next()) {
 				int bno = rs.getInt("bno");
 				String mid = rs.getString("mid");
-				int mbti = rs.getInt("mbti");
+				int bmbti = rs.getInt("bmbti");
 				String btitle = rs.getString("btitle");
 				String bcontent = rs.getString("bcontent");
 				String bfilename = rs.getString("bfilename");
@@ -68,7 +68,9 @@ public class FreeBoardDao {
 				String bip = rs.getString("bip");
 				int banswercount = rs.getInt("banwercount");
 				int bdeletemark = rs.getInt("bdeletemark");
-				dtos.add(new FreeBoardDto(bno, mid, mbti, btitle, bcontent, bfilename, brdate, bhit, bgroup, bstep, bindent, blike, bip, banswercount, bdeletemark));
+				String mname = rs.getString("mname");
+				String mmbti = rs.getString("mmbti");
+				dtos.add(new FreeBoardDto(bno, mid, bmbti, btitle, bcontent, bfilename, brdate, bhit, bgroup, bstep, bindent, blike, bip, banswercount, bdeletemark, mname, mmbti));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -113,19 +115,19 @@ public class FreeBoardDao {
 	
 	
 	// 3. 자유게시판 원글쓰기
-	public int write(String mid, String mbtimame, String btitle, String bcontent, String bfilename, String bip) {
+	public int write(String mid, String bmbti, String btitle, String bcontent, String bfilename, String bip) {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO FREEBOARD(bNO, mID, MBTI, bTITLE, bCONTENT, bFILENAME, " + 
+		String sql = "INSERT INTO FREEBOARD(bNO, mID, bMBTI, bTITLE, bCONTENT, bFILENAME, " + 
 				"                bGROUP, bSTEP, bINDENT, bIP) " + 
-				"        VALUES(FREEBOARD_SEQ.NEXTVAL, ?, (SELECT MBTI FROM MBTI WHERE MBTINAME=?), ?, ?, ?, " + 
+				"        VALUES(FREEBOARD_SEQ.NEXTVAL, ?, ?, ?, ?, ?, " + 
 				"                FREEBOARD_SEQ.CURRVAL, 0, 0, ?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
-			pstmt.setString(2, mbtimame);
+			pstmt.setString(2, bmbti);
 			pstmt.setString(3, btitle);
 			pstmt.setString(4, bcontent);
 			pstmt.setString(5, bfilename);
@@ -170,22 +172,21 @@ public class FreeBoardDao {
 	
 	
 	// 5. 답변글 쓰기
-	public int reply(String mid, String bname, String btitle, String bcontent, String bfilename,
+	public int reply(String mid, String bmbti, String btitle, String bcontent, String bfilename,
 						String bip, int bgroup, int bstep, int bindent) {
 		int result = FAIL;
 		replyStep(bgroup, bstep);
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO FREEBOARD(bNO, mID, MBTI, bTITLE, bCONTENT, bFILENAME, " + 
+		String sql = "INSERT INTO FREEBOARD(bNO, mID, bMBTI, bTITLE, bCONTENT, bFILENAME, " + 
 				"                bGROUP, bSTEP, bINDENT, bIP) " + 
-				"        VALUES(FREEBOARD_SEQ.NEXTVAL, ?, " + 
-				"            (SELECT M.MBTI FROM MEMBER M, MBTI T WHERE M.MBTI=T.MBTI AND mID=?), " + 
+				"        VALUES(FREEBOARD_SEQ.NEXTVAL, ?, ?, " + 
 				"            ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
-			pstmt.setString(2, mid);
+			pstmt.setString(2, bmbti);
 			pstmt.setString(3, btitle);
 			pstmt.setString(4, bcontent);
 			pstmt.setString(5, bfilename);
@@ -205,5 +206,284 @@ public class FreeBoardDao {
 			}
 		}
 		return result;
+	}
+	
+	
+	// 6. bno로 dto가져오기 = 글 상세보기(조회수 올리기 포함)
+	public FreeBoardDto contentViewAndHit(int bno) {
+		FreeBoardDto dto = null;
+		hitUp(bno); // 글 상세보기시 자동적으로 hitUp
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT B.*, M.mMBTI, M.mNAME " + 
+				"        FROM FREEBOARD B, MEMBER M " + 
+				"        WHERE B.mID=M.mID AND bNO=? AND bDELETEMARK=0";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				String mid = rs.getString("mid");
+				int bmbti = rs.getInt("bmbti");
+				String btitle = rs.getString("btitle");
+				String bcontent = rs.getString("bcontent");
+				String bfilename = rs.getString("bfilename");
+				Date brdate = rs.getDate("brdate");
+				int bhit = rs.getInt("bhit");
+				int bgroup = rs.getInt("bgroup");
+				int bstep = rs.getInt("bstep");
+				int bindent = rs.getInt("bindent");
+				int blike = rs.getInt("blike");
+				String bip = rs.getString("bip");
+				int banswercount = rs.getInt("banwercount");
+				int bdeletemark = rs.getInt("bdeletemark");
+				String mname = rs.getString("mname");
+				String mmbti = rs.getString("mmbti");
+				dto = new FreeBoardDto(bno, mid, bmbti, btitle, bcontent, bfilename, brdate, bhit, bgroup, bstep, bindent, blike, bip, banswercount, bdeletemark, mname, mmbti);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+				if(rs!=null) rs.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return dto;
+	}
+	
+	
+	
+	// 7-1. 조회수 올리기
+	private void hitUp(int bno) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE FREEBOARD SET bHIT = bHIT+1 WHERE bNO=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+	
+	// 7-2. 좋아요 올리기
+	public void likeUp(int bno) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE FREEBOARD SET bLIKE = bLIKE+1 WHERE bNO=1";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+		
+	
+	// 8. bno로 dto가져오기 = 글 상세보기(조회수 올리기 미포함)
+	public FreeBoardDto contentView(int bno) {
+		FreeBoardDto dto = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT B.*, M.mMBTI, M.mNAME " + 
+				"        FROM FREEBOARD B, MEMBER M " + 
+				"        WHERE B.mID=M.mID AND bNO=? AND bDELETEMARK=0";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				String mid = rs.getString("mid");
+				int bmbti = rs.getInt("bmbti");
+				String btitle = rs.getString("btitle");
+				String bcontent = rs.getString("bcontent");
+				String bfilename = rs.getString("bfilename");
+				Date brdate = rs.getDate("brdate");
+				int bhit = rs.getInt("bhit");
+				int bgroup = rs.getInt("bgroup");
+				int bstep = rs.getInt("bstep");
+				int bindent = rs.getInt("bindent");
+				int blike = rs.getInt("blike");
+				String bip = rs.getString("bip");
+				int banswercount = rs.getInt("banwercount");
+				int bdeletemark = rs.getInt("bdeletemark");
+				String mname = rs.getString("mname");
+				String mmbti = rs.getString("mmbti");
+				dto = new FreeBoardDto(bno, mid, bmbti, btitle, bcontent, bfilename, brdate, bhit, bgroup, bstep, bindent, blike, bip, banswercount, bdeletemark, mname, mmbti);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+				if(rs!=null) rs.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return dto;
+	}
+	
+	
+	// 9. 답변들 상세보기
+	public ArrayList<FreeBoardDto> listAnswerBoard(int bgroup, int bno){
+		ArrayList<FreeBoardDto> dtos = new ArrayList<FreeBoardDto>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT B.*, M.mMBTI, M.mNAME " + 
+				"        FROM FREEBOARD B, MEMBER M " + 
+				"        WHERE B.mID=M.mID AND bGROUP=? AND bNO!=? AND bDELETEMARK=0";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bgroup);
+			pstmt.setInt(2, bno);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String mid = rs.getString("mid");
+				int bmbti = rs.getInt("bmbti");
+				String btitle = rs.getString("btitle");
+				String bcontent = rs.getString("bcontent");
+				String bfilename = rs.getString("bfilename");
+				Date brdate = rs.getDate("brdate");
+				int bhit = rs.getInt("bhit");
+				int bstep = rs.getInt("bstep");
+				int bindent = rs.getInt("bindent");
+				int blike = rs.getInt("blike");
+				String bip = rs.getString("bip");
+				int banswercount = rs.getInt("banwercount");
+				int bdeletemark = rs.getInt("bdeletemark");
+				String mname = rs.getString("mname");
+				String mmbti = rs.getString("mmbti");
+				dtos.add(new FreeBoardDto(bno, mid, bmbti, btitle, bcontent, bfilename, brdate, bhit, bgroup, bstep, bindent, blike, bip, banswercount, bdeletemark, mname, mmbti));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+				if(rs!=null) rs.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return dtos;
+	}
+	
+	
+	// 10. 글 수정
+	public int modify(int bno, String bmbti, String btitle, String bcontent, String bfilename, String bip) {
+		int result = FAIL;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE FREEBOARD SET bMBTI=?, " + 
+				"                    bTITLE=?, " + 
+				"                    bCONTENT=?, " + 
+				"                    bFILENAME=?, " + 
+				"                    bIP=? " + 
+				"            WHERE bNO=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bmbti);
+			pstmt.setString(2, btitle);
+			pstmt.setString(3, bcontent);
+			pstmt.setString(4, bfilename);
+			pstmt.setString(5, bip);
+			pstmt.setInt(6, bno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
+	
+	// 11. 글 삭제
+	public int delete(int bno) {
+		int result = FAIL;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE FREEBOARD SET bDELETEMARK = 1 WHERE bNO=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
+	
+	
+	// 12. 답글 몇개 달렸는지
+	public int replyCount(int bgroup) {
+		int totCnt = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT COUNT(*)-1 FROM FREEBOARD WHERE bGROUP=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bgroup);
+			rs = pstmt.executeQuery();
+			rs.next();
+			totCnt = rs.getInt("1");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+				if(rs!=null) rs.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return totCnt;
 	}
 }

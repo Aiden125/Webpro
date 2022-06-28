@@ -17,8 +17,6 @@ import com.pro.present.dto.MemberDto;
 public class MemberDao {
 	public static final int SUCCESS = 1;
 	public static final int FAIL = 0;
-	public static final int LOGIN_SUCCESS = 1;
-	public static final int LOGIN_FAIL = 0;
 	private DataSource ds = null;
 	
 	// 싱글톤
@@ -69,8 +67,8 @@ public class MemberDao {
 	}
 		
 	// 2. dto 정보 가져오기
-	public int getMemberDto(String mid) {
-		int result = FAIL;
+	public MemberDto getMemberDto(String mid) {
+		MemberDto dto = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -81,9 +79,16 @@ public class MemberDao {
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				result = FAIL;
-			}else {
-				result = SUCCESS;
+				String mpw = rs.getString("mpw");
+				Date mbirth = rs.getDate("mbirth");
+				String mname = rs.getString("mname");
+				String mgender = rs.getString("mgender");
+				String memail = rs.getString("memail");
+				String mmbti = rs.getString("mmbti");
+				Date mrdate = rs.getDate("mrdate");
+				int mlike = rs.getInt("mlike");
+				int mwritecount = rs.getInt("mwritecount");
+				dto = new MemberDto(mid, mpw, mname, mbirth, mgender, memail, mmbti, mrdate, mlike, mwritecount);	
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -96,7 +101,7 @@ public class MemberDao {
 				e.printStackTrace();
 			}
 		}
-		return result;
+		return dto;
 	}
 				
 				
@@ -139,7 +144,7 @@ public class MemberDao {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO MEMBER(mID, mPW, mNAME, mBIRTH, mGENDER, MBTI) " + 
+		String sql = "INSERT INTO MEMBER(mID, mPW, mNAME, mBIRTH, mGENDER, mMBTI) " + 
 				"    VALUES(?, ?, ?, ?, ?, ?)";
 		try {
 			conn = ds.getConnection();
@@ -149,7 +154,7 @@ public class MemberDao {
 			pstmt.setString(3, dto.getMname());
 			pstmt.setDate(4, dto.getMbirth());
 			pstmt.setString(5, dto.getMgender());
-			pstmt.setInt(6, dto.getMbti());
+			pstmt.setString(6, dto.getMmbti());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -165,39 +170,37 @@ public class MemberDao {
 	}
 	
 	
-	// 5. 회원리스트 보기
-	public ArrayList<MemberDto> listMember(int startRow, int endRow){
+	// 5. 회원리스트 보기(+검색)
+	public ArrayList<MemberDto> listMember(String mname, int startRow, int endRow){
 		ArrayList<MemberDto> dtos = new ArrayList<MemberDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT * " + 
 				"    FROM (SELECT ROWNUM RN, A.* " + 
-				"        FROM(SELECT MBTINAME, mGENDER, mNAME, LEVELNAME, mWRITECOUNT, mLIKE " + 
-				"                FROM MEMBER M, MEMBER_LEVEL L, MBTI T  " + 
-				"                WHERE M.LEVELNO=L.LEVELNO AND M.MBTI=T.MBTI " + 
-				"                ORDER BY M.LEVELNO DESC, mLIKE DESC) A) " + 
-				"    WHERE RN BETWEEN ? AND ?";
+				"        FROM(SELECT * " + 
+				"                FROM MEMBER " + 
+				"                ORDER BY mLIKE DESC) A) " + 
+				"    WHERE mNAME LIKE '%'||?||'%' AND RN BETWEEN ? AND ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			pstmt.setString(1, mname);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				String mid = rs.getString("mid");
-				String mpw = rs.getString("mpw");
-				String mname = rs.getString("mname");
+				String mpw = rs.getString("mpw");				
+				// String mmname = rs.getString("mname");				
 				Date mbirth = rs.getDate("mbirth");
 				String mgender = rs.getString("mgender");
-				int mbti = rs.getInt("mbti");
+				String memail = rs.getString("memail");
+				String mmbti = rs.getString("mmbti");
 				Date mrdate = rs.getDate("mrdate");
-				int levelno = rs.getInt("levelno");
 				int mlike = rs.getInt("mlike");
 				int mwritecount = rs.getInt("mwritecount");
-				String mbtiname = rs.getString("mbtiname");
-				String levelname = rs.getString("levelname");
-				dtos.add(new MemberDto(mid, mpw, mname, mbirth, mgender, mbti, mrdate, levelno, mlike, mwritecount, mbtiname, levelname));
+				dtos.add(new MemberDto(mid, mpw, mname, mbirth, mgender, memail, mmbti, mrdate, mlike, mwritecount));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -223,7 +226,7 @@ public class MemberDao {
 				"                  mNAME=?, " + 
 				"                  mBIRTH=?, " + 
 				"                  mGENDER=?, " + 
-				"                  MBTI=? " + 
+				"                  mMBTI=? " + 
 				"        WHERE mID=?";
 		try {
 			conn = ds.getConnection();
@@ -232,7 +235,7 @@ public class MemberDao {
 			pstmt.setString(2, dto.getMname());
 			pstmt.setDate(3, dto.getMbirth());
 			pstmt.setString(4, dto.getMgender());
-			pstmt.setInt(5, dto.getMbti());
+			pstmt.setString(5, dto.getMmbti());
 			pstmt.setString(6, dto.getMid());
 			result = pstmt.executeUpdate();
 			System.out.println("회원 수정 성공");
@@ -275,54 +278,6 @@ public class MemberDao {
 			}
 		}
 		return totCnt;
-	}
-	
-	// 8. 회원검색
-	public ArrayList<MemberDto> searchMember(String mname, int startRow, int endRow){
-		ArrayList<MemberDto> dtos = new ArrayList<MemberDto>();
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT * " + 
-				"    FROM (SELECT ROWNUM RN, A.* " + 
-				"        FROM(SELECT MBTINAME, mGENDER, mNAME, LEVELNAME, mWRITECOUNT, mLIKE " + 
-				"                FROM MEMBER M, MEMBER_LEVEL L, MBTI T  " + 
-				"                WHERE M.LEVELNO=L.LEVELNO AND M.MBTI=T.MBTI " + 
-				"                ORDER BY M.LEVELNO DESC, mLIKE DESC) A) " + 
-				"    WHERE mNAME LIKE '%'||?||'%' AND RN BETWEEN ? AND ?";
-		try {
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mname);
-			pstmt.setInt(2, startRow);
-			pstmt.setInt(3, endRow);
-			rs = pstmt.executeQuery();
-			while(rs.next()){
-				String mid = rs.getString("mid");
-				String mpw = rs.getString("mpw");
-				Date mbirth = rs.getDate("mbirth");
-				String mgender = rs.getString("mgender");
-				int mbti = rs.getInt("mbti");
-				Date mrdate = rs.getDate("mrdate");
-				int levelno = rs.getInt("levelno");
-				int mlike = rs.getInt("mlike");
-				int mwritecount = rs.getInt("mwritecount");
-				String mbtiname = rs.getString("mbtiname");
-				String levelname = rs.getString("levelname");
-				dtos.add(new MemberDto(mid, mpw, mname, mbirth, mgender, mbti, mrdate, levelno, mlike, mwritecount, mbtiname, levelname));
-			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		} finally {
-			try {
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn!=null) conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return dtos;
 	}
 	
 	
@@ -370,27 +325,6 @@ public class MemberDao {
 			}
 		}
 	}
-	// 11. 등급 올리기(미완)
-	public void levelUp(String mid) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "UPDATE MEMBER SET mLIKE = mLIKE+1 WHERE mID=?";
-		try {
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mid);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		} finally {
-			try {
-				if(pstmt!=null) pstmt.close();
-				if(conn!=null) conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
 	
 		
 	// 12. 회원 상세보기
@@ -399,27 +333,23 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT M.*, LEVELNAME, MBTINAME " + 
-				"    FROM MEMBER M, MEMBER_LEVEL L, MBTI T " + 
-				"    WHERE M.LEVELNO=L.LEVELNO AND M.MBTI=T.MBTI AND M.mID=?";
+		String sql = "SELECT * FROM MEMBER WHERE mID=?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();
-			while(rs.next()){
+			if(rs.next()){
 				String mpw = rs.getString("mpw");
-				String mname = rs.getString("mname");
 				Date mbirth = rs.getDate("mbirth");
+				String mname = rs.getString("mname");
 				String mgender = rs.getString("mgender");
-				int mbti = rs.getInt("mbti");
+				String memail = rs.getString("memail");
+				String mmbti = rs.getString("mmbti");
 				Date mrdate = rs.getDate("mrdate");
-				int levelno = rs.getInt("levelno");
 				int mlike = rs.getInt("mlike");
 				int mwritecount = rs.getInt("mwritecount");
-				String mbtiname = rs.getString("mbtiname");
-				String levelname = rs.getString("levelname");
-				dto = new MemberDto(mid, mpw, mname, mbirth, mgender, mbti, mrdate, levelno, mlike, mwritecount, mbtiname, levelname);
+				dto = new MemberDto(mid, mpw, mname, mbirth, mgender, memail, mmbti, mrdate, mlike, mwritecount);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

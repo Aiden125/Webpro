@@ -282,10 +282,10 @@ public class FreeBoardDao {
 	}
 	
 	// 7-2. 좋아요 올리기
-	public void likeUp(int bno) {
+	public void bLikeUp(int bno) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE FREEBOARD SET bLIKE = bLIKE+1 WHERE bNO=1";
+		String sql = "UPDATE FREEBOARD SET bLIKE = bLIKE+1 WHERE bNO=?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);

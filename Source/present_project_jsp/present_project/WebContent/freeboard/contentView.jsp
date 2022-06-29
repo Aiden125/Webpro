@@ -19,39 +19,42 @@
 <body>
 <jsp:include page="../main/header.jsp"/>
 	<table>
-		<caption>상세보기</caption>
 		<tr>
-			<th colspan="2">상대MBTI</th>
-			<td colspan="2">${contentView.bmbti }</td>
-			<th colspan="2">작성자</th>
-			<td colspan="2">${contentView.mname }</td>
+			<td colspan="8" style="text-align:right"><b>상대MBTI :</b> ${contentView.bmbti }<br>
+													<b>작성자 :</b> ${contentView.mname }</td>
 		</tr>
 		<tr>
-			<th colspan="8">${contentView.btitle }</th>
+			<td colspan="8" style="text-align:left; font-size:1.5em;">${contentView.btitle }</td>
 		</tr>
 		<tr>
-			<th colspan="8">${contentView.bcontent }</th>
+			<td colspan="8" style="height: 200px; text-align: left;">${contentView.bcontent }</td>
 		</tr>
 		<tr>
 			<th colspan="8">${contentView.bfilename }</th>
 		</tr>
 		<tr>
-			<td colspan="2">글번호</td><td colspan="2">${contentView.bno }</td>
-			<td colspan="2">작성일</td><td colspan="2">${contentView.brdate }</td>
 		</tr>
 		<tr>
-			<td colspan="2">조회수</td><td colspan="2">${contentView.bhit }</td>
-			<td colspan="2">좋아요</td><td colspan="2">${contentView.blike }</td>		
+			<td colspan="8" style="text-align:right;">
+			조회수 : ${contentView.bhit }<br>
+			작성일 : ${contentView.brdate }
+			</td>
 		</tr>
 		<tr>
-			<td colspan="8">
-				<button onclick="location.href='${conPath}/modify_view.do?bid=${param.bid }&pageNum=${param.pageNum }'">수정</button>
-				<button onclick="location.href='${conPath}/delete.do?bid=${param.bid }&pageNum=${param.pageNum }'">삭제</button>
-				<button onclick="location.href='${conPath}/reply_view.do?bid=${param.bid }&pageNum=${param.pageNum }'">답변</button>
-				<button onclick="location.href='${conPath}/list.do?pageNum=${param.pageNum }'">목록</button>
+			<td colspan="2" style="text-align:left;">
+			<a href="${conPath }/freeBoardLike.do?bno=${param.bno }&pageNum=${param.pageNum }">좋아요 : </a>${contentView.blike }
+			</td>
+			<td colspan="6" style="text-align:right;">
+				<button class="btn btn-primary" onclick="location.href='${conPath}/freeBoardModifyView.do?bno=${param.bno }&pageNum=${param.pageNum }'">수정</button>
+				<button class="btn btn-primary" onclick="location.href='${conPath}/freeBoardDelete.do?bno=${param.bno }&pageNum=${param.pageNum }'">삭제</button>
+				<button class="btn btn-primary" onclick="location.href='${conPath}/reply_view.do?bid=${param.bno }&pageNum=${param.pageNum }'">답변</button>
+				<button class="btn btn-primary" onclick="location.href='${conPath}/freeBoardListView.do?pageNum=${param.pageNum }'">글목록</button>
 			</td>
 		</tr>
 	</table>
+<div class="card text-white bg-secondary my-5 py-4 text-center">
+<div class="card-body"><p class="text-white m-0"></p></div>
+</div>
 <jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

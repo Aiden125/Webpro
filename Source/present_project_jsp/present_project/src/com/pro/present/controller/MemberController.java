@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.pro.present.service.BLikeService;
 import com.pro.present.service.BcontentViewService;
 import com.pro.present.service.BlistViewService;
 import com.pro.present.service.MjoinService;
@@ -95,6 +96,10 @@ public class MemberController extends HttpServlet {
 			service = new BcontentViewService();
 			service.execute(request, response);
 			viewPage = "freeboard/contentView.jsp";
+		}else if(command.equals("/freeBoardLike.do")) {
+			service = new BLikeService();
+			service.execute(request, response);
+			viewPage = "/freeBoardContentView.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

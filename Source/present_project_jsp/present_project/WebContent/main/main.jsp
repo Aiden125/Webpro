@@ -16,6 +16,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+<jsp:include page="../main/header.jsp"/>
 	<c:if test="${not empty loginErrorMsg }">
 		<script>
 			alert('${loginErrorMsg}');
@@ -91,6 +92,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+<jsp:include page="../main/footer.jsp"/>
     </body>
 </body>
 </html>

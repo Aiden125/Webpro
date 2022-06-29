@@ -18,14 +18,21 @@
 <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-5">
-                <a class="navbar-brand" href="#!"><b>MBTI별 선물 추천하기</b></a>
+                <a class="navbar-brand" href="${conPath }/freeBoardListView.do"><b>MBTI별 선물 추천하기<c:if test="${not empty member}">${member.mid }님</c:if></b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="${conPath }/mainView.do">홈</a></li>
+                        <c:if test="${empty member }">
+                        <li class="nav-item"><a class="nav-link" href="${conPath }/loginView.do">로그인</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${conPath }/joinView.do">회원가입</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${conPath }/memberListView.do">회원목록</a></li>
+                        </c:if>
+                        <c:if test="${not empty member }">
+                        <li class="nav-item"><a class="nav-link" href="${conPath }/logout.do">로그아웃</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${conPath }/modifyView.do">정보수정</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${conPath }/memberListView.do">회원목록</a></li>
+                        </c:if>
                     </ul>
                 </div>
             </div>

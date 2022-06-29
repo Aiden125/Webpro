@@ -17,6 +17,6 @@
 	</script>
 </head>
 <body>
-	<jsp:forward page="loginView.do"	/>
+	<jsp:forward page="freeBoardListView.do"/>
 </body>
 </html>

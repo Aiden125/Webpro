@@ -41,7 +41,7 @@ public class FreeBoardDao {
 		ResultSet rs = null;
 		String sql = "SELECT * " + 
 				"    FROM (SELECT ROWNUM RN, A.* " + 
-				"        FROM(SELECT B.*, M.mNAME " + 
+				"        FROM(SELECT B.*, M.mNAME, M.mMBTI " + 
 				"                FROM FREEBOARD B, MEMBER M " + 
 				"                WHERE B.mID=M.mID " + 
 				"                ORDER BY bGROUP DESC, bSTEP) A) " + 
@@ -55,7 +55,7 @@ public class FreeBoardDao {
 			while(rs.next()) {
 				int bno = rs.getInt("bno");
 				String mid = rs.getString("mid");
-				int bmbti = rs.getInt("bmbti");
+				String bmbti = rs.getString("bmbti");
 				String btitle = rs.getString("btitle");
 				String bcontent = rs.getString("bcontent");
 				String bfilename = rs.getString("bfilename");
@@ -66,7 +66,7 @@ public class FreeBoardDao {
 				int bindent = rs.getInt("bindent");
 				int blike = rs.getInt("blike");
 				String bip = rs.getString("bip");
-				int banswercount = rs.getInt("banwercount");
+				int banswercount = rs.getInt("banswercount");
 				int bdeletemark = rs.getInt("bdeletemark");
 				String mname = rs.getString("mname");
 				String mmbti = rs.getString("mmbti");
@@ -226,7 +226,7 @@ public class FreeBoardDao {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				String mid = rs.getString("mid");
-				int bmbti = rs.getInt("bmbti");
+				String bmbti = rs.getString("bmbti");
 				String btitle = rs.getString("btitle");
 				String bcontent = rs.getString("bcontent");
 				String bfilename = rs.getString("bfilename");
@@ -237,7 +237,7 @@ public class FreeBoardDao {
 				int bindent = rs.getInt("bindent");
 				int blike = rs.getInt("blike");
 				String bip = rs.getString("bip");
-				int banswercount = rs.getInt("banwercount");
+				int banswercount = rs.getInt("banswercount");
 				int bdeletemark = rs.getInt("bdeletemark");
 				String mname = rs.getString("mname");
 				String mmbti = rs.getString("mmbti");
@@ -320,7 +320,7 @@ public class FreeBoardDao {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				String mid = rs.getString("mid");
-				int bmbti = rs.getInt("bmbti");
+				String bmbti = rs.getString("bmbti");
 				String btitle = rs.getString("btitle");
 				String bcontent = rs.getString("bcontent");
 				String bfilename = rs.getString("bfilename");
@@ -369,7 +369,7 @@ public class FreeBoardDao {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				String mid = rs.getString("mid");
-				int bmbti = rs.getInt("bmbti");
+				String bmbti = rs.getString("bmbti");
 				String btitle = rs.getString("btitle");
 				String bcontent = rs.getString("bcontent");
 				String bfilename = rs.getString("bfilename");

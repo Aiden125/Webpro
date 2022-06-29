@@ -9,8 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.pro.present.service.BcontentViewService;
+import com.pro.present.service.BlistViewService;
 import com.pro.present.service.MjoinService;
+import com.pro.present.service.MlistViewService;
 import com.pro.present.service.MloginService;
+import com.pro.present.service.MlogoutService;
+import com.pro.present.service.MmodifyService;
+import com.pro.present.service.MmodifyViewService;
 import com.pro.present.service.Service;
 
 /**
@@ -59,6 +65,36 @@ public class MemberController extends HttpServlet {
 			service = new MloginService();
 			service.execute(request, response);
 			viewPage = "main/main.jsp";
+		}else if(command.equals("/join.do")) {
+			service = new MjoinService();
+			service.execute(request, response);
+			viewPage = "member/loginView.jsp";
+		}else if(command.equals("/mainView.do")) {
+			viewPage = "main/main.jsp";
+		}else if(command.equals("/logout.do")) {
+			service = new MlogoutService();
+			service.execute(request, response);
+			viewPage = "main/main.jsp";
+		}else if(command.equals("/memberListView.do")) {
+			service = new MlistViewService();
+			service.execute(request, response);
+			viewPage = "member/listView.jsp";
+		}else if(command.equals("/modifyView.do")) {
+			service = new MmodifyViewService();
+			service.execute(request, response);
+			viewPage = "member/modifyView.jsp";
+		}else if(command.equals("/modify.do")) {
+			service = new MmodifyService();
+			service.execute(request, response);
+			viewPage = "main/main.jsp";
+		}else if(command.equals("/freeBoardListView.do")) {
+			service = new BlistViewService();
+			service.execute(request, response);
+			viewPage = "freeboard/listView.jsp";
+		}else if(command.equals("/freeBoardContentView.do")) {
+			service = new BcontentViewService();
+			service.execute(request, response);
+			viewPage = "freeboard/contentView.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

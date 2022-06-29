@@ -144,8 +144,8 @@ public class MemberDao {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO MEMBER(mID, mPW, mNAME, mBIRTH, mGENDER, mMBTI) " + 
-				"    VALUES(?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO MEMBER(mID, mPW, mNAME, mBIRTH, mGENDER, mEMAIL, mMBTI) " + 
+				"    VALUES(?, ?, ?, ?, ?, ?, ?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -154,7 +154,8 @@ public class MemberDao {
 			pstmt.setString(3, dto.getMname());
 			pstmt.setDate(4, dto.getMbirth());
 			pstmt.setString(5, dto.getMgender());
-			pstmt.setString(6, dto.getMmbti());
+			pstmt.setString(6, dto.getMemail());
+			pstmt.setString(7, dto.getMmbti());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -169,9 +170,54 @@ public class MemberDao {
 		return result;
 	}
 	
-	
-	// 5. 회원리스트 보기(+검색)
-	public ArrayList<MemberDto> listMember(String mname, int startRow, int endRow){
+	// 5-1. 회원리스트 보기
+		public ArrayList<MemberDto> listMember(int startRow, int endRow){
+			ArrayList<MemberDto> dtos = new ArrayList<MemberDto>();
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "SELECT * " + 
+					"    FROM (SELECT ROWNUM RN, A.* " + 
+					"        FROM(SELECT * " + 
+					"                FROM MEMBER " + 
+					"                ORDER BY mLIKE DESC) A) " + 
+					"    WHERE RN BETWEEN ? AND ?";
+			try {
+				conn = ds.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
+					String mid = rs.getString("mid");
+					String mpw = rs.getString("mpw");				
+					String mname = rs.getString("mname");				
+					Date mbirth = rs.getDate("mbirth");
+					String mgender = rs.getString("mgender");
+					String memail = rs.getString("memail");
+					String mmbti = rs.getString("mmbti");
+					Date mrdate = rs.getDate("mrdate");
+					int mlike = rs.getInt("mlike");
+					int mwritecount = rs.getInt("mwritecount");
+					dtos.add(new MemberDto(mid, mpw, mname, mbirth, mgender, memail, mmbti, mrdate, mlike, mwritecount));
+				}
+			} catch (SQLException e) {
+				System.out.println(e.getMessage()+dtos);
+			} finally {
+				try {
+					if(rs!=null) rs.close();
+					if(pstmt!=null) pstmt.close();
+					if(conn!=null) conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return dtos;
+		}
+		
+		
+	// 5-2. 회원리스트 검색
+	public ArrayList<MemberDto> searchMember(String mname, int startRow, int endRow){
 		ArrayList<MemberDto> dtos = new ArrayList<MemberDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -192,7 +238,7 @@ public class MemberDao {
 			while(rs.next()){
 				String mid = rs.getString("mid");
 				String mpw = rs.getString("mpw");				
-				// String mmname = rs.getString("mname");				
+				// String mname = rs.getString("mname");				
 				Date mbirth = rs.getDate("mbirth");
 				String mgender = rs.getString("mgender");
 				String memail = rs.getString("memail");
@@ -226,6 +272,7 @@ public class MemberDao {
 				"                  mNAME=?, " + 
 				"                  mBIRTH=?, " + 
 				"                  mGENDER=?, " + 
+				"                  mEMAIL=?, " + 
 				"                  mMBTI=? " + 
 				"        WHERE mID=?";
 		try {
@@ -235,8 +282,9 @@ public class MemberDao {
 			pstmt.setString(2, dto.getMname());
 			pstmt.setDate(3, dto.getMbirth());
 			pstmt.setString(4, dto.getMgender());
-			pstmt.setString(5, dto.getMmbti());
-			pstmt.setString(6, dto.getMid());
+			pstmt.setString(5, dto.getMemail());
+			pstmt.setString(6, dto.getMmbti());
+			pstmt.setString(7, dto.getMid());
 			result = pstmt.executeUpdate();
 			System.out.println("회원 수정 성공");
 		} catch (SQLException e) {
@@ -259,7 +307,7 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT COUNT(*) FROM MEMBER";
+		String sql = "SELECT COUNT(*) TOTCNT FROM MEMBER";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);

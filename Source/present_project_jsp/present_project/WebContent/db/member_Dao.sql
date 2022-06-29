@@ -10,8 +10,8 @@ SELECT * FROM MEMBER WHERE mID='aaa';
 SELECT * FROM MEMBER WHERE mID='aaa' AND mPW='1234';
 
 -- 4. 회원가입
-INSERT INTO MEMBER(mID, mPW, mNAME, mBIRTH, mGENDER, mMBTI)
-    VALUES('aaa1', '1234', '홍길동1', '1995-12-05', 'f', 1);
+INSERT INTO MEMBER(mID, mPW, mNAME, mBIRTH, mGENDER, mEMAIL, mMBTI)
+    VALUES('aaa21', '1234', '홍길동121', '1995-12-05', 'f','1213@12', 'INTJ');
                     
 -- 5. 리스트 조회
 SELECT *
@@ -29,14 +29,15 @@ SELECT *
 -- 6. 회원정보수정
 UPDATE MEMBER SET mPW='1234',
                   mNAME='111',
-                  mBIRTH='1995-12-12',
+                  mBIRTH='1995-12-05',
                   mGENDER='f',
-                  mMBTI='INTJ'
+                  mEMAIL='123@1222',
+                  mMBTI='ISFP'
         WHERE mID='aaa';
 
 
 -- 7. 등록된 회원 수
-SELECT COUNT(*) FROM MEMBER;
+SELECT COUNT(*) TOTCNT FROM MEMBER;
 
 -- 8. 좋아요 올리기
 UPDATE MEMBER SET mLIKE = mLIKE+1 WHERE mID='fff';
@@ -59,6 +60,7 @@ SELECT * FROM MEMBER WHERE mID='aaa';
 
 
 SELECT * FROM MEMBER;
+
 COMMIT;
 
 
@@ -74,7 +76,7 @@ SELECT B.*, M.mNAME
 
 SELECT *
     FROM (SELECT ROWNUM RN, A.*
-        FROM(SELECT B.*, M.mNAME
+        FROM(SELECT B.*, M.mNAME, M.mMBTI
                 FROM FREEBOARD B, MEMBER M
                 WHERE B.mID=M.mID
                 ORDER BY bGROUP DESC, bSTEP) A)
@@ -90,13 +92,13 @@ INSERT INTO FREEBOARD(bNO, mID, bMBTI, bTITLE, bCONTENT, bFILENAME,
                 FREEBOARD_SEQ.CURRVAL, 0, 0, '123.123.123.123');
 
 -- 4. 답변글 쓰기전 스텝
-UPDATE FREEBOARD SET bSTEP = bSTEP+1 WHERE bGROUP=3 AND bSTEP>0;
+UPDATE FREEBOARD SET bSTEP = bSTEP+1 WHERE bGROUP=7 AND bSTEP>0;
 
 -- 5. 답변글 쓰기
 INSERT INTO FREEBOARD(bNO, mID, bMBTI, bTITLE, bCONTENT, bFILENAME,
                 bGROUP, bSTEP, bINDENT, bIP)
-        VALUES(FREEBOARD_SEQ.NEXTVAL, 'aaa', 'INFJ',
-            '글1-1', 'content', 'filename', 3, 1, 1, '123.123.123.123');
+        VALUES(FREEBOARD_SEQ.NEXTVAL, 'aaa', '답변3',
+            '그룹 7번 글의 답변', 'content', 'filename', 7, 2, 2, '123.123.123.123');
 
 SELECT * FROM FREEBOARD;
 SELECT * FROM MEMBER;

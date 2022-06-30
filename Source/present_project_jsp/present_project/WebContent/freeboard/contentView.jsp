@@ -24,14 +24,18 @@
 													<b>작성자 :</b> ${freeBoard.mname }</td>
 		</tr>
 		<tr>
-			<td colspan="8" style="text-align:left; font-size:1.5em;">${freeBoard.btitle }</td>
+			<td colspan="1" style="text-align:left; font-size:1.5em;">제목 </td>
+			<td colspan="7" style="text-align:left; font-size:1.5em;">${freeBoard.btitle }</td>
 		</tr>
 		<tr>
-			<td colspan="8" style="height: 200px; text-align: left;">${freeBoard.bcontent }</td>
+			<td colspan="1" style="height: 200px; text-align: left;">본문</td>
+			<td colspan="7" style="height: 200px; text-align: left;">${freeBoard.bcontent }</td>
 		</tr>
+		<c:if test="${not empty freeBoard.bfilename }">
 		<tr>
-			<th colspan="8">${contentView.bfilename }</th>
+			<td colspan="8"><a href="${conPath }/freeboardUp/${freeBoard.bfilename}" target="_blank">${freeBoard.bfilename}</a></td>
 		</tr>
+		</c:if>
 		<tr>
 		</tr>
 		<tr>

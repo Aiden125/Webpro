@@ -20,7 +20,7 @@
 <c:if test="${empty member }">
 	<script>
 		alert('로그인 해주세요');
-		location.href="${conPath }/freeBoardListView.do";
+		location.href="${conPath }/loginView.do";
 	</script>
 </c:if>
 

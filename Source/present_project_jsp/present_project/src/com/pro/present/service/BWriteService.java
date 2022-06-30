@@ -22,7 +22,7 @@ public class BWriteService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String path = request.getRealPath("freeBoardUp");
+		String path = request.getRealPath("freeboardUp");
 		int maxSize = 1024*1024*10;
 		MultipartRequest mRequest = null;
 		String bfilename = "";
@@ -40,8 +40,8 @@ public class BWriteService implements Service {
 			if(member != null) {
 				String mid = member.getMid();
 				String bmbti = mRequest.getParameter("bmbti");
-				String btitle = mRequest.getParameter("ftitle");
-				String bcontent = mRequest.getParameter("fcontent");
+				String btitle = mRequest.getParameter("btitle");
+				String bcontent = mRequest.getParameter("bcontent");
 				String bip = request.getRemoteAddr();
 				FreeBoardDao fDao = FreeBoardDao.getInstance();
 				int result = fDao.write(mid, bmbti, btitle, bcontent, bfilename, bip);

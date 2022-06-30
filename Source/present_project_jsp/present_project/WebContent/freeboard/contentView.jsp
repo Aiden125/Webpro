@@ -20,14 +20,14 @@
 <jsp:include page="../main/header.jsp"/>
 	<table>
 		<tr>
-			<td colspan="8" style="text-align:right"><b>상대MBTI :</b> ${contentView.bmbti }<br>
-													<b>작성자 :</b> ${contentView.mname }</td>
+			<td colspan="8" style="text-align:right"><b>상대MBTI :</b> ${freeBoard.bmbti }<br>
+													<b>작성자 :</b> ${freeBoard.mname }</td>
 		</tr>
 		<tr>
-			<td colspan="8" style="text-align:left; font-size:1.5em;">${contentView.btitle }</td>
+			<td colspan="8" style="text-align:left; font-size:1.5em;">${freeBoard.btitle }</td>
 		</tr>
 		<tr>
-			<td colspan="8" style="height: 200px; text-align: left;">${contentView.bcontent }</td>
+			<td colspan="8" style="height: 200px; text-align: left;">${freeBoard.bcontent }</td>
 		</tr>
 		<tr>
 			<th colspan="8">${contentView.bfilename }</th>
@@ -36,18 +36,24 @@
 		</tr>
 		<tr>
 			<td colspan="8" style="text-align:right;">
-			조회수 : ${contentView.bhit }<br>
-			작성일 : ${contentView.brdate }
+			조회수 : ${freeBoard.bhit }<br>
+			작성일 : ${freeBoard.brdate }
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" style="text-align:left;">
-			<a href="${conPath }/freeBoardLike.do?bno=${param.bno }&pageNum=${param.pageNum }">좋아요 : </a>${contentView.blike }
+			<a href="${conPath }/freeBoardLike.do?bno=${param.bno }&pageNum=${param.pageNum }">좋아요 : </a>${freeBoard.blike }
 			</td>
 			<td colspan="6" style="text-align:right;">
+			<c:if test="${member.mid eq freeBoard.mid }">
 				<button class="btn btn-primary" onclick="location.href='${conPath}/freeBoardModifyView.do?bno=${param.bno }&pageNum=${param.pageNum }'">수정</button>
 				<button class="btn btn-primary" onclick="location.href='${conPath}/freeBoardDelete.do?bno=${param.bno }&pageNum=${param.pageNum }'">삭제</button>
-				<button class="btn btn-primary" onclick="location.href='${conPath}/reply_view.do?bid=${param.bno }&pageNum=${param.pageNum }'">답변</button>
+				<button class="btn btn-primary" onclick="location.href='${conPath}/reply_view.do?bno=${param.bno }&pageNum=${param.pageNum }'">답변보기</button>
+			</c:if>
+			<c:if test="${member.mid != freeBoard.mid }">
+				<button class="btn btn-primary" onclick="location.href='${conPath}/reply_view.do?bno=${param.bno }&pageNum=${param.pageNum }'">답변작성</button>
+				<button class="btn btn-primary" onclick="location.href='${conPath}/reply_view.do?bno=${param.bno }&pageNum=${param.pageNum }'">답변보기</button>
+			</c:if>
 				<button class="btn btn-primary" onclick="location.href='${conPath}/freeBoardListView.do?pageNum=${param.pageNum }'">글목록</button>
 			</td>
 		</tr>

@@ -11,6 +11,6 @@ public class BcontentViewService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		FreeBoardDao fDao = FreeBoardDao.getInstance();
-		request.setAttribute("contentView", fDao.contentViewAndHit(bno));
+		request.setAttribute("freeBoard", fDao.contentViewAndHit(bno));
 	}
 }

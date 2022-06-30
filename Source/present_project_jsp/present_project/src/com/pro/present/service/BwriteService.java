@@ -18,7 +18,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.pro.present.dao.FreeBoardDao;
 import com.pro.present.dto.MemberDto;
 
-public class BWriteService implements Service {
+public class BwriteService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

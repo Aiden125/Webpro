@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.pro.present.dao.FreeBoardDao;
 
-public class BLikeService implements Service {
+public class BlikeService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

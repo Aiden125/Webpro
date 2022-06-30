@@ -50,7 +50,7 @@
 			</td>
 			<td colspan="6" style="text-align:right;">
 			<c:if test="${member.mid eq freeBoard.mid }">
-				<button class="btn btn-primary" onclick="location.href='${conPath}/freeBoardModifyView.do?bno=${param.bno }&pageNum=${param.pageNum }'">수정</button>
+				<button class="btn btn-primary" onclick="location.href='${conPath}/freeBoardmodifyView.do?bno=${param.bno }&pageNum=${param.pageNum }'">수정</button>
 				<button class="btn btn-primary" onclick="location.href='${conPath}/freeBoardDelete.do?bno=${param.bno }&pageNum=${param.pageNum }'">삭제</button>
 				<button class="btn btn-primary" onclick="location.href='${conPath}/reply_view.do?bno=${param.bno }&pageNum=${param.pageNum }'">답변보기</button>
 			</c:if>

@@ -38,7 +38,7 @@
 <jsp:include page="../main/header.jsp"/>
 	<form action="${conPath }/login.do" name="join_frm" method="post">
 		<table class="join_table">
-			<caption>회원가입</caption>
+			<caption>로그인</caption>
 			<tr>
 				<th>아이디</th>
 				<td><input type="text" name="mid" value="${mid }" required="required"></td>

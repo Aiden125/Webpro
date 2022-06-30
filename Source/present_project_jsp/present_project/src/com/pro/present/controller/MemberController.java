@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pro.present.service.BLikeService;
-import com.pro.present.service.BWriteService;
+import com.pro.present.service.BlikeService;
+import com.pro.present.service.BwriteService;
 import com.pro.present.service.BcontentViewService;
 import com.pro.present.service.BlistViewService;
+import com.pro.present.service.BmodifyService;
+import com.pro.present.service.BmodifyViewService;
 import com.pro.present.service.MjoinService;
 import com.pro.present.service.MlistViewService;
 import com.pro.present.service.MloginService;
@@ -98,15 +100,23 @@ public class MemberController extends HttpServlet {
 			service.execute(request, response);
 			viewPage = "freeboard/contentView.jsp";
 		}else if(command.equals("/freeBoardLike.do")) {
-			service = new BLikeService();
+			service = new BlikeService();
 			service.execute(request, response);
 			viewPage = "/freeBoardContentView.do";
 		}else if(command.equals("/freeBoardWrite.do")) {
-			service = new BWriteService();
+			service = new BwriteService();
 			service.execute(request, response);
 			viewPage = "/freeBoardListView.do";
 		}else if(command.equals("/freeBoardWriteView.do")) {
 			viewPage = "freeboard/writeView.jsp";
+		}else if(command.equals("/freeBoardmodifyView.do")) {
+			service = new BmodifyViewService();
+			service.execute(request, response);
+			viewPage = "freeboard/modifyView.jsp";
+		}else if(command.equals("/freeBoardmodify.do")) {
+			service = new BmodifyService();
+			service.execute(request, response);
+			viewPage = "/freeBoardListView.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

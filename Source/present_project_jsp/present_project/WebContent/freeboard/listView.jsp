@@ -17,6 +17,13 @@
 	</script>
 </head>
 <body>
+<c:if test="${not empty loginErrorMsg }">
+	<script>
+		alert('${loginErrorMsg}');
+		history.back();
+	</script>
+</c:if>
+
 <jsp:include page="../main/header.jsp"/>
 	<table style="text-align:'center'">
 		<caption>게시판</caption>

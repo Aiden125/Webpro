@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class step7_2292 {
+public class step7_1193 {
 	public static void main(String[] args) {
-		int n; // 주어지는 번호
+		int x; // 주어지는 번호
 		int count=1; // 몇번만에 가는지 카운트
 		int room=2; // 서칭 가능한 방의 크기
 		
@@ -11,12 +11,12 @@ public class step7_2292 {
 		// 즉 한번 거칠때마다 room = room + (count*6)만큼 갈 수 있다
 		
 		Scanner sc = new Scanner(System.in);
-		n = sc.nextInt(); // 숫자
-		if(n==1) {
+		x = sc.nextInt(); // 숫자
+		if(x==1) {
 			System.out.println(1);
 		}else {
-			while(room<n) {
-				room += (count*6);
+			while(room<x) {
+				room += (count);
 				count++;
 			}
 			System.out.println(count);

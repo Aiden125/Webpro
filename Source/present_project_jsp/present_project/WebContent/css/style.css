@@ -29,3 +29,7 @@ p {text-align: center;}
 	text-decoration:none;
 	color:black;
 }
+.btn{
+	text-align:center;
+	background-color:gray;
+}

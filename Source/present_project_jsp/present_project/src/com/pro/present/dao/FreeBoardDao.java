@@ -13,6 +13,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.pro.present.dto.FreeBoardDto;
+import com.sun.corba.se.spi.ior.WriteContents;
 
 public class FreeBoardDao {
 	public static final int SUCCESS = 1; // 회원가입시
@@ -43,9 +44,9 @@ public class FreeBoardDao {
 				"    FROM (SELECT ROWNUM RN, A.* " + 
 				"        FROM(SELECT B.*, M.mNAME, M.mMBTI " + 
 				"                FROM FREEBOARD B, MEMBER M " + 
-				"                WHERE B.mID=M.mID " + 
+				"                WHERE B.mID=M.mID AND bDELETEMARK=0 " + 
 				"                ORDER BY bGROUP DESC, bSTEP) A) " + 
-				"    WHERE RN BETWEEN ? AND ? AND bDELETEMARK=0";
+				"    WHERE RN BETWEEN ? AND ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -133,6 +134,8 @@ public class FreeBoardDao {
 			pstmt.setString(5, bfilename);
 			pstmt.setString(6, bip);
 			result = pstmt.executeUpdate();
+			MemberDao mDao = MemberDao.getInstance();
+			mDao.writecountUp(mid);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -195,6 +198,8 @@ public class FreeBoardDao {
 			pstmt.setInt(8, bindent+1);
 			pstmt.setString(9, bip);
 			result = pstmt.executeUpdate();
+			MemberDao mDao = MemberDao.getInstance();
+			mDao.writecountUp(mid);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -210,7 +215,7 @@ public class FreeBoardDao {
 	
 	
 	// 6. bno로 dto가져오기 = 글 상세보기(조회수 올리기 포함)
-	public FreeBoardDto contentViewAndHit(int bno) {
+	public FreeBoardDto contentViewAndHit(int bno, int bgroup) {
 		FreeBoardDto dto = null;
 		hitUp(bno); // 글 상세보기시 자동적으로 hitUp
 		Connection conn = null;
@@ -218,11 +223,11 @@ public class FreeBoardDao {
 		ResultSet rs = null;
 		String sql = "SELECT B.*, M.mMBTI, M.mNAME " + 
 				"        FROM FREEBOARD B, MEMBER M " + 
-				"        WHERE B.mID=M.mID AND bNO=? AND bDELETEMARK=0";
+				"        WHERE B.mID=M.mID AND bDELETEMARK=0 AND bGROUP=? AND bINDENT=0";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, bno);
+			pstmt.setInt(1, bgroup);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				String mid = rs.getString("mid");
@@ -232,7 +237,6 @@ public class FreeBoardDao {
 				String bfilename = rs.getString("bfilename");
 				Date brdate = rs.getDate("brdate");
 				int bhit = rs.getInt("bhit");
-				int bgroup = rs.getInt("bgroup");
 				int bstep = rs.getInt("bstep");
 				int bindent = rs.getInt("bindent");
 				int blike = rs.getInt("blike");
@@ -331,14 +335,14 @@ public class FreeBoardDao {
 				int bindent = rs.getInt("bindent");
 				int blike = rs.getInt("blike");
 				String bip = rs.getString("bip");
-				int banswercount = rs.getInt("banwercount");
+				int banswercount = rs.getInt("banswercount");
 				int bdeletemark = rs.getInt("bdeletemark");
 				String mname = rs.getString("mname");
 				String mmbti = rs.getString("mmbti");
 				dto = new FreeBoardDto(bno, mid, bmbti, btitle, bcontent, bfilename, brdate, bhit, bgroup, bstep, bindent, blike, bip, banswercount, bdeletemark, mname, mmbti);
 			}
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println(e.getMessage()+dto);
 		} finally {
 			try {
 				if(pstmt!=null) pstmt.close();
@@ -353,21 +357,22 @@ public class FreeBoardDao {
 	
 	
 	// 9. 답변들 상세보기
-	public ArrayList<FreeBoardDto> listAnswerBoard(int bgroup, int bno){
+	public ArrayList<FreeBoardDto> replyListView(int bgroup){
 		ArrayList<FreeBoardDto> dtos = new ArrayList<FreeBoardDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT B.*, M.mMBTI, M.mNAME " + 
 				"        FROM FREEBOARD B, MEMBER M " + 
-				"        WHERE B.mID=M.mID AND bGROUP=? AND bNO!=? AND bDELETEMARK=0";
+				"        WHERE B.mID=M.mID AND bDELETEMARK=0 AND bGROUP=? AND bINDENT!=0 " + 
+				"        ORDER BY bSTEP, bRDATE";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bgroup);
-			pstmt.setInt(2, bno);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
+				int bno = rs.getInt("bno");
 				String mid = rs.getString("mid");
 				String bmbti = rs.getString("bmbti");
 				String btitle = rs.getString("btitle");
@@ -379,7 +384,7 @@ public class FreeBoardDao {
 				int bindent = rs.getInt("bindent");
 				int blike = rs.getInt("blike");
 				String bip = rs.getString("bip");
-				int banswercount = rs.getInt("banwercount");
+				int banswercount = rs.getInt("banswercount");
 				int bdeletemark = rs.getInt("bdeletemark");
 				String mname = rs.getString("mname");
 				String mmbti = rs.getString("mmbti");

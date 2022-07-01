@@ -47,12 +47,12 @@ public class BwriteService implements Service {
 				int result = fDao.write(mid, bmbti, btitle, bcontent, bfilename, bip);
 				
 				if(result == fDao.SUCCESS) {
-					request.setAttribute("freeBoardResult", "글쓰기 성공");
+					request.setAttribute("writeResult", "글쓰기 성공");
 				}else {
-					request.setAttribute("freeBoardResult", "글쓰기 실패");
+					request.setAttribute("writeResult", "글쓰기 실패");
 				}
 			}else {
-				request.setAttribute("freeBoardResult", "로그인을 해주세요");
+				request.setAttribute("writeResult", "로그인 해주세요");
 			}
 		} catch (IOException e) {
 			System.out.println(e.getMessage());

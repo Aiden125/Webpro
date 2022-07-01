@@ -12,15 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.pro.present.service.BlikeService;
 import com.pro.present.service.BwriteService;
 import com.pro.present.service.BcontentViewService;
+import com.pro.present.service.BdeleteService;
 import com.pro.present.service.BlistViewService;
 import com.pro.present.service.BmodifyService;
 import com.pro.present.service.BmodifyViewService;
+import com.pro.present.service.BreplyListViewService;
+import com.pro.present.service.BreplyService;
+import com.pro.present.service.BreplyViewService;
 import com.pro.present.service.MjoinService;
 import com.pro.present.service.MlistViewService;
 import com.pro.present.service.MloginService;
 import com.pro.present.service.MlogoutService;
 import com.pro.present.service.MmodifyService;
 import com.pro.present.service.MmodifyViewService;
+import com.pro.present.service.RwriteService;
 import com.pro.present.service.Service;
 
 /**
@@ -109,14 +114,34 @@ public class MemberController extends HttpServlet {
 			viewPage = "/freeBoardListView.do";
 		}else if(command.equals("/freeBoardWriteView.do")) {
 			viewPage = "freeboard/writeView.jsp";
-		}else if(command.equals("/freeBoardmodifyView.do")) {
+		}else if(command.equals("/freeBoardModifyView.do")) {
 			service = new BmodifyViewService();
 			service.execute(request, response);
 			viewPage = "freeboard/modifyView.jsp";
-		}else if(command.equals("/freeBoardmodify.do")) {
+		}else if(command.equals("/freeBoardModify.do")) {
 			service = new BmodifyService();
 			service.execute(request, response);
 			viewPage = "/freeBoardListView.do";
+		}else if(command.equals("/freeBoardReplyView.do")) {
+			service = new BreplyViewService();
+			service.execute(request, response);
+			viewPage = "freeboard/replyView.jsp";
+		}else if(command.equals("/freeBoardReply.do")) {
+			service = new BreplyService();
+			service.execute(request, response);
+			viewPage = "/freeBoardListView.do";
+		}else if(command.equals("/freeBoardDelete.do")) {
+			service = new BdeleteService();
+			service.execute(request, response);
+			viewPage = "/freeBoardListView.do";
+		}else if(command.equals("/freeBoardReplyListView.do")) {
+			service = new BreplyListViewService();
+			service.execute(request, response);
+			viewPage = "/freeboard/replyListView.jsp";
+		}else if(command.equals("/replyWrite.do")) {
+			service = new RwriteService();
+			service.execute(request, response);
+			viewPage = "/freeBoardContentView.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

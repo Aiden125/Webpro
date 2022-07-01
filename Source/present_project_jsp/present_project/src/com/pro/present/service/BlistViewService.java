@@ -15,7 +15,7 @@ public class BlistViewService implements Service {
 			pageNum="1";
 		}
 		int currentPage = Integer.parseInt(pageNum);
-		final int PAGESIZE = 5, BLOCKSIZE = 3;
+		final int PAGESIZE = 5, BLOCKSIZE = 10;
 		int startRow = (currentPage-1)*PAGESIZE+1;
 		int endRow = startRow + PAGESIZE -1;
 		FreeBoardDao bDao = FreeBoardDao.getInstance();

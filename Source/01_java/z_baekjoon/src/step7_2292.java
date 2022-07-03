@@ -4,7 +4,7 @@ public class step7_2292 {
 	public static void main(String[] args) {
 		int n; // 주어지는 번호
 		int count=1; // 몇번만에 가는지 카운트
-		int room=2; // 서칭 가능한 방의 크기
+		int room=1; // 서칭 가능한 방의 크기
 		
 		// 1번 지나면 room=8
 		// 2번 지나면 room=20

@@ -33,6 +33,7 @@
 <jsp:include page="../main/header.jsp"/>
 <div id="content_top">
 	<div class="caption">
+<<<<<<< HEAD
 		${param.searchword } 회원 목록
 	</div>
 </div>
@@ -71,6 +72,11 @@
 
 
 
+=======
+		전체 회원목록
+	</div>
+</div>
+>>>>>>> 65423db39457b90bdeb19cad0a8f0ffa9c06e63e
 	<c:forEach var="dto" items="${list }">
 	
 		<c:if test="${list.size() eq 0 }">

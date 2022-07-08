@@ -33,6 +33,7 @@
 <jsp:include page="../main/header.jsp"/>
 <div id="content_top">
 	<div class="caption">
+<<<<<<< HEAD
 		${param.searchword } 회원 목록
 	</div>
 </div>
@@ -71,6 +72,52 @@
 
 
 
+=======
+<<<<<<< HEAD
+		${param.searchword } 회원 목록
+	</div>
+</div>
+<br>
+
+
+<!-- 필터링 메뉴 -->
+<div class="small_wrap_search">
+		<div class="left">
+			<form action="${conPath }/memberListView.do" method="post">
+				<select name="searchword" id="searchword">
+					<option value="">선택</option>
+					<option ${param.searchword == "ENTP" ? "selected":""}>ENTP</option>
+					<option ${param.searchword == "ENTJ" ? "selected":""}>ENTJ</option>
+					<option ${param.searchword == "ENFP" ? "selected":""}>ENFP</option>
+					<option ${param.searchword == "ENFJ" ? "selected":""}>ENFJ</option>
+					<option ${param.searchword == "ESTP" ? "selected":""}>ESTP</option>
+					<option ${param.searchword == "ESTJ" ? "selected":""}>ESTJ</option>
+					<option ${param.searchword == "ESFP" ? "selected":""}>ESFP</option>
+					<option ${param.searchword == "ESFJ" ? "selected":""}>ESFJ</option>
+					
+					<option ${param.searchword == "INTP" ? "selected":""}>INTP</option>
+					<option ${param.searchword == "INTJ" ? "selected":""}>INTJ</option>
+					<option ${param.searchword == "INFP" ? "selected":""}>INFP</option>
+					<option ${param.searchword == "INFJ" ? "selected":""}>INFJ</option>
+					<option ${param.searchword == "ISTP" ? "selected":""}>ISTP</option>
+					<option ${param.searchword == "ISTJ" ? "selected":""}>ISTJ</option>
+					<option ${param.searchword == "ISFP" ? "selected":""}>ISFP</option>
+					<option ${param.searchword == "ISFJ" ? "selected":""}>ISFJ</option>
+					
+					<option value="">전체보기</option>
+				</select>
+			</form>	
+		</div>
+</div>
+
+
+
+=======
+		전체 회원목록
+	</div>
+</div>
+>>>>>>> 65423db39457b90bdeb19cad0a8f0ffa9c06e63e
+>>>>>>> ff7cc28e99675f7c0491e527b48d4c9a2b2be931
 	<c:forEach var="dto" items="${list }">
 	
 		<c:if test="${list.size() eq 0 }">

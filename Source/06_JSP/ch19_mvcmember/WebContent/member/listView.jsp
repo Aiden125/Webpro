@@ -17,7 +17,7 @@
 			<c:forEach var="dto" items="${list }">
 				<td>
 					<img src="${conPath }/memberPhotoUp/${dto.mphoto}" alt="사진" width="120"><br>
-					${dto.mname }<br>
+					${dto.mname }</a><br>
 					(${dto.mid })
 				</td>
 			</c:forEach>

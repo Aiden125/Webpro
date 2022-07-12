@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<!-- 1번 학생 정보를 포장 -->
+	<bean id="student1" class="com.lec.ch02.ex3_student.Student">
+		<constructor-arg>
+			<value>홍길팍</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>25</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>4학년</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>6반</value>
+		</constructor-arg>
+	</bean>
+	
+	<!-- 2번 학생 정보를 포장 -->
+	<bean id="student2" class="com.lec.ch02.ex3_student.Student">
+		<constructor-arg value="아이유"/>
+		<constructor-arg value="21"/>
+		<constructor-arg value="2학년"/>
+		<constructor-arg value="1반"/>
+	</bean>
+	
+	
+	<!-- 학생정보를 담아줄 박스에 포장된 학생정보빈 객체를 이쁘게 담아준다 -->
+	<bean id="studentInfo" class="com.lec.ch02.ex3_student.StudentInfo">
+		<constructor-arg ref="student1"/>
+	</bean>
+</beans>

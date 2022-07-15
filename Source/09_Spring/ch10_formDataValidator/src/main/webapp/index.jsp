@@ -10,6 +10,6 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
-	<jsp:forward page="inputForm.do"/>
+	<jsp:forward page="quizInput.do"/>
 </body>
 </html>

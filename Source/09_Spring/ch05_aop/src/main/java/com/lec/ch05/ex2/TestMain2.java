@@ -7,8 +7,8 @@ public class TestMain2 {
 		String location = "classpath:META-INF/applicationCTX2.xml";
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext(location);
 		
-		Student2 student = ctx.getBean("student", Student2.class);
-		Worker2 worker = ctx.getBean("worker", Worker2.class);
+		Student2 student = ctx.getBean("student2", Student2.class);
+		Worker2 worker = ctx.getBean("worker2", Worker2.class);
 		student.getStudentInfo(); // 핵심기능
 		System.out.println("-----------------------------------------------------------------------------------");
 		worker.getWorkerInfo(); // 핵심기능

@@ -5,9 +5,7 @@ import java.util.StringTokenizer;
 
 public class nothing {
 	public static void main(String[] args) {
-		 String a = "***\n"
-		 		+ "* *\n"
-		 		+ "***";
-		 System.out.println(a);
+		 String a = "abcde";
+		 System.out.println(a.charAt(1));
 	}
 }

@@ -1,3 +1,4 @@
+package step9;
 import java.util.Scanner;
 
 public class Step9_10870 {

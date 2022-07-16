@@ -1,3 +1,4 @@
+package step7;
 import java.util.Scanner;
 
 public class step7_1712_case2 {

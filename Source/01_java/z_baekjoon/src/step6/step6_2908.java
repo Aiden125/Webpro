@@ -1,3 +1,4 @@
+package step6;
 import java.util.Scanner;
 
 public class step6_2908 {

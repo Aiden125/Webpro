@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lec.ch11.bservice.BContentService;
+import com.lec.ch11.bservice.BDeleteService;
 import com.lec.ch11.bservice.BListService;
 import com.lec.ch11.bservice.BModifyReplyViewService;
 import com.lec.ch11.bservice.BModifyService;
+import com.lec.ch11.bservice.BReplyService;
 import com.lec.ch11.bservice.BWriteService;
 import com.lec.ch11.bservice.Service;
 import com.lec.ch11.dto.BoardDto;
@@ -97,5 +99,31 @@ public class BoardController {
 	
 	// 삭제 실행하기
 	@RequestMapping(value="delete", method = RequestMethod.GET)
-	public String delete(int bid)
+	public String delete(int bid, Model model) {
+		model.addAttribute("bid", bid);
+		bservice = new BDeleteService();
+		bservice.execute(model);
+		return "forward:list.do"; // 알람 띄워야하기 때문에 forward
+	}
+	
+	// 답변하기 상세보기
+	@RequestMapping(value="reply", method = RequestMethod.GET)
+	public String replyView(int bid, Model model) {
+		model.addAttribute("bid", bid);
+		bservice = new BModifyReplyViewService();
+		bservice.execute(model);
+		return "mvcboard/reply";
+	}
+	
+	// 답변작성하기
+	@RequestMapping(value="reply", method = RequestMethod.POST)
+	public String reply(BoardDto boardDto, HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		bservice = new BReplyService();
+		bservice.execute(model);
+		return "forward:list.do"; // 알람도 띄우고 페이지num도 가져가야 하기에 forward
+								 // 만약 redirect 쓰겠다면 알람 못넣고 pageNum도 따로 파라미터 넘겨줘야함
+	}
+	
+	
 }

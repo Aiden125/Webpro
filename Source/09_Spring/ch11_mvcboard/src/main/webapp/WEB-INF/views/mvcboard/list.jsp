@@ -30,6 +30,7 @@
 	</script>
 </head>
 <body>
+
 	<c:set var="SUCCESS" value="1"/>
 	<c:set var="FAIL" value="0"/>
 	
@@ -44,9 +45,35 @@
 			alert('글쓰기 실패');
 		</script>
 	</c:if>
-	<!-- 글수정 성공 / 실패 alert -->
+	
+	
 	<!-- 글삭제 성공 / 실패 alert -->
+	<c:if test="${deleteResult eq SUCCESS }">
+		<script>
+			alert('${param.bid}번 글삭제 성공');
+		</script>
+	</c:if>
+	<c:if test="${deleteResult eq FAIL }">
+		<script>
+			alert('${param.bid}번 글삭제 실패');
+		</script>
+	</c:if>
+	
+	
 	<!-- 글답변 성공 / 실패 alert -->
+	<c:if test="${replyResult eq SUCCESS }">
+		<script>
+			alert('답변 성공');
+		</script>
+	</c:if>
+	<c:if test="${replyResult eq FAIL }">
+		<script>
+			alert('답변 실패');
+		</script>
+	</c:if>
+	
+	
+	
 	<c:set var="oNum" value="${orderNum }"/> <!-- 변수명 약간 다르게 -->
 	<c:set var="iNum" value="${inverseNum }"/>
 	<table>

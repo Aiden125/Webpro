@@ -1,5 +1,6 @@
+package step8;
 import java.util.*;
-public class step8_2581{
+public class step8_2581_case2{
 	
 	public static boolean prime[];
 	

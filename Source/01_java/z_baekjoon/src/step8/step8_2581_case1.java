@@ -1,5 +1,6 @@
+package step8;
 import java.util.*;
-public class step8_2581_f{
+public class step8_2581_case1{
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         int M = sc.nextInt(); // 최소값
@@ -9,9 +10,12 @@ public class step8_2581_f{
         
         for(int i=M; i<=N; i++){
         	boolean sw = true; // 소수 판단
-            for(int j=2; j<=Math.sqrt(M); j++){
+        	if(i==1) {
+        		sw = false;
+        	}
+            for(int j=2; j<i; j++){
                 
-                if(i==1 || i%j == 0){ // 소수가 아닌 경우
+                if(i%j == 0){ // 소수가 아닌 경우
                     sw = false;
                     break;
                 }
@@ -24,7 +28,7 @@ public class step8_2581_f{
             }
             
         }
-        if((M==1 && N==1) || sum==0) {
+        if(sum==0) {
         	System.out.println(-1);
         }
         else {

@@ -66,6 +66,31 @@ public class EmpController {
 			return "forward:updateView.do"; // 에러난 경우 수정보기로 다시보내기
 		}
 		return "forward:empDeptList.do";
-		
+	}
+	
+	// 삭제하기
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(int empno, Model model) {
+		model.addAttribute("deleteResult", empService.delete(empno));
+		return "forward:empDeptList.do";
+	}
+	
+	// 작성 상세보기
+	@RequestMapping(value = "writeView", method = {RequestMethod.GET, RequestMethod.POST})
+	public String writeView(Model model) {
+		model.addAttribute("managerList", empService.managerList());
+		model.addAttribute("deptList", empService.deptList());
+		return "write";
+	}
+	
+	// 중복검사
+	@RequestMapping(value = "confirmNo", method = RequestMethod.GET)
+	public String confirmNo(int empno, Model model) {
+		if(empService.detail(empno) == null) { // null인 경우는 중복되는게 없는 경우
+			model.addAttribute("msg", "사용 가능한 사번입니다");
+		}else {
+			model.addAttribute("msg", "중복된 사번입니다");
+		}
+		return "forward:writeView.do";
 	}
 }

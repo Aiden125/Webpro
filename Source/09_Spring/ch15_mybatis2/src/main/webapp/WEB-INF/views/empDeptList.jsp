@@ -24,10 +24,14 @@
 		<script>alert('직원 정보 수정 성공');</script>	
 	</c:if>
 	
+	<c:if test="${deleteResult eq 1}">
+		<script>alert('${param.empno}번 직원 삭제 성공');</script>	
+	</c:if>
+	
 	<c:set var="num" value="${paging.totCnt - paging.startRow + 1 }"/>
 	<table>
 		<tr>
-			<td colspan="6" align="right"><a href="${conPath }/writeForm.do">직원등록</a></td>
+			<td colspan="6" align="right"><a href="${conPath }/writeView.do">직원등록</a></td>
 		</tr>
 		<tr>
 			<th>번호</th><th>사번</th><th>이름</th><th>직책</th><th>입사일</th><th>급여</th>

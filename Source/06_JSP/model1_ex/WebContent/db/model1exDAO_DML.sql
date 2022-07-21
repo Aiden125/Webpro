@@ -10,7 +10,7 @@ SELECT * FROM CUSTOMER WHERE CID='ggg' AND CPW='111';
 SELECT * FROM CUSTOMER WHERE CID='ggg';
 -- 5. 회원정보 수정
 UPDATE CUSTOMER SET CPW='111',
-                    CNAME='홍홍홍',
+                    CNAME='홍홍홍',SELECT * FROM EMP WHERE EMPNO IN (SELECT MGR FROM EMP)
                     CTEL = '010-1111-0000',
                     CEMAIL = 'GG@G.COM',
                     CADDRESS = '부산',

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+
+<mapper namespace="com.lec.ch17.dao.BoardDao">
+	<resultMap type="Board" id="BoardResult">
+		<result property="bid" column="bid"/>
+		<result property="bname" column="bname"/>
+		<result property="btitle" column="btitle"/>
+		<result property="bcontent" column="bcontent"/>
+		<result property="bdate" column="bdate"/>
+		<result property="bhit" column="bhit"/>
+		<result property="bgroup" column="bgroup"/>
+		<result property="bstep" column="bstep"/>
+		<result property="bindent" column="bindent"/>
+		<result property="bip" column="bip"/>
+	</resultMap>
+	
+	<!-- 1 페이징 리스트 -->
+	<select id="boardList" parameterType="Board" resultMap="BoardResult">
+		SELECT * FROM (SELECT ROWNUM RN, A.* 
+            FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)
+        WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 2. 원글쓰기 -->
+	<insert id="write" parameterType="Board">
+		INSERT INTO MVC_BOARD (bID, bNAME, bTITLE, bCONTENT, bGROUP, bSTEP, bINDENT, bIP)
+    	VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname}, #{btitle}, #{bcontent}, MVC_BOARD_SEQ.CURRVAL, 0, 0, #{bip})
+	</insert>
+	
+	<!-- 3. 총 글 갯수 -->
+	<select id="totCnt" resultType="int">
+		SELECT COUNT(*) FROM MVC_BOARD
+	</select>
+	
+</mapper>

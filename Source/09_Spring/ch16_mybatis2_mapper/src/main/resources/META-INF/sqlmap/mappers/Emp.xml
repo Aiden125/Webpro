@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- property는 dto에 변수명 / column은 sql에 필드명-->
+<mapper namespace="com.lec.ch15.dao.EmpDao">
+	<resultMap type="Emp" id="EmpResult">
+		<result property="empno" column="empno"/>
+		<result property="ename" column="ename"/>
+		<result property="job" column="job"/>
+		<result property="mgr" column="mgr"/>
+		<result property="hiredate" column="hiredate"/>
+		<result property="sal" column="sal"/>
+		<result property="comm" column="comm"/>
+		<result property="deptno" column="deptno"/>
+		<result property="dname" column="dname"/>
+		<result property="loc" column="loc"/>
+	</resultMap>
+	
+	<!-- sql문 적는 곳 -->
+	
+	<!-- id는 이전에 하던 메소드 네임과 같은 개념 -->
+	<!-- resultType은 리턴타입 개념 -->
+	<!-- parameter타입은??  -->
+	<!-- 결과가 리스트일 경우 resultMap으로 -->
+	<select id="empList" parameterType="Emp" resultMap="EmpResult"> 
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM EMP ORDER BY EMPNO) A)
+	  	  WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 부서명 나오는 리스트 sql문 -->
+	<select id="empDeptList" parameterType="Emp" resultMap="EmpResult">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM
+ 			(SELECT E.*, DNAME, LOC FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO ORDER BY EMPNO) A)
+    	WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 총 갯수sql -->
+	<select id="totCnt" resultType="int">
+		SELECT COUNT(*) FROM EMP
+	</select>
+	
+	<!-- 상세보기 -->
+	<select id="detail" parameterType="int" resultType="Emp">
+		SELECT * FROM EMP WHERE EMPNO=#{empno}
+	</select>
+	
+	<!-- 매니저 list -->
+	<select id="managerList" resultMap="EmpResult">
+		SELECT * FROM EMP WHERE EMPNO IN (SELECT MGR FROM EMP)
+	</select>
+	
+	<!-- 사원입력 -->
+	<!-- Emp에서 이것저것 받아와야하기 때문에 parameter타입이 필요, 어차피 1or0리턴이기에 리턴타입 필요x -->
+	<insert id="insert" parameterType="Emp">
+		INSERT INTO EMP VALUES (#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno})
+	</insert>
+	
+	<!-- 정보수정 -->
+	<update id="update" parameterType="Emp">
+		UPDATE EMP SET ENAME=#{ename},
+	            JOB=#{job},
+	            MGR=#{mgr},
+	            HIREDATE=#{hiredate},
+	            SAL=#{sal},
+	            COMM=#{comm},
+	            DEPTNO=#{deptno}
+        	WHERE EMPNO=#{empno}
+	</update>
+	
+	<!-- 삭제하기 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM EMP WHERE EMPNO=#{empno}
+	</delete>
+</mapper>
+    

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 복붙하는 파트 -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 복붙하는 파트 -->
+
+<mapper namespace="com.lec.ch14.dao.DeptDao">
+	<resultMap type="Dept" id="DeptResult">
+		<result property="deptno" column="deptno"/>
+		<result property="dname" column="dname"/>
+		<result property="loc" column="loc"/>
+	</resultMap>
+	
+	<!-- 여기다 SQL문을 넣는데, 커테이션 없이 -->
+	<select id="deptList" resultMap="DeptResult">
+	<![CDATA[
+		SELECT * FROM DEPT
+	]]>
+	</select>
+</mapper>

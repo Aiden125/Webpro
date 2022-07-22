@@ -11,7 +11,7 @@
 		<result property="loc" column="loc"/>
 	</resultMap>
 	
-	<select id="deptlist" resultMap="DeptResult">
+	<select id="deptList" resultMap="DeptResult">
 		<![CDATA[
 			SELECT * FROM DEPT
 		]]>

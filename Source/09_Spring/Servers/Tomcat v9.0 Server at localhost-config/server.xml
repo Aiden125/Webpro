@@ -152,7 +152,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="ch13_fileup" path="/ch13" reloadable="true" source="org.eclipse.jst.jee.server:ch13_fileup"/><Context docBase="ch14_mybatis1" path="/ch14" reloadable="true" source="org.eclipse.jst.jee.server:ch14_mybatis1"/><Context docBase="ch15_mybatis2" path="/ch15" reloadable="true" source="org.eclipse.jst.jee.server:ch15_mybatis2"/></Host>
+      <Context docBase="ch13_fileup" path="/ch13" reloadable="true" source="org.eclipse.jst.jee.server:ch13_fileup"/><Context docBase="ch14_mybatis1" path="/ch14" reloadable="true" source="org.eclipse.jst.jee.server:ch14_mybatis1"/><Context docBase="ch15_mybatis2" path="/ch15" reloadable="true" source="org.eclipse.jst.jee.server:ch15_mybatis2"/><Context docBase="ch16_mybatis1_mapper" path="/ch16_1" reloadable="true" source="org.eclipse.jst.jee.server:ch16_mybatis1_mapper"/><Context docBase="ch16_mybatis2_mapper" path="/ch16_2" reloadable="true" source="org.eclipse.jst.jee.server:ch16_mybatis2_mapper"/><Context docBase="ch11_mvcboard" path="/ch11" reloadable="true" source="org.eclipse.jst.jee.server:ch11_mvcboard"/><Context docBase="ch17_mybatisBoard" path="/ch17" reloadable="true" source="org.eclipse.jst.jee.server:ch17_mybatisBoard"/></Host>
     </Engine>
   </Service>
 </Server>

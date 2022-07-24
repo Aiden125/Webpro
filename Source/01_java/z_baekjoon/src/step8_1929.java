@@ -5,18 +5,23 @@ public class step8_1929 {
 	public static boolean[] prime;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
+		int M = sc.nextInt(); // 작은 수
+		int N = sc.nextInt(); // 큰 수
 		
-		getPrime(N);
+		prime = new boolean[N+1];
+		getPrime();
 		
-		for(int i=0; i<prime.length)
+		for(int i= M; i<=N; i++) {
+			if(!prime[i]) {
+				System.out.println(i);
+			}
+		}
 
 		
 		
 	}
 	
 	public static void getPrime(int N) {
-		prime = new boolean[N+1];
 		
 		prime[0] = true;
 		prime[1] = true;

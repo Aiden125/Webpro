@@ -19,7 +19,7 @@
 	
 	<!-- 아이디 중복조회 -->
 	<select id="idConfirm" parameterType="String" resultType="int">
-		SELECT * FROM MEMBER WHERE mID=#{mid}
+		SELECT COUNT(*) FROM MEMBER WHERE mID=#{mid}
 	</select>
 	
 	<!-- 회원가입 -->
@@ -28,7 +28,7 @@
 	</insert>
 	
 	<!-- mid로 dto 가져오기 -->
-	<select id="getMember" parameterType="int" resultType="Member">
+	<select id="getDetailMember" parameterType="String" resultType="Member">
 		SELECT * FROM MEMBER WHERE mID=#{mid}
 	</select>
 	

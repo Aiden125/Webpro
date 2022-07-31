@@ -1,4 +1,4 @@
-package review_yet;
+package step5;
 import java.util.Scanner;
 import java.util.Stack;
 // 1. 스택을 만든다

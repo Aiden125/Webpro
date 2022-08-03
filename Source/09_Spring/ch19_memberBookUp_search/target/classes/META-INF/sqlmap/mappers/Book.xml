@@ -39,7 +39,7 @@
 		SELECT * FROM BOOK WHERE bNUM=#{bnum}
 	</select>
 	
-	<!-- 책 등로 -->
+	<!-- 책 등록 -->
 	<insert id="registBook" parameterType="Book">
 		<if test="bimg1=='' and bimg2!=''">
 			INSERT INTO BOOK (BNUM, BTITLE, BWRITER, BRDATE, BIMG2, BINFO) VALUES

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="14" version="2.0">
+<workbench progressCount="17" version="2.0">
 <workbenchAdvisor/>
-<window height="1047" width="1515" x="-44" y="0">
+<window height="980" width="1839" x="-45" y="83">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -28,6 +28,8 @@
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
@@ -35,11 +37,17 @@
 <editor id="com.tomato.exerd.editor.DiagramEditor" name="데이터베이스구현평가.exerd" partName="데이터베이스구현평가.exerd" path="D:/Webpro/Source/03_exERD/newProject/데이터베이스구현평가.exerd" title="데이터베이스구현평가.exerd" tooltip="newProject/데이터베이스구현평가.exerd" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/데이터베이스구현평가.exerd"/>
 </editor>
-<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="MBTI선물.exerd" partName="MBTI선물.exerd" path="D:/Webpro/Source/03_exERD/newProject/MBTI선물.exerd" title="MBTI선물.exerd" tooltip="newProject/MBTI선물.exerd" workbook="DefaultEditorWorkbook">
+<editor id="com.tomato.exerd.editor.DiagramEditor" name="MBTI선물.exerd" partName="MBTI선물.exerd" path="D:/Webpro/Source/03_exERD/newProject/MBTI선물.exerd" title="MBTI선물.exerd" tooltip="newProject/MBTI선물.exerd" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/MBTI선물.exerd"/>
 </editor>
 <editor id="com.tomato.exerd.editor.DiagramEditor" name="0418member_review.exerd" partName="0418member_review.exerd" path="D:/Webpro/Source/03_exERD/newProject/0418member_review.exerd" title="0418member_review.exerd" tooltip="newProject/0418member_review.exerd" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/0418member_review.exerd"/>
+</editor>
+<editor id="com.tomato.exerd.editor.DiagramEditor" name="team_v.exerd" partName="team_v.exerd" path="D:/Webpro/Source/03_exERD/newProject/team_v.exerd" title="team_v.exerd" tooltip="newProject/team_v.exerd" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/team_v.exerd"/>
+</editor>
+<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="팀프로젝트.exerd" partName="팀프로젝트.exerd" title="팀프로젝트.exerd" tooltip="D:\Webpro\Note\팀프로젝트\팀프로젝트.exerd" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/D:/Webpro/Note/팀프로젝트/팀프로젝트.exerd"/>
 </editor>
 </editors>
 <views>
@@ -48,6 +56,12 @@
 <filters>
 <filter element=".*" isEnabled="false"/>
 </filters>
+<expanded>
+<element path="/newProject"/>
+</expanded>
+<selection>
+<element path="/newProject"/>
+</selection>
 </viewState>
 </view>
 <view id="com.tomato.exerd.ui.views.thumbnail" partName="썸네일">
@@ -57,11 +71,18 @@
 <view id="com.tomato.exerd.modelview3.ModelView3" partName="모델">
 <viewState/>
 </view>
-<view id="org.eclipse.ui.console.ConsoleView" partName="콘솔"/>
+<view id="org.eclipse.ui.console.ConsoleView" partName="콘솔">
+<viewState/>
+</view>
 <view id="com.tomato.exerd.ui.views.domain" partName="도메인">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.views.ContentOutline" partName="아웃라인"/>
+<view id="org.eclipse.search.ui.views.SearchView" partName="검색">
+<viewState isPinned="false">
+<view IMemento.internal.id="" org.eclipse.search.lastActivation="0"/>
+</viewState>
+</view>
 <view id="org.eclipse.gef.ui.palette_view" partName="Palette">
 <viewState/>
 </view>
@@ -97,6 +118,7 @@
 <view id="com.tomato.exerd.ui.views.thumbnail"/>
 <view id="com.tomato.exerd.modelview3.ModelView3"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.search.ui.views.SearchView"/>
 <view id="com.tomato.exerd.ui.views.domain"/>
 <view id="com.tomato.exerd.validate.ui.ValidateView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
@@ -128,17 +150,19 @@
 </folder>
 </info>
 <info folder="true" part="rightFolder" ratio="0.249226" ratioLeft="161" ratioRight="485" relationship="4" relative="org.eclipse.ui.internal.ViewStack@8a60bc">
-<folder activePageID="com.tomato.exerd.modelview3.ModelView3" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.search.ui.views.SearchView" appearance="2" expanded="2">
 <page content="com.tomato.exerd.modelview3.ModelView3" label="모델"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="아웃라인"/>
+<page content="org.eclipse.search.ui.views.SearchView" label="검색"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
 </presentation>
 </folder>
 </info>
 <info folder="true" part="bottomFolder" ratio="0.9291085" ratioLeft="865" ratioRight="66" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="com.tomato.exerd.ui.views.domain" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="com.tomato.exerd.ui.views.domain" label="도메인"/>
 <page content="com.tomato.exerd.validate.ui.ValidateView" label="검토"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="콘솔"/>
@@ -165,46 +189,74 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/데이터베이스구현평가.exerd"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/MBTI선물.exerd"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/0418member_review.exerd"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/데이터베이스구현평가.exerd"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/데이터베이스구현평가.exerd"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/team_v.exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/user/Downloads/TeamProject_RyuJiHwan.exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/user/Downloads/carlos%20(1).exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/user/Downloads/owner.exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/user/Downloads/carlos.exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/user/Downloads/team_v.exerd"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/팀프로젝트.exerd"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/팀프로젝트"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/user/Downloads/carlos.exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/user/Downloads/owner.exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/user/Downloads/carlos%20(1).exerd"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/team_v.exerd"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/0418member_review.exerd"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/MBTI선물.exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/D:/Webpro/Note/팀프로젝트/팀프로젝트.exerd"/>
 </editors>
-<item historyLabel="데이터베이스구현평가.exerd" index="0"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="데이터베이스구현평가.exerd" index="0"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="0418member_review.exerd" index="2"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="0418member_review.exerd" index="2"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="0418member_review.exerd" index="2"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="0418member_review.exerd" index="2"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="0418member_review.exerd" index="2"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="데이터베이스구현평가.exerd" index="0"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="0418member_review.exerd" index="2"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="0418member_review.exerd" index="2"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="0418member_review.exerd" index="2"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="0418member_review.exerd" index="2"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="데이터베이스구현평가.exerd" index="3"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="데이터베이스구현평가.exerd" index="3"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="데이터베이스구현평가.exerd" index="3"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="데이터베이스구현평가.exerd" index="3"/>
-<item historyLabel="MBTI선물.exerd" index="1"/>
-<item historyLabel="데이터베이스구현평가.exerd" index="4"/>
-<item active="true" historyLabel="MBTI선물.exerd" index="1"/>
+<item historyLabel="TeamProject_RyuJiHwan.exerd" index="3"/>
+<item historyLabel="team_v.exerd" index="2"/>
+<item historyLabel="TeamProject_RyuJiHwan.exerd" index="3"/>
+<item historyLabel="carlos (1).exerd" index="4"/>
+<item historyLabel="owner.exerd" index="5"/>
+<item historyLabel="TeamProject_RyuJiHwan.exerd" index="3"/>
+<item historyLabel="team_v.exerd" index="2"/>
+<item historyLabel="carlos (1).exerd" index="4"/>
+<item historyLabel="TeamProject_RyuJiHwan.exerd" index="3"/>
+<item historyLabel="team_v.exerd" index="2"/>
+<item historyLabel="TeamProject_RyuJiHwan.exerd" index="3"/>
+<item historyLabel="team_v.exerd" index="2"/>
+<item historyLabel="TeamProject_RyuJiHwan.exerd" index="3"/>
+<item historyLabel="team_v.exerd" index="2"/>
+<item historyLabel="TeamProject_RyuJiHwan.exerd" index="3"/>
+<item historyLabel="team_v.exerd" index="2"/>
+<item historyLabel="carlos.exerd" index="6"/>
+<item historyLabel="TeamProject_RyuJiHwan.exerd" index="3"/>
+<item historyLabel="team_v.exerd" index="2"/>
+<item historyLabel="0418member_review.exerd" index="1"/>
+<item historyLabel="team_v.exerd" index="2"/>
+<item historyLabel="team_v.exerd" index="7"/>
+<item historyLabel="0418member_review.exerd" index="1"/>
+<item historyLabel="MBTI선물.exerd" index="0"/>
+<item historyLabel="team_v.exerd" index="7"/>
+<item historyLabel="0418member_review.exerd" index="1"/>
+<item historyLabel="MBTI선물.exerd" index="0"/>
+<item historyLabel="team_v.exerd" index="7"/>
+<item historyLabel="TeamProject_RyuJiHwan.exerd" index="3"/>
+<item historyLabel="team_v.exerd" index="7"/>
+<item historyLabel="carlos.exerd" index="6"/>
+<item historyLabel="team_v.exerd" index="7"/>
+<item historyLabel="팀프로젝트.exerd" index="8"/>
+<item historyLabel="team_v.exerd" index="9"/>
+<item historyLabel="팀프로젝트.exerd" index="8"/>
+<item historyLabel="team_v.exerd" index="9"/>
+<item historyLabel="팀프로젝트.exerd" index="8"/>
+<item historyLabel="carlos.exerd" index="10"/>
+<item historyLabel="팀프로젝트.exerd(읽기 전용)" index="8"/>
+<item historyLabel="carlos.exerd(읽기 전용)" index="10"/>
+<item historyLabel="owner.exerd" index="11"/>
+<item historyLabel="carlos (1).exerd" index="12"/>
+<item historyLabel="team_v.exerd" index="13"/>
+<item historyLabel="0418member_review.exerd" index="14"/>
+<item historyLabel="MBTI선물.exerd" index="15"/>
+<item historyLabel="carlos.exerd(읽기 전용)" index="10"/>
+<item historyLabel="팀프로젝트.exerd(읽기 전용)" index="8"/>
+<item historyLabel="팀프로젝트.exerd" index="16"/>
+<item historyLabel="팀프로젝트.exerd(읽기 전용)" index="8"/>
+<item active="true" historyLabel="팀프로젝트.exerd" index="16"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -222,6 +274,27 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="팀프로젝트.exerd" tooltip="D:\Webpro\Note\팀프로젝트\팀프로젝트.exerd">
+<persistable uri="file:/D:/Webpro/Note/팀프로젝트/팀프로젝트.exerd"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="팀프로젝트.exerd" tooltip="newProject/팀프로젝트.exerd">
+<persistable path="/newProject/팀프로젝트.exerd"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="team_v.exerd" tooltip="C:\Users\user\Downloads\team_v.exerd">
+<persistable uri="file:/C:/Users/user/Downloads/team_v.exerd"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="carlos.exerd" tooltip="C:\Users\user\Downloads\carlos.exerd">
+<persistable uri="file:/C:/Users/user/Downloads/carlos.exerd"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="owner.exerd" tooltip="C:\Users\user\Downloads\owner.exerd">
+<persistable uri="file:/C:/Users/user/Downloads/owner.exerd"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="carlos (1).exerd" tooltip="C:\Users\user\Downloads\carlos (1).exerd">
+<persistable uri="file:/C:/Users/user/Downloads/carlos%20(1).exerd"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="team_v.exerd" tooltip="newProject/team_v.exerd">
+<persistable path="/newProject/team_v.exerd"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="0418member_review.exerd" tooltip="newProject/0418member_review.exerd">
 <persistable path="/newProject/0418member_review.exerd"/>
 </file>

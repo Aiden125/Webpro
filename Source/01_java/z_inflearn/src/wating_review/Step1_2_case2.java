@@ -1,4 +1,4 @@
-package review_yet;
+package wating_review;
 import java.util.Scanner;
 
 // 대문자와 소문자가 같이 존재하는 문자열을 입력받아

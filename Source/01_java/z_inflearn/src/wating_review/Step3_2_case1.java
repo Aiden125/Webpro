@@ -1,4 +1,4 @@
-package review_yet;
+package wating_review;
 import java.util.Scanner;
 
 public class Step3_2_case1 {

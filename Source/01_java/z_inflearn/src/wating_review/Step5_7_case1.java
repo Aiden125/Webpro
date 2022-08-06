@@ -1,4 +1,4 @@
-package review_yet;
+package wating_review;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;

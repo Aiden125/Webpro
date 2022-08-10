@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="5" version="2.0">
+<workbench progressCount="14" version="2.0">
 <workbenchAdvisor/>
-<window height="768" width="1024" x="166" y="126">
+<window height="768" width="1024" x="194" y="80">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -27,6 +27,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
 </presentation>
 </folder>
 </info>
@@ -34,8 +35,11 @@
 <editor id="com.tomato.exerd.editor.DiagramEditor" name="team_v.exerd" partName="team_v.exerd" path="D:/Webpro/Source/03_exERD/newProject/team_v.exerd" title="team_v.exerd" tooltip="newProject/team_v.exerd" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/team_v.exerd"/>
 </editor>
-<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="팀프로젝트.exerd" partName="팀프로젝트.exerd" title="팀프로젝트.exerd" tooltip="D:\Webpro\Note\팀프로젝트\팀프로젝트.exerd" workbook="DefaultEditorWorkbook">
+<editor id="com.tomato.exerd.editor.DiagramEditor" name="팀프로젝트.exerd" partName="팀프로젝트.exerd" title="팀프로젝트.exerd" tooltip="D:\Webpro\Note\팀프로젝트\팀프로젝트.exerd" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/D:/Webpro/Note/팀프로젝트/팀프로젝트.exerd"/>
+</editor>
+<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="MBTI선물.exerd" partName="MBTI선물.exerd" path="D:/Webpro/Source/03_exERD/newProject/MBTI선물.exerd" title="MBTI선물.exerd" tooltip="newProject/MBTI선물.exerd" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/MBTI선물.exerd"/>
 </editor>
 </editors>
 <views>
@@ -48,7 +52,7 @@
 <element path="/newProject"/>
 </expanded>
 <selection>
-<element path="/newProject/team_v.exerd"/>
+<element path="/newProject/MBTI선물.exerd"/>
 </selection>
 </viewState>
 </view>
@@ -169,9 +173,11 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/team_v.exerd"/>
 <editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/D:/Webpro/Note/팀프로젝트/팀프로젝트.exerd"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/MBTI선물.exerd"/>
 </editors>
 <item historyLabel="team_v.exerd" index="0"/>
-<item active="true" historyLabel="팀프로젝트.exerd" index="1"/>
+<item historyLabel="팀프로젝트.exerd" index="1"/>
+<item active="true" historyLabel="MBTI선물.exerd" index="2"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -189,6 +195,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="MBTI선물.exerd" tooltip="newProject/MBTI선물.exerd">
+<persistable path="/newProject/MBTI선물.exerd"/>
+</file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="팀프로젝트.exerd" tooltip="D:\Webpro\Note\팀프로젝트\팀프로젝트.exerd">
 <persistable uri="file:/D:/Webpro/Note/팀프로젝트/팀프로젝트.exerd"/>
 </file>

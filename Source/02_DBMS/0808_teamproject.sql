@@ -12,6 +12,7 @@ DROP SEQUENCE ADMIN_SQ;
 DROP TABLE ADMIN_L;
 DROP TABLE ADMIN;
 
+
 CREATE TABLE ADMIN(
     aNO int(2) PRIMARY KEY,
     aID VARCHAR(50) UNIQUE NOT NULL,
@@ -20,7 +21,7 @@ CREATE TABLE ADMIN(
     aNAME VARCHAR(50) NOT NULL,
     aTEL VARCHAR(50) NOT NULL,
     aLEVEL VARCHAR(50) DEFAULT 0 REFERENCES ADMIN_L(aLEVEL),
-    aRDATE DATE DEFAULT SYSDATE
+    aRDATE DATETIME DEFAULT current_timestamp
 );
 
 -- ADMIN LEVEL
@@ -28,6 +29,19 @@ CREATE TABLE ADMIN_L(
     aLEVEL VARCHAR(10) PRIMARY KEY,
     aLEVEL_NAME VARCHAR(50)
 );
+set sql_safe_updates=0;
+
+INSERT INTO ADMIN (aNO, aID, aPW, aEMAIL, aNAME, aTEL, aLEVEL)
+    VALUES((SELECT get_seq('file')), 'moan125', '1234', 'moan125@naver.com', '문희석', '010-9999-1234', 2);
+INSERT INTO ADMIN (aNO, aID, aPW, aEMAIL, aNAME, aTEL, aLEVEL)
+    VALUES((SELECT get_seq('file')), 'aaa', '1234', 'lee@naver.com', '이진우', '010-1111-1234', 1);
+INSERT INTO ADMIN (aNO, aID, aPW, aEMAIL, aNAME, aTEL, aLEVEL)
+    VALUES((SELECT get_seq('file')), 'bbb', '1234', 'kim@naver.com', '김민우', '010-2222-1234', 1);
+INSERT INTO ADMIN (aNO, aID, aPW, aEMAIL, aNAME, aTEL, aLEVEL)
+    VALUES((SELECT get_seq('file')), 'ccc', '1234', 'ryu@naver.com', '류지환', '010-3333-1234', 1);
+
+commit;
+SELECT * FROM ADMIN;
 
 CREATE SEQUENCE ADMIN_SQ
 INCREMENT BY 1
@@ -43,7 +57,39 @@ SELECT * FROM ADMIN_L;
 
 
 
--- 시퀀스 연습해보기
+-- 어드민용 시퀀스 만들기
+
+-- 테이블 생성
+CREATE TABLE master_seq(
+	id int not null,
+    seq_name varchar(50) not null
+);
+
+-- 함수 제작
+DROP FUNCTION IF EXISTS get_seq;
+DELIMITER $$
+CREATE FUNCTION get_seq(p_seq_name VARCHAR(45))
+RETURNS INT READS SQL DATA
+BEGIN
+DECLARE RESULT_ID INT;
+UPDATE master_seq SET id = LAST_INSERT_ID(id+1)
+WHERE seq_name = p_seq_name;
+SET RESULT_ID = (SELECT LAST_INSERT_ID());
+RETURN RESULT_ID;
+END $$
+DELIMITER ;
+
+-- 시퀀스 생성
+INSERT INTO master_seq VALUES(1, 'file');
+
+-- 이걸로 시퀀스 호출
+SELECT get_seq('file');
+
+
+
+
+
+
 CREATE TABLE SEQUENCES(
 	NAME VARCHAR(32),
     CURRVAL BIGINT UNSIGNED
@@ -101,5 +147,10 @@ INSERT INTO ADMIN
 	
 DROP TABLE ADMIN;
 
+
+
+use mysql;
+select user, host, password from user;
+select user, host, authencation_string from user;
 
 

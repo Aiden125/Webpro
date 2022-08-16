@@ -14,6 +14,14 @@ INSERT INTO ADMIN (aNO, aID, aPW, aEMAIL, aNAME, aTEL, aLEVEL)
     VALUES((SELECT get_admin_seq('ano')), 'eee', '1234', 'kimkim@naver.com', '김럭비', '010-4444-1234', 0);
 INSERT INTO ADMIN (aNO, aID, aPW, aEMAIL, aNAME, aTEL, aLEVEL)
     VALUES((SELECT get_admin_seq('ano')), 'fff', '1234', 'parkpark@naver.com', '박농구', '010-4444-1234', 0);
+INSERT INTO ADMIN (aNO, aID, aPW, aEMAIL, aNAME, aTEL, aLEVEL)
+    VALUES((SELECT get_admin_seq('ano')), 'ggg', '1234', 'choichoi@naver.com', '최축구', '010-4444-1234', 5);
+INSERT INTO ADMIN (aNO, aID, aPW, aEMAIL, aNAME, aTEL, aLEVEL)
+    VALUES((SELECT get_admin_seq('ano')), 'hhh', '1234', 'jang@naver.com', '장탁구', '010-4444-1234', 0);
+
+
+INSERT INTO ADMIN (aNO, aID, aPW, aEMAIL, aNAME, aTEL, aLEVEL)
+    VALUES((SELECT get_admin_seq('ano')), 'example', (SELECT MAX(ano)+1 FROM ADMIN), 'jang1@naver.com', '장티푸스', '010-4444-1234', 0);
     
 commit;
 SELECT * FROM ADMIN;

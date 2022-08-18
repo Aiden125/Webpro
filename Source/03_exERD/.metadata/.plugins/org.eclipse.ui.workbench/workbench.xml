@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="14" version="2.0">
 <workbenchAdvisor/>
-<window height="768" width="1024" x="113" y="84">
+<window height="768" width="1024" x="151" y="77">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -48,12 +48,6 @@
 <filters>
 <filter element=".*" isEnabled="false"/>
 </filters>
-<expanded>
-<element path="/newProject"/>
-</expanded>
-<selection>
-<element path="/newProject/MBTI선물.exerd"/>
-</selection>
 </viewState>
 </view>
 <view id="com.tomato.exerd.ui.views.thumbnail" partName="썸네일">

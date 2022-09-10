@@ -11,20 +11,16 @@ public class Step1_11 {
 	public String solution(String str) {
 		String answer = "";
 
-		int count = 0;
-		for(int i=0; i<str.length(); i++) {
-			for(int j=i+1; j<=i; j++) {
-				if(str.charAt(i) == str.charAt(j)) {
-					count++;
-				}else {
-					if(count == 0) {
-						answer += str.charAt(i);
-						continue;
-					}else {
-						answer += str.charAt(i)+""+count;
-						count = 0;
-						continue;
-					}
+		str += " ";
+		int count=1;
+		for(int i=0; i<str.length()-1; i++) {
+			if(str.charAt(i)==str.charAt(i+1)) {
+				count++;
+			}else {
+				answer += str.charAt(i);
+				if(count>1) {
+					answer += String.valueOf(count);
+					count=1;
 				}
 			}
 		}
